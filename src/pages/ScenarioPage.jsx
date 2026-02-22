@@ -3,20 +3,22 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Ship, Plane, MapPin, Package, DollarSign, HelpCircle, CheckCircle2, XCircle, ArrowRight, RotateCcw } from 'lucide-react'
 import confetti from 'canvas-confetti'
 import useGameStore from '../stores/gameStore'
+import useLanguageStore from '../stores/languageStore'
+import { translations as T, t } from '../i18n/translations'
 import { INCOTERMS } from '../data/incoterms'
 import { SCENARIOS, getRandomScenario } from '../data/scenarios'
 
-function DifficultySelector({ onSelect }) {
+function DifficultySelector({ onSelect, lang }) {
   const difficulties = [
-    { key: 'beginner', label: 'Beginner', color: 'bg-green-500', desc: 'Common Incoterms, clear scenarios' },
-    { key: 'intermediate', label: 'Intermediate', color: 'bg-amber-500', desc: 'Tricky scenarios, multiple valid answers' },
-    { key: 'advanced', label: 'Advanced', color: 'bg-red-500', desc: 'Complex situations, DG, LARTAS, FTZ' },
-    { key: 'all', label: 'Mixed', color: 'bg-purple-500', desc: 'Random difficulty' },
+    { key: 'beginner', label: t(T.scenario.beginner, lang), color: 'bg-green-500', desc: t(T.scenario.beginnerDesc, lang) },
+    { key: 'intermediate', label: t(T.scenario.intermediate, lang), color: 'bg-amber-500', desc: t(T.scenario.intermediateDesc, lang) },
+    { key: 'advanced', label: t(T.scenario.advanced, lang), color: 'bg-red-500', desc: t(T.scenario.advancedDesc, lang) },
+    { key: 'all', label: t(T.scenario.mixed, lang), color: 'bg-purple-500', desc: t(T.scenario.mixedDesc, lang) },
   ]
 
   return (
     <div className="space-y-4 py-8">
-      <h2 className="text-xl font-bold text-gray-900 text-center">Choose Difficulty</h2>
+      <h2 className="text-xl font-bold text-gray-900 text-center">{t(T.scenario.chooseDifficulty, lang)}</h2>
       <div className="grid sm:grid-cols-2 gap-3 max-w-lg mx-auto">
         {difficulties.map(d => (
           <button
@@ -36,7 +38,7 @@ function DifficultySelector({ onSelect }) {
   )
 }
 
-function ScenarioCard({ scenario, onAnswer }) {
+function ScenarioCard({ scenario, onAnswer, lang }) {
   const [selectedIncoterm, setSelectedIncoterm] = useState(null)
   const [showHint, setShowHint] = useState(false)
   const [hintIndex, setHintIndex] = useState(0)
@@ -68,8 +70,8 @@ function ScenarioCard({ scenario, onAnswer }) {
             scenario.difficulty === 'beginner' ? 'bg-green-100 text-green-700' :
             scenario.difficulty === 'intermediate' ? 'bg-amber-100 text-amber-700' :
             'bg-red-100 text-red-700'
-          }`}>{scenario.difficulty}</span>
-          <span className="text-xs text-gray-400">{scenario.type === 'export' ? 'Export' : 'Import'}</span>
+          }`}>{t(T.scenario[scenario.difficulty], lang)}</span>
+          <span className="text-xs text-gray-400">{scenario.type === 'export' ? t(T.common.export, lang) : t(T.common.import, lang)}</span>
         </div>
 
         <h2 className="text-lg font-bold text-gray-900 mb-2">{scenario.title}</h2>
@@ -107,7 +109,7 @@ function ScenarioCard({ scenario, onAnswer }) {
           animate={{ opacity: 1, height: 'auto' }}
           className="bg-accent/5 rounded-xl p-4 border border-accent/20"
         >
-          <div className="text-xs font-semibold text-amber-700 mb-2">Hints ({hintIndex}/{scenario.hints.length})</div>
+          <div className="text-xs font-semibold text-amber-700 mb-2">{t(T.scenario.hint, lang)} ({hintIndex}/{scenario.hints.length})</div>
           <ul className="space-y-1">
             {scenario.hints.slice(0, hintIndex).map((hint, i) => (
               <li key={i} className="text-sm text-gray-600 flex items-start gap-2">
@@ -121,7 +123,7 @@ function ScenarioCard({ scenario, onAnswer }) {
 
       {/* Answer Grid */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-700 mb-2">Which Incoterm fits best?</h3>
+        <h3 className="text-sm font-semibold text-gray-700 mb-2">{t(T.scenario.whichIncoterm, lang)}</h3>
         <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
           {INCOTERMS.map(term => (
             <button
@@ -147,21 +149,21 @@ function ScenarioCard({ scenario, onAnswer }) {
           disabled={hintIndex >= scenario.hints.length}
           className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-40 transition-colors"
         >
-          Hint ({hintIndex}/{scenario.hints.length})
+          {t(T.scenario.hint, lang)} ({hintIndex}/{scenario.hints.length})
         </button>
         <button
           onClick={handleAnswer}
           disabled={!selectedIncoterm}
           className="flex-1 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 disabled:opacity-40 transition-colors"
         >
-          Submit Answer
+          {t(T.scenario.submitAnswer, lang)}
         </button>
       </div>
     </motion.div>
   )
 }
 
-function ResultCard({ scenario, selectedAnswer, isCorrect, onNext }) {
+function ResultCard({ scenario, selectedAnswer, isCorrect, onNext, lang }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -177,11 +179,11 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext }) {
           )}
           <div>
             <h3 className={`font-bold text-lg ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
-              {isCorrect ? 'Correct!' : 'Not quite...'}
+              {isCorrect ? t(T.scenario.correct, lang) : t(T.scenario.notQuite, lang)}
             </h3>
             <p className="text-sm text-gray-600">
-              You selected: <span className="font-mono font-bold">{selectedAnswer}</span>
-              {!isCorrect && <> | Best answer: <span className="font-mono font-bold text-green-700">{scenario.correctAnswer}</span></>}
+              {t(T.scenario.youSelected, lang)}: <span className="font-mono font-bold">{selectedAnswer}</span>
+              {!isCorrect && <> | {t(T.scenario.bestAnswer, lang)}: <span className="font-mono font-bold text-green-700">{scenario.correctAnswer}</span></>}
             </p>
           </div>
         </div>
@@ -189,13 +191,13 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext }) {
 
       {/* Explanation */}
       <div className="bg-white rounded-xl p-5 shadow-sm border">
-        <h4 className="font-semibold text-gray-900 mb-2">Explanation</h4>
+        <h4 className="font-semibold text-gray-900 mb-2">{t(T.scenario.explanation, lang)}</h4>
         <p className="text-sm text-gray-600 leading-relaxed">{scenario.explanation}</p>
       </div>
 
       {/* Learning Points */}
       <div className="bg-primary/5 rounded-xl p-5 border border-primary/20">
-        <h4 className="font-semibold text-primary mb-2">Key Takeaways</h4>
+        <h4 className="font-semibold text-primary mb-2">{t(T.scenario.keyTakeaways, lang)}</h4>
         <ul className="space-y-2">
           {scenario.learningPoints.map((point, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
@@ -210,7 +212,7 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext }) {
         onClick={onNext}
         className="w-full py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
       >
-        Next Scenario <ArrowRight className="w-4 h-4" />
+        {t(T.scenario.nextScenario, lang)} <ArrowRight className="w-4 h-4" />
       </button>
     </motion.div>
   )
@@ -218,6 +220,7 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext }) {
 
 export default function ScenarioPage() {
   const { answerScenario, nextScenario, showResult, selectedAnswer, scenariosCompleted, streak } = useGameStore()
+  const { lang } = useLanguageStore()
   const [difficulty, setDifficulty] = useState(null)
   const [currentScenario, setCurrentScenario] = useState(null)
   const [lastResult, setLastResult] = useState(null)
@@ -246,7 +249,7 @@ export default function ScenarioPage() {
   }
 
   if (!difficulty) {
-    return <DifficultySelector onSelect={startScenario} />
+    return <DifficultySelector onSelect={startScenario} lang={lang} />
   }
 
   return (
@@ -257,10 +260,10 @@ export default function ScenarioPage() {
           onClick={() => { setDifficulty(null); setCurrentScenario(null); setLastResult(null) }}
           className="text-sm text-gray-500 hover:text-primary flex items-center gap-1"
         >
-          <RotateCcw className="w-3 h-3" /> Change difficulty
+          <RotateCcw className="w-3 h-3" /> {t(T.scenario.changeDifficulty, lang)}
         </button>
         {streak > 0 && (
-          <span className="text-sm font-semibold text-accent">{streak} streak!</span>
+          <span className="text-sm font-semibold text-accent">{streak} {t(T.common.streak, lang)}!</span>
         )}
       </div>
 
@@ -272,12 +275,14 @@ export default function ScenarioPage() {
             selectedAnswer={lastResult.selectedAnswer}
             isCorrect={lastResult.isCorrect}
             onNext={handleNext}
+            lang={lang}
           />
         ) : currentScenario ? (
           <ScenarioCard
             key={currentScenario.id}
             scenario={currentScenario}
             onAnswer={handleAnswer}
+            lang={lang}
           />
         ) : null}
       </AnimatePresence>

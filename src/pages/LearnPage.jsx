@@ -2,8 +2,10 @@ import { useParams, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Truck, Ship, Plane, Shield, AlertTriangle, CheckCircle2 } from 'lucide-react'
 import { INCOTERMS, INCOTERM_GROUPS, getIncotermByCode } from '../data/incoterms'
+import useLanguageStore from '../stores/languageStore'
+import { translations as T, t } from '../i18n/translations'
 
-function IncotermDetail({ term }) {
+function IncotermDetail({ term, lang }) {
   const groupInfo = INCOTERM_GROUPS[term.group]
 
   return (
@@ -30,7 +32,7 @@ function IncotermDetail({ term }) {
             <p className="text-gray-500">{term.name}</p>
           </div>
           <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-            Group {term.group}: {groupInfo.name}
+            {t(T.learn.group, lang)} {term.group}: {groupInfo.name}
           </span>
         </div>
 
@@ -52,15 +54,15 @@ function IncotermDetail({ term }) {
         {/* Key Points */}
         <div className="grid sm:grid-cols-3 gap-3">
           <div className="bg-danger/5 rounded-lg p-3">
-            <div className="text-xs font-semibold text-danger mb-1">Risk Transfer</div>
+            <div className="text-xs font-semibold text-danger mb-1">{t(T.learn.riskTransfer, lang)}</div>
             <div className="text-sm text-gray-700">{term.riskTransfer}</div>
           </div>
           <div className="bg-primary/5 rounded-lg p-3">
-            <div className="text-xs font-semibold text-primary mb-1">Cost Transfer</div>
+            <div className="text-xs font-semibold text-primary mb-1">{t(T.learn.costTransfer, lang)}</div>
             <div className="text-sm text-gray-700">{term.costTransfer}</div>
           </div>
           <div className="bg-secondary/5 rounded-lg p-3">
-            <div className="text-xs font-semibold text-secondary mb-1">Insurance</div>
+            <div className="text-xs font-semibold text-secondary mb-1">{t(T.learn.insurance, lang)}</div>
             <div className="text-sm text-gray-700">{term.insurance}</div>
           </div>
         </div>
@@ -70,7 +72,7 @@ function IncotermDetail({ term }) {
       <div className="grid sm:grid-cols-2 gap-4">
         <div className="bg-white rounded-xl p-5 shadow-sm border">
           <h3 className="font-semibold text-cargo mb-3 flex items-center gap-2">
-            <Ship className="w-4 h-4" /> Seller's Obligations
+            <Ship className="w-4 h-4" /> {t(T.learn.sellerOb, lang)}
           </h3>
           <ul className="space-y-2">
             {term.sellerObligations.map((ob, i) => (
@@ -83,7 +85,7 @@ function IncotermDetail({ term }) {
         </div>
         <div className="bg-white rounded-xl p-5 shadow-sm border">
           <h3 className="font-semibold text-primary mb-3 flex items-center gap-2">
-            <Truck className="w-4 h-4" /> Buyer's Obligations
+            <Truck className="w-4 h-4" /> {t(T.learn.buyerOb, lang)}
           </h3>
           <ul className="space-y-2">
             {term.buyerObligations.map((ob, i) => (
@@ -100,17 +102,56 @@ function IncotermDetail({ term }) {
       <div className="grid sm:grid-cols-2 gap-4">
         <div className="bg-secondary/5 rounded-xl p-5 border border-secondary/20">
           <h3 className="font-semibold text-secondary mb-2 flex items-center gap-2">
-            <Shield className="w-4 h-4" /> Best For
+            <Shield className="w-4 h-4" /> {t(T.learn.bestFor, lang)}
           </h3>
           <p className="text-sm text-gray-700">{term.bestFor}</p>
         </div>
         <div className="bg-accent/5 rounded-xl p-5 border border-accent/20">
           <h3 className="font-semibold text-amber-700 mb-2 flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4" /> Common Mistake
+            <AlertTriangle className="w-4 h-4" /> {t(T.learn.commonMistake, lang)}
           </h3>
           <p className="text-sm text-gray-700">{term.commonMistake}</p>
         </div>
       </div>
+
+      {/* Enriched Sections */}
+      {term.indonesianExample && (
+        <div className="bg-red-50/50 rounded-xl p-5 border border-red-100">
+          <h3 className="font-semibold text-red-700 mb-2 flex items-center gap-2">
+            <span className="text-lg">&#x1F1EE;&#x1F1E9;</span> {t(T.learn.indonesianExample, lang)}
+          </h3>
+          <p className="text-sm text-gray-700">{term.indonesianExample}</p>
+        </div>
+      )}
+
+      {term.keyTrap && (
+        <div className="bg-amber-50/50 rounded-xl p-5 border border-amber-200">
+          <h3 className="font-semibold text-amber-700 mb-2 flex items-center gap-2">
+            <AlertTriangle className="w-4 h-4" /> {t(T.learn.keyTrap, lang)}
+          </h3>
+          <p className="text-sm text-gray-700">{term.keyTrap}</p>
+        </div>
+      )}
+
+      {term.confusedWith && term.confusedWith.length > 0 && (
+        <div className="bg-blue-50/50 rounded-xl p-5 border border-blue-100">
+          <h3 className="font-semibold text-blue-700 mb-3">{t(T.learn.confusedWith, lang)}</h3>
+          <div className="flex flex-wrap gap-2">
+            {term.confusedWith.map((item, i) => (
+              <span key={i} className="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {term.changes2020 && (
+        <div className="bg-purple-50/50 rounded-xl p-5 border border-purple-100">
+          <h3 className="font-semibold text-purple-700 mb-2">{t(T.learn.changes2020, lang)}</h3>
+          <p className="text-sm text-gray-700">{term.changes2020}</p>
+        </div>
+      )}
 
       {/* Navigation */}
       <div className="flex justify-between">
@@ -140,16 +181,17 @@ function IncotermDetail({ term }) {
 
 export default function LearnPage() {
   const { incoterm } = useParams()
+  const { lang } = useLanguageStore()
   const selectedTerm = incoterm ? getIncotermByCode(incoterm.toUpperCase()) : null
 
   if (selectedTerm) {
     return (
       <div>
         <Link to="/learn" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary mb-4">
-          <ArrowLeft className="w-4 h-4" /> All Incoterms
+          <ArrowLeft className="w-4 h-4" /> {t(T.learn.allIncoterms, lang)}
         </Link>
         <AnimatePresence mode="wait">
-          <IncotermDetail term={selectedTerm} />
+          <IncotermDetail term={selectedTerm} lang={lang} />
         </AnimatePresence>
       </div>
     )
@@ -158,18 +200,18 @@ export default function LearnPage() {
   return (
     <div className="space-y-6 py-4">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Learn Incoterms 2020</h1>
+        <h1 className="text-2xl font-bold text-gray-900">{t(T.learn.title, lang)}</h1>
         <p className="text-gray-500 text-sm mt-1">
-          Tap any Incoterm to see detailed obligations, risk/cost transfer points, and Indonesian trade context.
+          {t(T.learn.subtitle, lang)}
         </p>
       </div>
 
       {Object.entries(INCOTERM_GROUPS).map(([groupKey, group]) => {
-        const terms = INCOTERMS.filter(t => t.group === groupKey)
+        const terms = INCOTERMS.filter(tm => tm.group === groupKey)
         return (
           <div key={groupKey}>
             <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">
-              Group {groupKey}: {group.name}
+              {t(T.learn.group, lang)} {groupKey}: {group.name}
             </h2>
             <p className="text-xs text-gray-400 mb-3">{group.description}</p>
             <div className="grid sm:grid-cols-2 gap-3">

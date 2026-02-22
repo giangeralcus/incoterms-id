@@ -1,21 +1,23 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Calculator, ArrowRight, Info, DollarSign, Landmark, ChevronDown, ChevronUp, HelpCircle, Ship, BookOpen, ToggleLeft, ToggleRight } from 'lucide-react'
+import useLanguageStore from '../stores/languageStore'
+import { translations as T, t } from '../i18n/translations'
 
 const COST_COMPONENTS = [
-  { key: 'factory', label: 'Ex-Factory Cost', category: 'origin' },
-  { key: 'inlandOrigin', label: 'Inland Transport (Origin)', category: 'origin' },
-  { key: 'exportClearance', label: 'Export Customs Clearance', category: 'origin' },
-  { key: 'thcOrigin', label: 'THC Origin', category: 'origin' },
-  { key: 'docFee', label: 'Documentation Fee', category: 'origin' },
-  { key: 'blFee', label: 'B/L Fee', category: 'freight' },
-  { key: 'oceanFreight', label: 'Ocean Freight', category: 'freight' },
-  { key: 'insurance', label: 'Cargo Insurance', category: 'freight' },
-  { key: 'thcDest', label: 'THC Destination', category: 'destination' },
-  { key: 'importClearance', label: 'Import Customs Clearance', category: 'destination' },
-  { key: 'importDuty', label: 'Import Duty', category: 'destination' },
-  { key: 'vat', label: 'VAT / PPN', category: 'destination' },
-  { key: 'inlandDest', label: 'Inland Transport (Dest)', category: 'destination' },
+  { key: 'factory', labelKey: 'factory', category: 'origin' },
+  { key: 'inlandOrigin', labelKey: 'inlandOrigin', category: 'origin' },
+  { key: 'exportClearance', labelKey: 'exportClearance', category: 'origin' },
+  { key: 'thcOrigin', labelKey: 'thcOrigin', category: 'origin' },
+  { key: 'docFee', labelKey: 'docFee', category: 'origin' },
+  { key: 'blFee', labelKey: 'blFee', category: 'freight' },
+  { key: 'oceanFreight', labelKey: 'oceanFreight', category: 'freight' },
+  { key: 'insurance', labelKey: 'insurance', category: 'freight' },
+  { key: 'thcDest', labelKey: 'thcDest', category: 'destination' },
+  { key: 'importClearance', labelKey: 'importClearance', category: 'destination' },
+  { key: 'importDuty', labelKey: 'importDuty', category: 'destination' },
+  { key: 'vat', labelKey: 'vat', category: 'destination' },
+  { key: 'inlandDest', labelKey: 'inlandDest', category: 'destination' },
 ]
 
 // Who pays: S=Seller, B=Buyer for each Incoterm
@@ -127,6 +129,7 @@ function CollapsibleSection({ title, icon: Icon, children, defaultOpen = false }
 }
 
 export default function CostSimulator() {
+  const { lang } = useLanguageStore()
   const [costs, setCosts] = useState(DEFAULT_COSTS)
   const [selectedTerms, setSelectedTerms] = useState(COMPARE_TERMS)
 
@@ -170,20 +173,20 @@ export default function CostSimulator() {
       <div>
         <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
           <Calculator className="w-6 h-6 text-accent" />
-          Cost Simulator
+          {t(T.cost.title, lang)}
         </h1>
         <p className="text-gray-500 text-sm mt-1">
-          See how the same shipment costs differ under each Incoterm. Edit costs to match your scenario.
+          {t(T.cost.subtitle, lang)}
         </p>
       </div>
 
       {/* Cost Inputs */}
       <div className="bg-white rounded-xl p-5 shadow-sm border">
-        <h3 className="font-semibold text-gray-900 mb-3">Cost Components (USD)</h3>
+        <h3 className="font-semibold text-gray-900 mb-3">{t(T.cost.costComponents, lang)}</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {COST_COMPONENTS.map(comp => (
             <div key={comp.key}>
-              <label className="text-xs text-gray-500 block mb-1">{comp.label}</label>
+              <label className="text-xs text-gray-500 block mb-1">{t(T.costLabels[comp.labelKey], lang)}</label>
               <input
                 type="number"
                 value={costs[comp.key]}
@@ -217,7 +220,7 @@ export default function CostSimulator() {
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b">
-              <th className="text-left p-3 text-gray-500 font-normal text-xs">Cost Component</th>
+              <th className="text-left p-3 text-gray-500 font-normal text-xs">{t(T.cost.costComponent, lang)}</th>
               {selectedTerms.map(term => (
                 <th key={term} className="p-3 text-center font-mono font-bold text-primary text-xs">{term}</th>
               ))}
@@ -226,7 +229,7 @@ export default function CostSimulator() {
           <tbody>
             {COST_COMPONENTS.map(comp => (
               <tr key={comp.key} className="border-b last:border-0">
-                <td className="p-3 text-gray-700 text-xs">{comp.label}</td>
+                <td className="p-3 text-gray-700 text-xs">{t(T.costLabels[comp.labelKey], lang)}</td>
                 {selectedTerms.map(term => {
                   const who = RESPONSIBILITY[term][comp.key]
                   return (
@@ -242,7 +245,7 @@ export default function CostSimulator() {
             ))}
             {/* Totals */}
             <tr className="border-t-2 bg-gray-50">
-              <td className="p-3 font-semibold text-gray-900 text-xs">Seller Total</td>
+              <td className="p-3 font-semibold text-gray-900 text-xs">{t(T.cost.sellerTotal, lang)}</td>
               {selectedTerms.map(term => (
                 <td key={term} className="p-3 text-center font-bold text-cargo text-xs">
                   ${calcTotal(term, 'S').toLocaleString()}
@@ -250,7 +253,7 @@ export default function CostSimulator() {
               ))}
             </tr>
             <tr className="bg-gray-50">
-              <td className="p-3 font-semibold text-gray-900 text-xs">Buyer Total</td>
+              <td className="p-3 font-semibold text-gray-900 text-xs">{t(T.cost.buyerTotal, lang)}</td>
               {selectedTerms.map(term => (
                 <td key={term} className="p-3 text-center font-bold text-primary text-xs">
                   ${calcTotal(term, 'B').toLocaleString()}
@@ -265,34 +268,30 @@ export default function CostSimulator() {
       <div className="flex items-center gap-4 text-xs text-gray-500">
         <div className="flex items-center gap-1">
           <span className="w-3 h-3 rounded bg-cargo/20 border border-cargo/30" />
-          S = Seller pays
+          {t(T.cost.sellerPays, lang)}
         </div>
         <div className="flex items-center gap-1">
           <span className="w-3 h-3 rounded bg-primary/20 border border-primary/30" />
-          B = Buyer pays
+          {t(T.cost.buyerPays, lang)}
         </div>
       </div>
 
       <div className="bg-blue-50 rounded-xl p-4 border border-blue-200 flex items-start gap-2">
         <Info className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />
         <p className="text-xs text-blue-700">
-          Note: This is a simplified model. Real costs vary by route, carrier, season, and negotiation.
-          The responsibility matrix follows Incoterms 2020 standard obligations. Some charges
-          (like THC) may be allocated differently based on local port customs.
+          {t(T.cost.note, lang)}
         </p>
       </div>
-
-      {/* ───────────────────── NEW SECTIONS BELOW ───────────────────── */}
 
       {/* Section A: Indonesian Import Tax Calculator */}
       <div className="bg-white rounded-xl shadow-sm border">
         <div className="p-5 border-b">
           <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
             <Landmark className="w-5 h-5 text-accent" />
-            Indonesian Import Tax Calculator
+            {t(T.cost.taxCalc, lang)}
           </h2>
           <p className="text-gray-500 text-xs mt-1">
-            Calculate Bea Masuk, PPN, PPh 22, and PPnBM based on Indonesian customs regulations (2025/2026).
+            {t(T.cost.taxNote, lang)}
           </p>
         </div>
 
@@ -300,7 +299,7 @@ export default function CostSimulator() {
           {/* Calculator Inputs */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-xs text-gray-500 block mb-1">CIF Value (USD)</label>
+              <label className="text-xs text-gray-500 block mb-1">{t(T.cost.cifValue, lang)} (USD)</label>
               <input
                 type="number"
                 value={cifUSD}
@@ -310,7 +309,7 @@ export default function CostSimulator() {
               />
             </div>
             <div>
-              <label className="text-xs text-gray-500 block mb-1">Exchange Rate (IDR/USD)</label>
+              <label className="text-xs text-gray-500 block mb-1">{t(T.cost.exchangeRate, lang)}</label>
               <input
                 type="number"
                 value={exchangeRate}
@@ -321,7 +320,7 @@ export default function CostSimulator() {
             </div>
             <div>
               <label className="text-xs text-gray-500 block mb-1">
-                Import Duty Rate (%)
+                {t(T.cost.dutyRate, lang)}
               </label>
               <input
                 type="number"
@@ -332,18 +331,21 @@ export default function CostSimulator() {
                 max="150"
                 step="0.1"
               />
-              <p className="text-[10px] text-gray-400 mt-1">Varies by HS code (0-150%)</p>
+              <p className="text-[10px] text-gray-400 mt-1">{t(T.cost.dutyRateNote, lang)}</p>
             </div>
             <div className="space-y-3 pt-1">
               <Toggle
                 enabled={hasAPI}
                 onToggle={() => setHasAPI(!hasAPI)}
-                label={hasAPI ? 'Has API license (PPh 22 = 2.5%)' : 'No API license (PPh 22 = 7.5%)'}
+                label={hasAPI
+                  ? `${t(T.cost.hasApi, lang)} (PPh 22 = 2.5%)`
+                  : `${t(T.cost.hasApi, lang)} (PPh 22 = 7.5%)`
+                }
               />
               <Toggle
                 enabled={isLuxury}
                 onToggle={() => setIsLuxury(!isLuxury)}
-                label="Luxury goods (PPnBM applies)"
+                label={t(T.cost.isLuxury, lang)}
               />
             </div>
           </div>
@@ -355,7 +357,7 @@ export default function CostSimulator() {
               animate={{ opacity: 1, height: 'auto' }}
               className="sm:w-1/2"
             >
-              <label className="text-xs text-gray-500 block mb-1">PPnBM Rate (%)</label>
+              <label className="text-xs text-gray-500 block mb-1">{t(T.cost.ppnbmRate, lang)}</label>
               <input
                 type="number"
                 value={ppnbmRate}
@@ -372,37 +374,37 @@ export default function CostSimulator() {
           {/* Calculation Results */}
           <div className="bg-gray-50 rounded-lg p-4 font-mono text-sm space-y-1">
             <div className="flex justify-between text-gray-700">
-              <span>CIF Value (IDR)</span>
+              <span>{t(T.cost.cifIdr, lang)}</span>
               <span>{formatIDR(cifIDR)}</span>
             </div>
 
             <div className="flex justify-between text-gray-700">
-              <span>+ Bea Masuk (Import Duty) @ {dutyRate}%</span>
+              <span>+ {t(T.cost.beaMasuk, lang)} @ {dutyRate}%</span>
               <span>{formatIDR(beaMasuk)}</span>
             </div>
 
             <div className="border-t border-dashed border-gray-300 my-1" />
 
             <div className="flex justify-between text-gray-900 font-semibold">
-              <span>= NDPBM (Customs Value)</span>
+              <span>= {t(T.cost.ndpbm, lang)}</span>
               <span>{formatIDR(ndpbm)}</span>
             </div>
 
             <div className="border-t border-dashed border-gray-300 my-1" />
 
             <div className="flex justify-between text-gray-700">
-              <span>+ PPh 22 (Income Tax) @ {pph22Rate}%</span>
+              <span>+ {t(T.cost.pph22, lang)} @ {pph22Rate}%</span>
               <span>{formatIDR(pph22)}</span>
             </div>
 
             <div className="flex justify-between text-gray-700">
-              <span>+ PPN (VAT) @ 12%</span>
+              <span>+ {t(T.cost.ppn, lang)} @ 12%</span>
               <span>{formatIDR(ppn)}</span>
             </div>
 
             {isLuxury && (
               <div className="flex justify-between text-gray-700">
-                <span>+ PPnBM (Luxury Tax) @ {ppnbmRate}%</span>
+                <span>+ {t(T.cost.ppnbm, lang)} @ {ppnbmRate}%</span>
                 <span>{formatIDR(ppnbm)}</span>
               </div>
             )}
@@ -410,17 +412,17 @@ export default function CostSimulator() {
             <div className="border-t-2 border-gray-400 my-2" />
 
             <div className="flex justify-between text-cargo font-bold">
-              <span>TOTAL TAX</span>
+              <span>{t(T.cost.totalTax, lang)}</span>
               <span>{formatIDR(totalTax)}</span>
             </div>
 
             <div className="flex justify-between text-primary font-bold text-base">
-              <span>TOTAL LANDED COST</span>
+              <span>{t(T.cost.totalLanded, lang)}</span>
               <span>{formatIDR(totalLandedCost)}</span>
             </div>
 
             <div className="flex justify-between text-gray-400 text-xs mt-1">
-              <span>Effective tax rate on CIF</span>
+              <span>{t(T.cost.effectiveRate, lang)}</span>
               <span>{effectiveRate.toFixed(1)}%</span>
             </div>
           </div>
@@ -445,7 +447,7 @@ export default function CostSimulator() {
       </div>
 
       {/* Section B: Port Charges Quick Reference */}
-      <CollapsibleSection title="Indonesian Port Charges Reference" icon={Ship} defaultOpen={false}>
+      <CollapsibleSection title={t(T.cost.portCharges, lang)} icon={Ship} defaultOpen={false}>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -467,14 +469,13 @@ export default function CostSimulator() {
         <div className="mt-3 bg-blue-50 rounded-lg p-3 flex items-start gap-2">
           <Info className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />
           <p className="text-xs text-blue-700">
-            Rates shown are for Tanjung Priok (Jakarta). Other ports may differ.
-            Free days vary by shipping line (typically 3-4 days for demurrage, 4-7 days for detention).
+            {t(T.cost.portNote, lang)}
           </p>
         </div>
       </CollapsibleSection>
 
       {/* Section C: Common Abbreviations */}
-      <CollapsibleSection title="Common Abbreviations Glossary" icon={BookOpen} defaultOpen={false}>
+      <CollapsibleSection title={t(T.cost.glossary, lang)} icon={BookOpen} defaultOpen={false}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
           {ABBREVIATIONS.map((item, i) => (
             <div key={i} className="flex items-baseline gap-2 py-1.5 border-b border-gray-100 last:border-0">
