@@ -1,18 +1,16 @@
 # Belajar Ekspor Impor
 
-> **[ID]** Simulator interaktif untuk belajar Incoterms 2020 & ekspor-impor Indonesia. Belajar sambil bermain lewat skenario pengiriman nyata.
->
-> **[EN]** Interactive Incoterms 2020 & Export-Import Simulator Game. Learn Indonesian freight forwarding through realistic shipping scenarios.
+Interactive Incoterms 2020 & Export-Import Simulator Game. Learn Indonesian freight forwarding through realistic shipping scenarios.
 
-## Fitur / Features
+> Baca dalam Bahasa Indonesia: [README-ID.md](README-ID.md)
 
-| Fitur | Feature | Deskripsi |
-|-------|---------|-----------|
-| Pelajari Incoterms 2020 | Learn Incoterms 2020 | 11 aturan lengkap dengan panduan visual, kewajiban penjual/pembeli, dan contoh perdagangan Indonesia |
-| Main Skenario | Play Scenarios | Pilih Incoterm yang tepat untuk 26 skenario pengiriman nyata dari/ke Indonesia (pemula, menengah, lanjutan) |
-| Simulator Biaya | Cost Simulator | Bandingkan total biaya penjual vs pembeli + Kalkulator Pajak Impor Indonesia (BM, PPh22, PPN, PPnBM) |
-| Progres Saya | My Progress | Pantau penguasaan per Incoterm, akurasi, streak, dan skor |
-| Dwibahasa | Bilingual | Tersedia dalam Bahasa Indonesia dan English, bisa diganti kapan saja |
+## Features
+
+- **Learn Incoterms 2020** - All 11 rules with visual guides, obligations, risk/cost transfer points, and Indonesian trade context
+- **Play Scenarios** - Pick the correct Incoterm for 26 real-world shipping scenarios from/to Indonesia (beginner, intermediate, advanced)
+- **Cost Simulator** - Compare seller vs buyer costs across Incoterms + Indonesian Import Tax Calculator (BM, PPh22, PPN, PPnBM)
+- **Progress Tracking** - Track mastery per Incoterm, accuracy, streaks, and scores
+- **Bilingual** - Available in Indonesian and English, switchable anytime via header toggle
 
 ## Tech Stack
 
@@ -26,19 +24,15 @@
 | i18n | Zustand + translation objects (zero-dependency) |
 | Deploy | Vercel |
 
-## Mulai / Getting Started
+## Getting Started
 
 ```bash
 npm install
 npm run dev
 ```
 
-Buka `http://localhost:5173` di browser. Klik tombol **EN/ID** di header untuk ganti bahasa.
-
 Open `http://localhost:5173` in your browser. Click the **EN/ID** button in the header to switch language.
 
-## Konteks / Context
-
-Bagian dari ekosistem pembelajaran Gian untuk bisnis freight forwarding GPIndo.
+## Context
 
 Part of Gian's learning ecosystem for GPIndo freight forwarding business.
