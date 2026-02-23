@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Ship, Plane, MapPin, Package, DollarSign, HelpCircle, CheckCircle2, XCircle, ArrowRight, RotateCcw } from 'lucide-react'
 import ShipRouteMap from '../components/ShipRouteMap'
+import SceneIllustration from '../components/SceneIllustration'
 import confetti from 'canvas-confetti'
 import useGameStore from '../stores/gameStore'
 import useLanguageStore from '../stores/languageStore'
@@ -76,7 +77,11 @@ function ScenarioCard({ scenario, onAnswer, lang }) {
         </div>
 
         <h2 className="text-lg font-bold text-gray-900 mb-2">{scenario.title}</h2>
-        <p className="text-sm text-gray-600 leading-relaxed mb-4">{scenario.description}</p>
+
+        {/* Game scene illustration */}
+        <SceneIllustration scenario={scenario} />
+
+        <p className="text-sm text-gray-600 leading-relaxed mt-3 mb-4">{scenario.description}</p>
 
         {/* Route Info */}
         <div className="flex items-center gap-2 text-sm bg-ocean/5 rounded-lg p-3">
