@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Truck, Ship, Plane, Shield, AlertTriangle, Check
 import { INCOTERMS, INCOTERM_GROUPS, getIncotermByCode } from '../data/incoterms'
 import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
+import ResponsibilityMap from '../components/ResponsibilityMap'
 
 function IncotermDetail({ term, lang }) {
   const groupInfo = INCOTERM_GROUPS[term.group]
@@ -97,6 +98,9 @@ function IncotermDetail({ term, lang }) {
           </ul>
         </div>
       </div>
+
+      {/* Responsibility Map - interactive test */}
+      <ResponsibilityMap term={term} lang={lang} />
 
       {/* Tips */}
       <div className="grid sm:grid-cols-2 gap-4">
