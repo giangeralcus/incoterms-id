@@ -81,6 +81,18 @@ export const translations = {
     keyTrap: { id: 'Jebakan Utama', en: 'Key Trap' },
     confusedWith: { id: 'Sering Tertukar Dengan', en: 'Often Confused With' },
     changes2020: { id: 'Perubahan 2020', en: '2020 Changes' },
+    map: {
+      title: { id: 'Uji Pengetahuan: Drag & Drop', en: 'Test Your Knowledge: Drag & Drop' },
+      subtitle: { id: 'Seret kewajiban ke kolom Seller atau Buyer yang benar', en: 'Drag each obligation to the correct Seller or Buyer column' },
+      seller: { id: 'Seller', en: 'Seller' },
+      buyer: { id: 'Buyer', en: 'Buyer' },
+      checkBtn: { id: 'Cek Jawaban', en: 'Check Answers' },
+      resetBtn: { id: 'Ulangi', en: 'Reset' },
+      correct: { id: 'Benar!', en: 'Correct!' },
+      wrong: { id: 'Salah', en: 'Wrong' },
+      score: { id: 'Skor', en: 'Score' },
+      obligationsPool: { id: 'Kewajiban (drag ke kolom yang benar)', en: 'Obligations (drag to correct column)' },
+    },
   },
 
   // === SCENARIO / PLAY PAGE ===
