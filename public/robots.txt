@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://belajarexporimpor.com/sitemap.xml
