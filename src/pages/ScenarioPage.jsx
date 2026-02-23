@@ -8,7 +8,7 @@ import useGameStore from '../stores/gameStore'
 import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
 import { INCOTERMS } from '../data/incoterms'
-import { SCENARIOS, getRandomScenario } from '../data/scenarios'
+import { SCENARIOS } from '../data/scenarios'
 
 function DifficultySelector({ onSelect, lang }) {
   const difficulties = [
@@ -234,7 +234,7 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext, lang }) {
 }
 
 export default function ScenarioPage() {
-  const { answerScenario, nextScenario, showResult, selectedAnswer, scenariosCompleted, streak } = useGameStore()
+  const { answerScenario, nextScenario, scenariosCompleted, streak } = useGameStore()
   const { lang } = useLanguageStore()
   const [difficulty, setDifficulty] = useState(null)
   const [currentScenario, setCurrentScenario] = useState(null)

@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useCallback, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { CheckCircle2, XCircle, RotateCcw, GripVertical } from 'lucide-react'
 import { translations as T, t } from '../i18n/translations'
 
@@ -24,6 +24,16 @@ export default function ResponsibilityMap({ term, lang }) {
   const [dragging, setDragging] = useState(null) // { item, from }
   const [checked, setChecked] = useState(false)
   const [score, setScore] = useState(null)
+
+  // Rebuild pool when term changes
+  useEffect(() => {
+    setPool(buildItems())
+    setSellerCol([])
+    setBuyerCol([])
+    setDragging(null)
+    setChecked(false)
+    setScore(null)
+  }, [term, buildItems])
 
   function reset() {
     setPool(buildItems())

@@ -9,7 +9,7 @@ export function useLeaderboard() {
   const [submitted, setSubmitted] = useState(false)
 
   const fetchTopScores = useCallback(async () => {
-    if (!supabase) return
+    if (!supabase) { setLoading(false); return }
     setLoading(true)
     setError(null)
     const { data, error: err } = await supabase
@@ -36,7 +36,8 @@ export function useLeaderboard() {
   }, [fetchTopScores])
 
   const submitScore = useCallback(async ({ username, score, accuracy, scenariosCompleted }) => {
-    if (!supabase || submitted) return
+    if (!supabase) { setError('Leaderboard unavailable'); return }
+    if (submitted) { setError('Already submitted'); return }
     // Sanitize username
     const clean = username.replace(/[<>]/g, '').trim().slice(0, 20)
     if (clean.length < 2) { setError('Username minimal 2 karakter'); return }

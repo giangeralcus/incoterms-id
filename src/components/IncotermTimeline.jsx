@@ -1,6 +1,6 @@
 // src/components/IncotermTimeline.jsx
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Play, RotateCcw } from 'lucide-react'
 
 // Risk transfer point as fraction of journey (0 = seller door, 1 = buyer door)

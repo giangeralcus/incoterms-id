@@ -16,7 +16,7 @@ function Float({ children, delay = 0, range = 6 }) {
 }
 
 // Export scene: warehouse on left, cargo in middle, ship on right
-function ExportScene({ commodity }) {
+function ExportScene() {
   return (
     <svg width="100%" height="80" viewBox="0 0 360 80" preserveAspectRatio="xMidYMid meet" className="block">
       {/* Sky */}
@@ -89,7 +89,7 @@ function ExportScene({ commodity }) {
 }
 
 // Import scene: ship on left, customs in middle, warehouse/store on right
-function ImportScene({ commodity }) {
+function ImportScene() {
   return (
     <svg width="100%" height="80" viewBox="0 0 360 80" preserveAspectRatio="xMidYMid meet" className="block">
       {/* Sky */}

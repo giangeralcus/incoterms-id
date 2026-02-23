@@ -79,9 +79,9 @@ function IncotermDetail({ term, lang }) {
           <h3 className="font-semibold text-cargo mb-3 flex items-center gap-2">
             <Ship className="w-4 h-4" /> {t(T.learn.sellerOb, lang)}
           </h3>
-          <ul className="space-y-2">
-            {term.sellerObligations.map((ob, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+<ul className="space-y-2">
+            {term.sellerObligations.map((ob) => (
+              <li key={ob} className="flex items-start gap-2 text-sm text-gray-700">
                 <CheckCircle2 className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
                 {ob}
               </li>
@@ -92,9 +92,9 @@ function IncotermDetail({ term, lang }) {
           <h3 className="font-semibold text-primary mb-3 flex items-center gap-2">
             <Truck className="w-4 h-4" /> {t(T.learn.buyerOb, lang)}
           </h3>
-          <ul className="space-y-2">
-            {term.buyerObligations.map((ob, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+<ul className="space-y-2">
+            {term.buyerObligations.map((ob) => (
+              <li key={ob} className="flex items-start gap-2 text-sm text-gray-700">
                 <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                 {ob}
               </li>
@@ -144,9 +144,9 @@ function IncotermDetail({ term, lang }) {
       {term.confusedWith && term.confusedWith.length > 0 && (
         <div className="bg-blue-50/50 rounded-xl p-5 border border-blue-100">
           <h3 className="font-semibold text-blue-700 mb-3">{t(T.learn.confusedWith, lang)}</h3>
-          <div className="flex flex-wrap gap-2">
-            {term.confusedWith.map((item, i) => (
-              <span key={i} className="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">
+<div className="flex flex-wrap gap-2">
+            {term.confusedWith.map((item) => (
+              <span key={item} className="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">
                 {item}
               </span>
             ))}

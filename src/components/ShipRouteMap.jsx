@@ -23,7 +23,7 @@ const H = 110
 const SEA_PATH = `M 48,72 Q 200,18 352,72`
 const AIR_PATH = `M 48,72 Q 200,8 352,72`
 
-export default function ShipRouteMap({ origin, destination, transport = 'SEA', lang, className = '' }) {
+export default function ShipRouteMap({ origin, destination, transport = 'SEA', className = '' }) {
   const [animKey, setAnimKey] = useState(0)
   const [hasPlayed, setHasPlayed] = useState(false)
 

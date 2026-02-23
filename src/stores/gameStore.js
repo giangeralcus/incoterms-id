@@ -22,7 +22,18 @@ const useGameStore = create(
       answerScenario: (scenarioId, selectedIncoterm, isCorrect) => {
         const state = get()
         const newStreak = isCorrect ? state.streak + 1 : 0
-        const points = isCorrect ? 10 + (state.streak * 2) : 0
+        const points = isCorrect ? 10 + (newStreak * 2) : 0
+
+        // Deep clone mastery to avoid mutation
+        const mastery = {}
+        for (const key in state.incotermsMastered) {
+          mastery[key] = { ...state.incotermsMastered[key] }
+        }
+        if (!mastery[selectedIncoterm]) {
+          mastery[selectedIncoterm] = { correct: 0, total: 0 }
+        }
+        mastery[selectedIncoterm].total += 1
+        if (isCorrect) mastery[selectedIncoterm].correct += 1
 
         set({
           score: state.score + points,
@@ -33,16 +44,8 @@ const useGameStore = create(
           scenariosCompleted: [...new Set([...state.scenariosCompleted, scenarioId])],
           showResult: true,
           selectedAnswer: selectedIncoterm,
+          incotermsMastered: mastery,
         })
-
-        // Track mastery per incoterm
-        const mastery = { ...state.incotermsMastered }
-        if (!mastery[selectedIncoterm]) {
-          mastery[selectedIncoterm] = { correct: 0, total: 0 }
-        }
-        mastery[selectedIncoterm].total += 1
-        if (isCorrect) mastery[selectedIncoterm].correct += 1
-        set({ incotermsMastered: mastery })
       },
 
       nextScenario: () => set({ currentScenario: null, selectedAnswer: null, showResult: false }),
