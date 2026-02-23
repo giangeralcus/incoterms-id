@@ -217,6 +217,20 @@ export default function CostSimulator() {
 
       {/* Comparison Table */}
       <div className="bg-white rounded-xl shadow-sm border overflow-x-auto">
+        {/* Legend */}
+        <div className="flex gap-4 text-xs mb-2 px-3 pt-3">
+          <span className="flex items-center gap-1">
+            <span className="inline-block w-5 h-5 rounded text-center font-bold bg-cargo/10 text-cargo leading-5">S</span>
+            {lang === 'id' ? 'Seller (Penjual)' : 'Seller'}
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="inline-block w-5 h-5 rounded text-center font-bold bg-primary/10 text-primary leading-5">B</span>
+            {lang === 'id' ? 'Buyer (Pembeli)' : 'Buyer'}
+          </span>
+          <span className="flex items-center gap-1 text-gray-400">
+            Costs in USD
+          </span>
+        </div>
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b">
