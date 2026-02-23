@@ -42,6 +42,14 @@ export default function Layout() {
         <Outlet />
       </main>
 
+      {/* Footer */}
+      <div className="text-center py-1.5 text-xs text-gray-300">
+        Made by{' '}
+        <a href="https://ggcd.tech" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">
+          ggcd.tech
+        </a>
+      </div>
+
       {/* Bottom Navigation (mobile) */}
       <nav className="bg-white border-t border-gray-200 flex justify-around py-2 sm:py-3">
         {navItems.map(({ to, icon: Icon, label }) => (
