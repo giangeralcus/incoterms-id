@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Ship, Plane, MapPin, Package, DollarSign, HelpCircle, CheckCircle2, XCircle, ArrowRight, RotateCcw } from 'lucide-react'
+import ShipRouteMap from '../components/ShipRouteMap'
 import confetti from 'canvas-confetti'
 import useGameStore from '../stores/gameStore'
 import useLanguageStore from '../stores/languageStore'
@@ -84,6 +85,15 @@ function ScenarioCard({ scenario, onAnswer, lang }) {
           <ArrowRight className="w-3 h-3 text-gray-400" />
           <span className="font-medium">{scenario.destination.port}</span>
         </div>
+
+        {/* Animated route map */}
+        <ShipRouteMap
+          origin={scenario.origin}
+          destination={scenario.destination}
+          transport={scenario.containerType?.startsWith('AIR') ? 'AIR' : 'SEA'}
+          lang={lang}
+          className="mt-3"
+        />
 
         {/* Cargo Details */}
         <div className="grid grid-cols-3 gap-2 mt-3 text-xs">
