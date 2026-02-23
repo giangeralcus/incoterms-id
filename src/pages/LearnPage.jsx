@@ -5,6 +5,7 @@ import { INCOTERMS, INCOTERM_GROUPS, getIncotermByCode } from '../data/incoterms
 import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
 import ResponsibilityMap from '../components/ResponsibilityMap'
+import IncotermTimeline from '../components/IncotermTimeline'
 
 function IncotermDetail({ term, lang }) {
   const groupInfo = INCOTERM_GROUPS[term.group]
@@ -68,6 +69,9 @@ function IncotermDetail({ term, lang }) {
           </div>
         </div>
       </div>
+
+      {/* Interactive Journey Timeline */}
+      <IncotermTimeline term={term} lang={lang} />
 
       {/* Obligations */}
       <div className="grid sm:grid-cols-2 gap-4">
