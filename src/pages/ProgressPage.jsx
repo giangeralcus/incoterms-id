@@ -1,10 +1,13 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Trophy, Target, Flame, RotateCcw, CheckCircle2, XCircle } from 'lucide-react'
+import { Trophy, Target, Flame, RotateCcw, CheckCircle2, XCircle, Globe, Send } from 'lucide-react'
 import useGameStore from '../stores/gameStore'
 import { INCOTERMS } from '../data/incoterms'
 import { SCENARIOS } from '../data/scenarios'
 import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
+import { supabase } from '../lib/supabase'
+import { useLeaderboard } from '../hooks/useLeaderboard'
 
 export default function ProgressPage() {
   const {
@@ -12,8 +15,11 @@ export default function ProgressPage() {
     scenariosCompleted, incotermsMastered, resetProgress,
   } = useGameStore()
   const { lang } = useLanguageStore()
+  const { scores, loading: lbLoading, submitting, submitted, error: lbError, submitScore } = useLeaderboard()
+  const [username, setUsername] = useState('')
 
   const accuracy = totalAttempted > 0 ? Math.round((totalCorrect / totalAttempted) * 100) : 0
+  const canSubmit = totalAttempted > 0 && !submitted
 
   const handleReset = () => {
     if (window.confirm(t(T.progress.resetConfirm, lang))) {
@@ -115,6 +121,89 @@ export default function ProgressPage() {
           </div>
         </div>
       </div>
+
+      {/* Leaderboard */}
+      {supabase ? (
+        <div className="bg-white rounded-xl p-5 shadow-sm border space-y-4">
+          <div className="flex items-center gap-2">
+            <Globe className="w-5 h-5 text-primary" />
+            <h3 className="font-semibold text-gray-900">{t(T.progress.leaderboard.title, lang)}</h3>
+            <span className="text-xs text-gray-400 ml-auto">{t(T.progress.leaderboard.subtitle, lang)}</span>
+          </div>
+
+          {/* Submit form */}
+          {canSubmit && (
+            <div className="bg-primary/5 rounded-lg p-3 space-y-2">
+              <p className="text-xs font-medium text-primary">{t(T.progress.leaderboard.submitTitle, lang)}</p>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={username}
+                  onChange={e => setUsername(e.target.value.slice(0, 20))}
+                  placeholder={t(T.progress.leaderboard.usernamePlaceholder, lang)}
+                  maxLength={20}
+                  className="flex-1 text-sm border rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-primary/30"
+                />
+                <button
+                  onClick={() => submitScore({ username, score, accuracy, scenariosCompleted: scenariosCompleted.length })}
+                  disabled={submitting || username.trim().length < 2}
+                  className="flex items-center gap-1 px-3 py-1.5 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <Send className="w-3 h-3" />
+                  {submitting ? t(T.progress.leaderboard.submitting, lang) : t(T.progress.leaderboard.submitBtn, lang)}
+                </button>
+              </div>
+              {lbError && <p className="text-xs text-danger">{lbError}</p>}
+            </div>
+          )}
+
+          {submitted && (
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xs text-secondary text-center py-1">
+              {t(T.progress.leaderboard.submitted, lang)}
+            </motion.p>
+          )}
+
+          {totalAttempted === 0 && (
+            <p className="text-xs text-gray-400 text-center py-2">{t(T.progress.leaderboard.minScore, lang)}</p>
+          )}
+
+          {/* Top 10 table */}
+          {lbLoading ? (
+            <p className="text-xs text-gray-400 text-center py-4">{t(T.progress.leaderboard.loading, lang)}</p>
+          ) : scores.length === 0 ? (
+            <p className="text-xs text-gray-400 text-center py-4">{t(T.progress.leaderboard.noScores, lang)}</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b text-xs text-gray-500">
+                    <th className="text-left pb-2 w-8">#</th>
+                    <th className="text-left pb-2">{t(T.progress.leaderboard.player, lang)}</th>
+                    <th className="text-right pb-2">{t(T.progress.leaderboard.score, lang)}</th>
+                    <th className="text-right pb-2 hidden sm:table-cell">{t(T.progress.leaderboard.accuracy, lang)}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {scores.map((s, i) => (
+                    <tr key={s.id} className={`border-b border-gray-50 ${i < 3 ? 'font-medium' : ''}`}>
+                      <td className="py-2 text-xs text-gray-400">
+                        {i === 0 ? '\u{1F947}' : i === 1 ? '\u{1F948}' : i === 2 ? '\u{1F949}' : `${i + 1}`}
+                      </td>
+                      <td className="py-2 text-gray-900 truncate max-w-24">{s.username}</td>
+                      <td className="py-2 text-right font-mono text-primary">{s.score.toLocaleString()}</td>
+                      <td className="py-2 text-right text-gray-500 hidden sm:table-cell">{s.accuracy}%</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="bg-gray-50 rounded-xl p-4 text-center text-xs text-gray-400">
+          {t(T.progress.leaderboard.offline, lang)}
+        </div>
+      )}
     </div>
   )
 }
