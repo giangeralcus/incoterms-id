@@ -6,6 +6,8 @@ import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
 import ResponsibilityMap from '../components/ResponsibilityMap'
 import IncotermTimeline from '../components/IncotermTimeline'
+import Character from '../components/PixelArt/Character'
+import { CHARACTERS } from '../data/characters'
 
 function IncotermDetail({ term, lang }) {
   const groupInfo = INCOTERM_GROUPS[term.group]
@@ -33,9 +35,17 @@ function IncotermDetail({ term, lang }) {
             </div>
             <p className="text-gray-500">{term.name}</p>
           </div>
-          <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-            {t(T.learn.group, lang)} {term.group}: {groupInfo.name}
-          </span>
+          <div className="flex flex-col items-end gap-1">
+            <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+              {t(T.learn.group, lang)} {term.group}: {groupInfo.name}
+            </span>
+            <Character
+              sprites={CHARACTERS['trader']}
+              paletteName="trader"
+              state="idle"
+              zoom={2}
+            />
+          </div>
         </div>
 
         {/* Transport Mode */}
@@ -207,11 +217,19 @@ export default function LearnPage() {
 
   return (
     <div className="space-y-6 py-4">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">{t(T.learn.title, lang)}</h1>
-        <p className="text-gray-500 text-sm mt-1">
-          {t(T.learn.subtitle, lang)}
-        </p>
+      <div className="flex items-end justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">{t(T.learn.title, lang)}</h1>
+          <p className="text-gray-500 text-sm mt-1">
+            {t(T.learn.subtitle, lang)}
+          </p>
+        </div>
+        <Character
+          sprites={CHARACTERS['agent']}
+          paletteName="agent"
+          state="walk"
+          zoom={2}
+        />
       </div>
 
       {Object.entries(INCOTERM_GROUPS).map(([groupKey, group]) => {

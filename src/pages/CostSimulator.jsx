@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { Calculator, ArrowRight, Info, DollarSign, Landmark, ChevronDown, ChevronUp, HelpCircle, Ship, BookOpen, ToggleLeft, ToggleRight } from 'lucide-react'
 import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
+import Character from '../components/PixelArt/Character'
+import { CHARACTERS } from '../data/characters'
 
 const COST_COMPONENTS = [
   { key: 'factory', labelKey: 'factory', category: 'origin' },
@@ -170,14 +172,22 @@ export default function CostSimulator() {
 
   return (
     <div className="space-y-6 py-4">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-          <Calculator className="w-6 h-6 text-accent" />
-          {t(T.cost.title, lang)}
-        </h1>
-        <p className="text-gray-500 text-sm mt-1">
-          {t(T.cost.subtitle, lang)}
-        </p>
+      <div className="flex items-end justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+            <Calculator className="w-6 h-6 text-accent" />
+            {t(T.cost.title, lang)}
+          </h1>
+          <p className="text-gray-500 text-sm mt-1">
+            {t(T.cost.subtitle, lang)}
+          </p>
+        </div>
+        <Character
+          sprites={CHARACTERS['customs']}
+          paletteName="customs"
+          state="idle"
+          zoom={2}
+        />
       </div>
 
       {/* Cost Inputs */}

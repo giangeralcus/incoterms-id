@@ -9,6 +9,11 @@ import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
 import { INCOTERMS } from '../data/incoterms'
 import { SCENARIOS } from '../data/scenarios'
+import Character from '../components/PixelArt/Character'
+import { CHARACTERS } from '../data/characters'
+
+const SCENARIO_CHAR = { export: 'eksportir', import: 'importir' }
+const DIFFICULTY_CHAR = { beginner: 'trader', intermediate: 'agent', advanced: 'customs' }
 
 function DifficultySelector({ onSelect, lang }) {
   const difficulties = [
@@ -89,6 +94,14 @@ function ScenarioCard({ scenario, onAnswer, lang }) {
           <span className="font-medium">{scenario.origin.port}</span>
           <ArrowRight className="w-3 h-3 text-gray-400" />
           <span className="font-medium">{scenario.destination.port}</span>
+          <span className="ml-auto">
+            <Character
+              sprites={CHARACTERS[SCENARIO_CHAR[scenario.type] ?? 'eksportir']}
+              paletteName={SCENARIO_CHAR[scenario.type] ?? 'eksportir'}
+              state="walk"
+              zoom={2}
+            />
+          </span>
         </div>
 
         {/* Animated route map */}
@@ -191,6 +204,14 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext, lang }) {
             <CheckCircle2 className="w-8 h-8 text-green-600" />
           ) : (
             <XCircle className="w-8 h-8 text-red-600" />
+          )}
+          {isCorrect && (
+            <Character
+              sprites={CHARACTERS['eksportir']}
+              paletteName="eksportir"
+              state="celebrate"
+              zoom={2}
+            />
           )}
           <div>
             <h3 className={`font-bold text-lg ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>

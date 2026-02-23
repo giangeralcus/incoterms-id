@@ -8,6 +8,8 @@ import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
 import { supabase } from '../lib/supabase'
 import { useLeaderboard } from '../hooks/useLeaderboard'
+import Character from '../components/PixelArt/Character'
+import { CHARACTERS } from '../data/characters'
 
 export default function ProgressPage() {
   const {
@@ -30,7 +32,15 @@ export default function ProgressPage() {
   return (
     <div className="space-y-6 py-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">{t(T.progress.title, lang)}</h1>
+        <div className="flex items-end gap-3">
+          <h1 className="text-2xl font-bold text-gray-900">{t(T.progress.title, lang)}</h1>
+          <Character
+            sprites={CHARACTERS[score > 0 ? 'eksportir' : 'trader']}
+            paletteName={score > 0 ? 'eksportir' : 'trader'}
+            state={score > 0 ? 'celebrate' : 'idle'}
+            zoom={2}
+          />
+        </div>
         <button
           onClick={handleReset}
           className="text-xs text-gray-400 hover:text-danger flex items-center gap-1"

@@ -5,6 +5,8 @@ import useGameStore from '../stores/gameStore'
 import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
 import { INCOTERMS } from '../data/incoterms'
+import Character from '../components/PixelArt/Character'
+import { CHARACTERS } from '../data/characters'
 
 export default function HomePage() {
   const { score, totalCorrect, totalAttempted, scenariosCompleted } = useGameStore()
@@ -60,6 +62,31 @@ export default function HomePage() {
         <p className="text-gray-500 max-w-lg mx-auto">
           {t(T.home.subtitle, lang)}
         </p>
+      </motion.div>
+
+      {/* Character Parade */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="flex justify-center items-end gap-4 py-2"
+      >
+        {(['eksportir', 'importir', 'agent', 'customs', 'trader']).map((name, i) => (
+          <motion.div
+            key={name}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 * i }}
+          >
+            <Character
+              sprites={CHARACTERS[name]}
+              paletteName={name}
+              state="walk"
+              zoom={3}
+              frameInterval={220 + i * 30}
+            />
+          </motion.div>
+        ))}
       </motion.div>
 
       {/* Quick Stats */}
