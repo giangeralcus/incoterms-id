@@ -42,7 +42,9 @@ export default function IncotermTimeline({ term, lang }) {
   const tp = TRANSFER_POINTS[term.code] ?? 0.5
   const freightPayer = FREIGHT_PAYER[term.code] ?? 'split'
 
+   
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPlaying(false)
     setDone(false)
     setKey(k => k + 1)

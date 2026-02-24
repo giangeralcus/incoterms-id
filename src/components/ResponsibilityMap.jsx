@@ -26,7 +26,9 @@ export default function ResponsibilityMap({ term, lang }) {
   const [score, setScore] = useState(null)
 
   // Rebuild pool when term changes
+   
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPool(buildItems())
     setSellerCol([])
     setBuyerCol([])

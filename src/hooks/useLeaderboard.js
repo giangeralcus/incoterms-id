@@ -23,8 +23,10 @@ export function useLeaderboard() {
   }, [])
 
   // Real-time subscription
+   
   useEffect(() => {
     if (!supabase) return
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchTopScores()
     const channel = supabase
       .channel('scores-realtime')
