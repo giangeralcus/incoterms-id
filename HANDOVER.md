@@ -108,3 +108,9 @@
 - **Celebrate animation**: Want dynamic celebrate frames (new sprite data needed) or keep static IDLE?
 - **Chunk splitting**: Worth addressing the 515KB warning now, or leave for production optimization phase?
 - **`belajarexporimpor` project status**: Is this a personal learning tool, or is there a deployment target (Vercel, Netlify, etc.)? The PWA config (vite-plugin-pwa) suggests deployment is planned.
+
+### [2026-02-24 12:13] Tool: Codex | Scope: belajarexporimpor/assets
+- Changes: Replaced `public/favicon.svg` with new 100x100 `incoterms.id` monogram (`IT`) SVG using `#0ea5e9` + `#1e3a5f`; added 3 variants in `public/logo-variants/` (`logo-it-badge.svg`, `logo-i-lane.svg`, `logo-it-forward.svg`).
+- Result: All requested SVG files created with minimal geometric shapes and thick strokes/bars intended to stay legible at favicon size and scale cleanly for larger usage.
+- Next: Preview in browser/site header and choose preferred variant for primary brand mark (current `favicon.svg` is the active default).
+- Blocker: none
