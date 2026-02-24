@@ -1,116 +1,113 @@
 # Handover - 2026-02-24
 
 ## What We Worked On
-- Pixel art character system: full implementation and integration across all 5 pages
-- 3-agent parallel codebase audit (pixel art components, page integration, general quality)
-- P1 bug fix in PixelCanvas.jsx
-- Commit + push to GitHub (b77f74a)
+- Rebrand `belajarexporimpor` app from "Belajar Ekspor Impor" → "incoterms.id" / "Simulator Incoterms 2020"
+- Added `incoterms.id` cross-promotion links to `gpindo-co-id` (IncotermsGuide + Footer)
+- Added `incoterms.id` cross-promotion links to `gpindo-com` (KnowledgeHub + Footer + ui-strings EN/ID)
+- Renamed GitHub repo `belajarexporimpor` → `incoterms-id` and set to private
+- Added 2 Instagram links to incoterms.id website footer
+- Diagnosed and explained DNS issue (Hostinger parked page showing instead of Vercel)
+
+---
 
 ## What Got Done
 
-### Pixel Art Character System (NEW — fully implemented)
+### incoterms-id repo (belajarexporimpor)
+- **`src/i18n/translations.js`**: `common.appName` → `'incoterms.id'` (both langs), `home.title` → `'Simulator Incoterms 2020'` / `'Incoterms 2020 Simulator'`
+- **`src/components/layout/Layout.jsx`**: Added 2 Instagram links + Instagram icon from lucide-react to footer:
+  - `@incoterms.id` → `https://www.instagram.com/incoterms.id/`
+  - `@gatewayprimaindonusa` → `https://www.instagram.com/gatewayprimaindonusa/`
+- **`.gitignore`**: Added `.vercel/` directory
+- Commits: `d5fb1b2` (rebrand), `31c530f` (.gitignore), `80ba145` (Instagram footer)
+- Deployed to Vercel: `vercel --prod --yes` from project dir
+- GitHub repo renamed: `belajarexporimpor` → `incoterms-id` via `gh repo rename`
+- GitHub repo made private: `gh repo edit --visibility private --accept-visibility-change-consequences`
+- Git remote URL updated to: `https://github.com/giangeralcus/incoterms-id.git`
 
-**Library files created:**
-- `src/lib/pixel/colorize.js` — PALETTES object: 5 characters (eksportir=blue, importir=green, agent=orange, customs=navy, trader=white), each mapping K/H/S/P/O keys to hex colors
-- `src/lib/pixel/spriteCache.js` — LRU sprite cache keyed by `{paletteName}-{zoom}`
-- `src/lib/pixel/renderer.js` — renderSprite(spriteData, palette, zoom): draws pixel art to OffscreenCanvas
-- `src/lib/pixel/index.js` — getCachedCanvas() public API combining cache + renderer
-- `src/components/PixelArt/PixelCanvas.jsx` — renders single sprite frame to canvas element; applies flipX via CSS transform
-- `src/components/PixelArt/Character.jsx` — animated character: state machine (idle/walk/celebrate), cycles frames via setInterval
-- `src/components/PixelArt/index.js` — re-export barrel
+### gpindo-co-id repo
+- **`src/components/guides/IncotermsGuide.jsx`**: Added sky-blue CTA banner after comparison table linking to incoterms.id with "Buka Simulator ↗" button
+- **`src/components/common/Layout/Footer.jsx`**: Added `{ text: "Incoterms Simulator ↗", href: "https://incoterms.id", external: true }` to Resources links; updated render to use `<a target="_blank">` when `link.external === true`
+- Commit: `3e3fa13` — pushed to `master`
 
-**Data file created:**
-- `src/data/characters.js` — sprite data for all 5 characters
-  - Sprite format: 2D string array `string[][]`, 24 rows × 16 cols
-  - Color keys: K=skin, H=hair, S=shirt, P=pants, O=shoes, `''`=transparent, `'#222222'`=eyes
-  - Structure: `UPPER` (rows 0-15) + `LEGS_IDLE`/`LEGS_WALK0`/`LEGS_WALK1` (rows 16-23)
-  - Combined via spread: `const IDLE = [...UPPER, ...LEGS_IDLE]`
-  - All 5 characters share the SAME sprites object — palette (colorize.js) differentiates appearance
-  - `export const CHARACTERS = { eksportir: sprites, importir: sprites, agent: sprites, customs: sprites, trader: sprites }`
-  - `const sprites = { idle: IDLE, walk: [WALK_0, WALK_1], celebrate: [IDLE] }`
+### gpindo-com repo
+- **`src/content/knowledge-data.js`**: Added `simulatorUrl: "https://incoterms.id"` + `simulatorCta` to `incoterms` topic
+- **`src/components/landing/KnowledgeHub.jsx`**: Added conditional simulator link after GPI tip callout (only renders for topics with `simulatorUrl`)
+- **`content/en/ui-strings.js`**: Added `{ label: "Incoterms Simulator ↗", href: "https://incoterms.id" }` to `footer.links`
+- **`content/id/ui-strings.js`**: Added `{ label: "Simulator Incoterms ↗", href: "https://incoterms.id" }` to `footer.links`
+- Commit: `fdf8f29` — pushed to `main`
 
-**Pages modified:**
-- `src/pages/HomePage.jsx` — parade of all 5 characters walking between hero and quick stats; staggered frameInterval (220 + i*30)
-- `src/pages/ScenarioPage.jsx` — contextual character in route info bar (eksportir for export, importir for import, state=walk, zoom=2); eksportir celebrating in ResultCard when isCorrect=true
-- `src/pages/LearnPage.jsx` — agent walking at right of title in list view; trader idle in top-right of detail view (IncotermDetail)
-- `src/pages/CostSimulator.jsx` — customs character idle at right of page title
-- `src/pages/ProgressPage.jsx` — score-conditional: eksportir celebrating when score > 0, trader idle when score = 0
-
-**Bug fix applied:**
-- `src/components/PixelArt/PixelCanvas.jsx:26` — added `flipX` to useEffect dependency array (was missing)
-
-**Build result:** ✓ built in 1.98s, 13 files, 2204 modules. Only pre-existing chunk size warning (515KB > 500KB limit).
-
-**Git commit:** `b77f74a` — pushed to `main` on `https://github.com/giangeralcus/belajarexporimpor`
-
-**Dev server:** runs at `http://localhost:5173`
+---
 
 ## What Didn't Work (and How We Fixed It)
 
-| Problem | Root Cause | Fix |
-|---------|-----------|-----|
-| Agent B hit output token limit when writing characters.js | `CLAUDE_CODE_MAX_OUTPUT_TOKENS = 12000` — sprite data too large for single LLM response | Used Write tool directly with JS spread pattern (`[...UPPER, ...LEGS_IDLE]`) to share body data across frames, dramatically reducing file size |
-| characters.js was not created in prior session | Same token limit issue as above — agent failed mid-write | Re-executed in new session using Write tool, not subagent |
-| vite-plugin-pwa ERR_MODULE_NOT_FOUND (prior session concern) | Not actually missing — was a misleading error | Verified `node_modules/vite-plugin-pwa` present; build passes cleanly |
+### gpindo-co-id push rejected
+- **Error**: `! [rejected] master -> master (fetch first)` — remote had newer commits
+- **Fix**: `git pull --rebase && git push`
+
+### `gh repo edit --yes` flag doesn't exist
+- **Error**: Unknown flag `--yes` when making repo private
+- **Fix**: Used `--accept-visibility-change-consequences` instead
+
+### incoterms.id showing Hostinger parked page
+- **Symptom**: User screenshot showed "Registered at HOSTINGER" parked page
+- **Root cause**: DNS propagation delay — Hostinger hPanel already has nameservers set to `ns1.vercel-dns.com` / `ns2.vercel-dns.com`, but `vercel domains inspect` was still seeing `ns1.dns-parking.com` / `ns2.dns-parking.com`
+- **Status**: NOT a misconfiguration. Google DNS (8.8.8.8) already returns Vercel nameservers. Resolution: wait for propagation (~1–2 hours from ~13:10 WIB on 2026-02-24)
+
+### Hostinger MCP token expired
+- **Error**: All Hostinger MCP calls returned `{"message":"Unauthenticated."}`
+- **Root cause**: Token in `C:\Users\giang\.mcp.json` (`hostinger-api.env.API_TOKEN`) returned HTTP 401 when tested directly
+- **Fix**: Need to regenerate token from hPanel → Profile → API. Not yet done.
+
+---
 
 ## Key Decisions
 
-| Decision | Rationale |
-|---------|-----------|
-| All 5 characters share one `sprites` object | Sprite shape is identical for all characters — only color palette differs. Saves ~5x memory and avoids code duplication |
-| Palette via `colorize.js` color key substitution | Separates shape (sprite data) from color (palette) — single sprite set works for all characters |
-| JS spread for frame construction (`[...UPPER, ...LEGS_X]`) | Avoids repeating 16-row UPPER body in every frame; reduces characters.js size significantly |
-| `celebrate` state maps to `[IDLE]` (single frame) | Deliberate — celebrate is a static "arms up" pose. Animation not needed for this state |
-| `flipX` via CSS `transform: scaleX(-1)` not canvas flip | Simpler, avoids re-draw; canvas content is always right-facing, CSS mirrors it |
-| Character zoom=2 across most pages, zoom=3 on HomePage parade | parade deserves more visual weight; detail pages keep characters subtle |
+| Decision | Reason |
+|----------|--------|
+| Keep `localStorage` key as `belajar-ekspor-impor-progress` | Changing it would wipe all existing users' progress data |
+| Use `external: true` flag in gpindo-co-id footer links | Existing footer used `<Link to>` for all internal links; needed conditional to render `<a target="_blank">` for external URLs |
+| Instagram footer in incoterms.id: plain `<a>` not `<NavLink>` | External links — correct approach |
+| incoterms.id GitHub repo set to private | User request — the learning app code should not be public |
+
+---
 
 ## Lessons & Gotchas
 
-- **Token limit workaround**: If a file is too large for a subagent to write (characters.js was ~300+ lines of sprite data), write it directly from main agent using the Write tool. Do NOT retry the same subagent.
-- **Module-level constants = stable refs**: `CHARACTERS.eksportir` is a module-level constant — passing it as `sprites` prop doesn't cause Character.jsx interval restarts. P2 issue from audit is not a real issue.
-- **CostSimulator i18n debt**: 6 hardcoded strings NOT wrapped in `t()`: "Costs in USD" (line 241), "Luxury Goods Tax rate (%)" (line 234), "PPh 22" (line 395), "PPN" (line 463), "Import Duty" (line 464), "COGS" (line 496) — pre-existing, not from this session.
-- **celebrate=[IDLE]**: If a more dynamic celebrate animation is wanted, add separate celebrate frames to characters.js (e.g., alternating arm-raise poses). Currently only 1 frame.
-- **Chunk size warning**: Pre-existing, 515KB > 500KB limit. Consider code-splitting (dynamic import) in a future performance pass.
-- **LearnPage character variety**: Both list view (agent-walk) and detail view (trader-idle) use different characters — intentional trader=learner, agent=navigator persona split.
+- **Vercel domain inspect vs. actual DNS**: `vercel domains inspect` checks DNS from its own resolvers which may lag behind. Cross-verify with `nslookup <domain> 8.8.8.8` for ground truth.
+- **Hostinger parking NS**: `ns1.dns-parking.com` / `ns2.dns-parking.com` are Hostinger's default parking nameservers — they appear when a domain is freshly registered or NS propagation hasn't completed yet.
+- **After `gh repo rename`**: Must manually run `git remote set-url origin https://github.com/giangeralcus/incoterms-id.git` — GitHub does NOT update local remotes automatically.
+- **gpindo-com footer** already auto-handled external links via `link.href.startsWith("http")` pattern — only needed data change. gpindo-co-id needed code change.
+
+---
 
 ## Files Touched
 
-**Created:**
-- `src/lib/pixel/colorize.js`
-- `src/lib/pixel/index.js`
-- `src/lib/pixel/renderer.js`
-- `src/lib/pixel/spriteCache.js`
-- `src/components/PixelArt/Character.jsx`
-- `src/components/PixelArt/PixelCanvas.jsx`
-- `src/components/PixelArt/index.js`
-- `src/data/characters.js`
-- `HANDOVER-2026-02-22.md` (archived old handover)
+| File | Repo | Change |
+|------|------|--------|
+| `src/i18n/translations.js` | incoterms-id | Rebrand: appName + home.title |
+| `src/components/layout/Layout.jsx` | incoterms-id | Add 2 Instagram links to footer |
+| `.gitignore` | incoterms-id | Add `.vercel/` |
+| `src/components/guides/IncotermsGuide.jsx` | gpindo-co-id | Add incoterms.id CTA banner |
+| `src/components/common/Layout/Footer.jsx` | gpindo-co-id | Add Incoterms Simulator link + external flag support |
+| `src/content/knowledge-data.js` | gpindo-com | Add simulatorUrl/simulatorCta to incoterms topic |
+| `src/components/landing/KnowledgeHub.jsx` | gpindo-com | Render simulator link conditionally |
+| `content/en/ui-strings.js` | gpindo-com | Add Incoterms Simulator to footer.links |
+| `content/id/ui-strings.js` | gpindo-com | Add Simulator Incoterms to footer.links |
 
-**Modified:**
-- `src/pages/HomePage.jsx` — character parade added
-- `src/pages/ScenarioPage.jsx` — contextual character + celebrate
-- `src/pages/LearnPage.jsx` — agent + trader characters
-- `src/pages/CostSimulator.jsx` — customs character
-- `src/pages/ProgressPage.jsx` — score-conditional character
+---
 
 ## Next Steps
 
-1. **[P1] Fix CostSimulator i18n** — wrap 6 hardcoded strings in `t()`: "Costs in USD", "Luxury Goods Tax rate (%)", "PPh 22", "PPN", "Import Duty", "COGS". Requires adding keys to `src/i18n/translations.js`.
-2. **[P2] Celebrate animation frames** — if desired, add actual celebrate frames to `characters.js` (currently `celebrate: [IDLE]` = static). Would need new `LEGS_CELEBRATE0/1` variants.
-3. **[P2] Chunk size** — 515KB > 500KB. Consider `import()` code-splitting for CostSimulator or ScenarioPage (heaviest pages).
-4. **[P3] Character.jsx sprites stability** — if parents ever pass inline `sprites` objects (not module constants), the animation interval restarts unnecessarily. Fix: use `useRef` to track frames inside interval. Not needed now.
-5. **[P3] LearnPage character variety** — currently trader idle for ALL incoterm detail pages. Could map term.group or difficulty to different characters.
-6. **Test visually** at `http://localhost:5173` — check parade on HomePage, walk/celebrate on ScenarioPage, idle characters on other pages.
+1. **Wait for DNS propagation** — Check `incoterms.id` in browser ~2 hours after ~13:10 WIB. Should resolve to Vercel and show the app.
+2. **Verify Instagram links live** — After DNS resolves, confirm both `@incoterms.id` and `@gatewayprimaindonusa` links appear in the footer.
+3. **Refresh Hostinger MCP token** — Go to hPanel → Profile → API → Generate new token → Update `C:\Users\giang\.mcp.json` → `mcpServers.hostinger-api.env.API_TOKEN`
+4. **OG image** (`/public/og-cover.jpg` in incoterms-id) — Still has old `belajarexporimpor.com` watermark/branding. Should be updated to `incoterms.id` branded image.
+5. **gpindo-co-id CDN** — After each Hostinger deploy, manually purge CDN from Hostinger panel to avoid blank page from cached HTML.
+
+---
 
 ## Open Questions
 
-- **CostSimulator i18n**: Fix now or leave for dedicated i18n pass? (6 strings, pre-existing debt)
-- **Celebrate animation**: Want dynamic celebrate frames (new sprite data needed) or keep static IDLE?
-- **Chunk splitting**: Worth addressing the 515KB warning now, or leave for production optimization phase?
-- **`belajarexporimpor` project status**: Is this a personal learning tool, or is there a deployment target (Vercel, Netlify, etc.)? The PWA config (vite-plugin-pwa) suggests deployment is planned.
-
-### [2026-02-24 12:13] Tool: Codex | Scope: belajarexporimpor/assets
-- Changes: Replaced `public/favicon.svg` with new 100x100 `incoterms.id` monogram (`IT`) SVG using `#0ea5e9` + `#1e3a5f`; added 3 variants in `public/logo-variants/` (`logo-it-badge.svg`, `logo-i-lane.svg`, `logo-it-forward.svg`).
-- Result: All requested SVG files created with minimal geometric shapes and thick strokes/bars intended to stay legible at favicon size and scale cleanly for larger usage.
-- Next: Preview in browser/site header and choose preferred variant for primary brand mark (current `favicon.svg` is the active default).
-- Blocker: none
+- Is the `@incoterms.id` Instagram account actually created? The link points to `https://www.instagram.com/incoterms.id/` — if account doesn't exist yet, link will 404.
+- Should there be a `www.incoterms.id` redirect to `incoterms.id`? Currently only bare domain is configured in Vercel.
+- OG cover image for incoterms.id — what should the branded design look like?
