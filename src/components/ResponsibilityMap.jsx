@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle2, XCircle, RotateCcw, GripVertical } from 'lucide-react'
 import { translations as T, t } from '../i18n/translations'
 

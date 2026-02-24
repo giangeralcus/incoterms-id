@@ -25,6 +25,7 @@ export default function Character({
   useEffect(() => {
     const frames = state === 'idle' ? null : sprites[state]
     if (!frames || frames.length <= 1) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFrameIndex(0)
       return
     }
