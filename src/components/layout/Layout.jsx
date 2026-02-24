@@ -1,5 +1,5 @@
 import { Outlet, NavLink } from 'react-router-dom'
-import { Ship, BookOpen, Gamepad2, Calculator, BarChart3 } from 'lucide-react'
+import { Ship, BookOpen, Gamepad2, Calculator, BarChart3, Instagram } from 'lucide-react'
 import useGameStore from '../../stores/gameStore'
 import useLanguageStore from '../../stores/languageStore'
 import { translations as T, t } from '../../i18n/translations'
@@ -43,11 +43,18 @@ export default function Layout() {
       </main>
 
       {/* Footer */}
-      <div className="text-center py-1.5 text-xs text-gray-300">
-        Made by{' '}
-        <a href="https://ggcd.tech" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">
-          ggcd.tech
+      <div className="flex items-center justify-center gap-4 py-1.5 text-xs text-gray-300">
+        <a href="https://www.instagram.com/incoterms.id/" target="_blank" rel="noopener noreferrer" aria-label="incoterms.id Instagram" className="hover:text-pink-400 transition-colors flex items-center gap-1">
+          <Instagram className="w-3.5 h-3.5" />
+          <span>@incoterms.id</span>
         </a>
+        <span>·</span>
+        <a href="https://www.instagram.com/gatewayprimaindonusa/" target="_blank" rel="noopener noreferrer" aria-label="GPIndo Instagram" className="hover:text-pink-400 transition-colors flex items-center gap-1">
+          <Instagram className="w-3.5 h-3.5" />
+          <span>@gatewayprimaindonusa</span>
+        </a>
+        <span>·</span>
+        <span>Made by <a href="https://ggcd.tech" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">ggcd.tech</a></span>
       </div>
 
       {/* Bottom Navigation (mobile) */}
