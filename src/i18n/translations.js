@@ -6,7 +6,7 @@
 export const translations = {
   // === COMMON / SHARED ===
   common: {
-    appName: { id: 'Belajar Ekspor Impor', en: 'Learn Export Import' },
+    appName: { id: 'incoterms.id', en: 'incoterms.id' },
     points: { id: 'poin', en: 'pts' },
     streak: { id: 'streak', en: 'streak' },
     next: { id: 'Selanjutnya', en: 'Next' },
@@ -30,7 +30,7 @@ export const translations = {
   // === HOME PAGE ===
   home: {
     badge: { id: 'Freight Forwarding Indonesia', en: 'Indonesian Freight Forwarding' },
-    title: { id: 'Belajar Ekspor Impor', en: 'Learn Export Import' },
+    title: { id: 'Simulator Incoterms 2020', en: 'Incoterms 2020 Simulator' },
     subtitle: {
       id: 'Kuasai Incoterms 2020 lewat skenario interaktif berdasarkan rute perdagangan nyata Indonesia. Belajar sambil bermain, bukan cuma membaca.',
       en: 'Master Incoterms 2020 through interactive scenarios based on real Indonesian trade routes. Learn by doing, not just reading.',
