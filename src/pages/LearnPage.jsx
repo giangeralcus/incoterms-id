@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Truck, Ship, Plane, Shield, AlertTriangle, CheckCircle2 } from 'lucide-react'
 import { INCOTERMS, INCOTERM_GROUPS, getIncotermByCode } from '../data/incoterms'
 import useLanguageStore from '../stores/languageStore'
@@ -208,9 +208,11 @@ export default function LearnPage() {
         <Link to="/learn" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary mb-4">
           <ArrowLeft className="w-4 h-4" /> {t(T.learn.allIncoterms, lang)}
         </Link>
-        <AnimatePresence mode="wait">
-          <IncotermDetail term={selectedTerm} lang={lang} />
-        </AnimatePresence>
+        <LayoutGroup>
+          <AnimatePresence mode="wait">
+            <IncotermDetail key={selectedTerm.code} term={selectedTerm} lang={lang} />
+          </AnimatePresence>
+        </LayoutGroup>
       </div>
     )
   }
