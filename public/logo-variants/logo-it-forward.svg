@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" role="img" aria-label="incoterms.id IT forward variant">
+  <path d="M22 8H78L92 22V78L78 92H22L8 78V22L22 8Z" fill="#1e3a5f"/>
+  <path d="M16 64H30L48 46H34L16 64Z" fill="#0ea5e9"/>
+  <path d="M30 78H44L62 60H48L30 78Z" fill="#0ea5e9"/>
+  <rect x="26" y="20" width="12" height="56" rx="3" fill="#0ea5e9"/>
+  <path d="M48 20H70L80 28L70 36H48V20Z" fill="#0ea5e9"/>
+  <rect x="58" y="20" width="12" height="56" rx="3" fill="#0ea5e9"/>
+</svg>

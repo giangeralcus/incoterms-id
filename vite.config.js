@@ -11,9 +11,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'favicon.svg', 'robots.txt', 'apple-touch-icon-180x180.png'],
       manifest: {
-        name: 'Belajar Ekspor Impor',
-        short_name: 'BelajarEI',
-        description: 'Interactive Incoterms 2020 & Export-Import Simulator - Belajar freight forwarding Indonesia',
+        name: 'incoterms.id',
+        short_name: 'incoterms.id',
+        description: 'Simulator Incoterms 2020 interaktif — belajar ekspor impor & freight forwarding Indonesia',
         theme_color: '#0ea5e9',
         background_color: '#ffffff',
         display: 'standalone',

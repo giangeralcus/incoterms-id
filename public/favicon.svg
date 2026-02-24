@@ -1,14 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#0ea5e9"/>
-  <!-- Ship hull -->
-  <path d="M6 20h20l-3 5H9L6 20z" fill="white"/>
-  <!-- Ship body -->
-  <rect x="10" y="13" width="12" height="7" fill="white"/>
-  <!-- Containers on ship -->
-  <rect x="11" y="14" width="4" height="3" rx="0.5" fill="#0ea5e9"/>
-  <rect x="17" y="14" width="4" height="3" rx="0.5" fill="#0ea5e9"/>
-  <!-- Smoke stack -->
-  <rect x="15" y="9" width="2" height="4" fill="white"/>
-  <!-- Waves -->
-  <path d="M4 22 Q8 24 12 22 Q16 20 20 22 Q24 24 28 22" stroke="#bae6fd" stroke-width="1.5" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" role="img" aria-label="incoterms.id monogram logo">
+  <rect x="8" y="8" width="84" height="84" rx="20" fill="#1e3a5f"/>
+  <rect x="22" y="18" width="16" height="64" rx="4" fill="#0ea5e9"/>
+  <path d="M46 18H68L80 26L68 34H46V18Z" fill="#0ea5e9"/>
+  <rect x="56" y="18" width="14" height="64" rx="4" fill="#0ea5e9"/>
 </svg>
