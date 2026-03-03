@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { BookOpen, Gamepad2, Calculator, BarChart3, Ship } from 'lucide-react'
+import { BookOpen, Gamepad2, Calculator, BarChart3, Ship, Award, Anchor, Compass, Shield, Star, Crown, Trophy, Gem } from 'lucide-react'
 import { motion } from 'framer-motion'
 import useGameStore from '../stores/gameStore'
 import useLanguageStore from '../stores/languageStore'
@@ -7,11 +7,20 @@ import { translations as T, t } from '../i18n/translations'
 import { INCOTERMS } from '../data/incoterms'
 import Character from '../components/PixelArt/Character'
 import { CHARACTERS } from '../data/characters'
+import { getLevel, getLevelProgress } from '../data/levels'
+import { computeAllBadges } from '../data/badges'
+
+const LEVEL_ICONS = { Anchor, Compass, Shield, Ship, Star, Crown, Trophy, Gem }
 
 export default function HomePage() {
   const { score, totalCorrect, totalAttempted, scenariosCompleted } = useGameStore()
   const { lang } = useLanguageStore()
   const accuracy = totalAttempted > 0 ? Math.round((totalCorrect / totalAttempted) * 100) : 0
+  const gameState = useGameStore.getState()
+  const level = getLevel(score)
+  const progress = getLevelProgress(score)
+  const badgesEarned = computeAllBadges(gameState).filter(b => b.tier).length
+  const LevelIcon = LEVEL_ICONS[level.icon] || Anchor
 
   const features = [
     {
@@ -95,8 +104,18 @@ export default function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="grid grid-cols-3 gap-3"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-3"
         >
+          <div className="bg-white rounded-xl p-4 text-center shadow-sm border">
+            <div className="flex items-center justify-center gap-1.5 mb-1">
+              <LevelIcon className="w-5 h-5 text-ocean" />
+              <span className="text-xs font-medium text-gray-400">Lv.{level.level}</span>
+            </div>
+            <div className="text-lg font-bold text-ocean">{level.title}</div>
+            <div className="mt-1.5 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div className="h-full bg-ocean rounded-full transition-all" style={{ width: `${progress}%` }} />
+            </div>
+          </div>
           <div className="bg-white rounded-xl p-4 text-center shadow-sm border">
             <div className="text-2xl font-bold text-primary">{score}</div>
             <div className="text-xs text-gray-500">{t(T.home.stats.points, lang)}</div>
@@ -106,8 +125,11 @@ export default function HomePage() {
             <div className="text-xs text-gray-500">{t(T.home.stats.accuracy, lang)}</div>
           </div>
           <div className="bg-white rounded-xl p-4 text-center shadow-sm border">
-            <div className="text-2xl font-bold text-port">{scenariosCompleted.length}/{INCOTERMS.length * 2}</div>
-            <div className="text-xs text-gray-500">{t(T.home.stats.scenarios, lang)}</div>
+            <div className="flex items-center justify-center gap-1 mb-0.5">
+              <Award className="w-4 h-4 text-amber-500" />
+            </div>
+            <div className="text-2xl font-bold text-amber-600">{badgesEarned}/10</div>
+            <div className="text-xs text-gray-500">Badges</div>
           </div>
         </motion.div>
       )}

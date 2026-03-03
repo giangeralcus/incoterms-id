@@ -12,8 +12,10 @@ const useGameStore = create(
       incotermsMastered: {},
       totalCorrect: 0,
       totalAttempted: 0,
+      perfectScenarios: 0,
 
       // Current session
+      currentScenarioWrong: false,
       currentScenario: null,
       selectedAnswer: null,
       showResult: false,
@@ -45,10 +47,23 @@ const useGameStore = create(
           showResult: true,
           selectedAnswer: selectedIncoterm,
           incotermsMastered: mastery,
+          currentScenarioWrong: state.currentScenarioWrong || !isCorrect,
         })
       },
 
-      nextScenario: () => set({ currentScenario: null, selectedAnswer: null, showResult: false }),
+      nextScenario: () => {
+        const state = get()
+        const earned = !state.currentScenarioWrong && state.showResult ? 1 : 0
+        set({
+          currentScenario: null,
+          selectedAnswer: null,
+          showResult: false,
+          currentScenarioWrong: false,
+          perfectScenarios: state.perfectScenarios + earned,
+        })
+      },
+
+      addPipelinePoints: (pts) => set((s) => ({ score: s.score + pts })),
 
       resetProgress: () => set({
         score: 0,
@@ -58,6 +73,8 @@ const useGameStore = create(
         incotermsMastered: {},
         totalCorrect: 0,
         totalAttempted: 0,
+        perfectScenarios: 0,
+        currentScenarioWrong: false,
       }),
     }),
     {
