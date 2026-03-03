@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://belajarexporimpor.com/sitemap.xml
+Sitemap: https://incoterms.id/sitemap.xml
