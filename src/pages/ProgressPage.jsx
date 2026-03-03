@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Trophy, Target, Flame, RotateCcw, CheckCircle2 } from 'lucide-react'
+import { Trophy, Target, Flame, RotateCcw, CheckCircle2, Anchor, Compass, Shield, Ship, Star, Crown, Gem } from 'lucide-react'
 import useGameStore from '../stores/gameStore'
 import { INCOTERMS } from '../data/incoterms'
 import { SCENARIOS } from '../data/scenarios'
@@ -7,6 +7,11 @@ import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
 import Character from '../components/PixelArt/Character'
 import { CHARACTERS } from '../data/characters'
+import { getLevel, getNextLevel, getLevelProgress } from '../data/levels'
+import { computeAllBadges } from '../data/badges'
+import BadgeGrid from '../components/badges/BadgeGrid'
+
+const LEVEL_ICONS = { Anchor, Compass, Shield, Ship, Star, Crown, Trophy, Gem }
 
 export default function ProgressPage() {
   const {
@@ -16,6 +21,13 @@ export default function ProgressPage() {
   const { lang } = useLanguageStore()
 
   const accuracy = totalAttempted > 0 ? Math.round((totalCorrect / totalAttempted) * 100) : 0
+
+  const gameState = useGameStore.getState()
+  const level = getLevel(score)
+  const nextLevel = getNextLevel(score)
+  const progress = getLevelProgress(score)
+  const badges = computeAllBadges(gameState)
+  const LevelIcon = LEVEL_ICONS[level.icon] || Anchor
 
   const handleReset = () => {
     if (window.confirm(t(T.progress.resetConfirm, lang))) {
@@ -42,6 +54,36 @@ export default function ProgressPage() {
           <RotateCcw className="w-3 h-3" /> {t(T.common.reset, lang)}
         </button>
       </div>
+
+      {/* Level Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-white rounded-xl p-5 shadow-sm border flex items-center gap-4"
+      >
+        <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+          <LevelIcon className="w-8 h-8 text-primary" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-baseline gap-2">
+            <span className="text-lg font-bold text-gray-900">{level.title}</span>
+            <span className="text-sm text-gray-500">Level {level.level}</span>
+          </div>
+          <div className="mt-2 h-2 bg-gray-100 rounded-full overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="h-full rounded-full bg-primary"
+            />
+          </div>
+          <div className="text-xs text-gray-500 mt-1">
+            {nextLevel
+              ? `${score} / ${nextLevel.xpRequired} XP`
+              : `${score} XP (MAX)`}
+          </div>
+        </div>
+      </motion.div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -102,6 +144,9 @@ export default function ProgressPage() {
           })}
         </div>
       </div>
+
+      {/* Badge Grid */}
+      <BadgeGrid badges={badges} />
 
       {/* Stats Breakdown */}
       <div className="bg-white rounded-xl p-5 shadow-sm border">
