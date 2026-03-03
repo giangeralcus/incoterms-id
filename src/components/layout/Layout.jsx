@@ -1,5 +1,5 @@
 import { Outlet, NavLink } from 'react-router-dom'
-import { Ship, BookOpen, Gamepad2, Calculator, BarChart3, Instagram } from 'lucide-react'
+import { Ship, BookOpen, Gamepad2, GitBranch, BarChart3, Instagram } from 'lucide-react'
 import useGameStore from '../../stores/gameStore'
 import useLanguageStore from '../../stores/languageStore'
 import { translations as T, t } from '../../i18n/translations'
@@ -12,7 +12,7 @@ export default function Layout() {
     { to: '/', icon: Ship, label: t(T.nav.home, lang) },
     { to: '/learn', icon: BookOpen, label: t(T.nav.learn, lang) },
     { to: '/scenario', icon: Gamepad2, label: t(T.nav.play, lang) },
-    { to: '/cost-simulator', icon: Calculator, label: t(T.nav.costs, lang) },
+    { to: '/pipeline', icon: GitBranch, label: 'Pipeline' },
     { to: '/progress', icon: BarChart3, label: t(T.nav.progress, lang) },
   ]
 
