@@ -16,13 +16,13 @@ export const PIPELINE_STAGES = [
 // buyer = indices the buyer is responsible for
 export const INCOTERM_PIPELINE = {
   EXW: { risk: 0, cost: 0, seller: [0], buyer: [1,2,3,4,5,6,7,8] },
-  FCA: { risk: 1, cost: 1, seller: [0,1], buyer: [2,3,4,5,6,7,8] },
-  FAS: { risk: 3, cost: 3, seller: [0,1,2,3], buyer: [4,5,6,7,8] },
+  FCA: { risk: 2, cost: 2, seller: [0,1,2], buyer: [3,4,5,6,7,8] },
+  FAS: { risk: 2, cost: 2, seller: [0,1,2], buyer: [3,4,5,6,7,8] },
   FOB: { risk: 3, cost: 3, seller: [0,1,2,3], buyer: [4,5,6,7,8] },
   CFR: { risk: 3, cost: 5, seller: [0,1,2,3,4,5], buyer: [6,7,8] },
   CIF: { risk: 3, cost: 5, seller: [0,1,2,3,4,5], buyer: [6,7,8] },
-  CPT: { risk: 1, cost: 5, seller: [0,1,2,3,4,5], buyer: [6,7,8] },
-  CIP: { risk: 1, cost: 5, seller: [0,1,2,3,4,5], buyer: [6,7,8] },
+  CPT: { risk: 2, cost: 5, seller: [0,1,2,3,4,5], buyer: [6,7,8] },
+  CIP: { risk: 2, cost: 5, seller: [0,1,2,3,4,5], buyer: [6,7,8] },
   DAP: { risk: 7, cost: 7, seller: [0,1,2,3,4,5,6,7], buyer: [8] },
   DPU: { risk: 7, cost: 7, seller: [0,1,2,3,4,5,6,7], buyer: [8] },
   DDP: { risk: 8, cost: 8, seller: [0,1,2,3,4,5,6,7,8], buyer: [] },

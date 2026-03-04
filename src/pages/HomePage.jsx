@@ -128,8 +128,8 @@ export default function HomePage() {
             <div className="flex items-center justify-center gap-1 mb-0.5">
               <Award className="w-4 h-4 text-amber-500" />
             </div>
-            <div className="text-2xl font-bold text-amber-600">{badgesEarned}/10</div>
-            <div className="text-xs text-gray-500">Badges</div>
+            <div className="text-2xl font-bold text-amber-600">{badgesEarned}/{computeAllBadges(gameState).length}</div>
+            <div className="text-xs text-gray-500">{t(T.home.stats.badges, lang)}</div>
           </div>
         </motion.div>
       )}

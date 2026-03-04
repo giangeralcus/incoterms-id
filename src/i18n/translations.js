@@ -24,6 +24,7 @@ export const translations = {
     learn: { id: 'Belajar', en: 'Learn' },
     play: { id: 'Main', en: 'Play' },
     costs: { id: 'Biaya', en: 'Costs' },
+    pipeline: { id: 'Pipeline', en: 'Pipeline' },
     progress: { id: 'Progres', en: 'Progress' },
   },
 
@@ -39,6 +40,7 @@ export const translations = {
       points: { id: 'Poin', en: 'Points' },
       accuracy: { id: 'Akurasi', en: 'Accuracy' },
       scenarios: { id: 'Skenario', en: 'Scenarios' },
+      badges: { id: 'Lencana', en: 'Badges' },
     },
     features: {
       learn: {
@@ -180,24 +182,6 @@ export const translations = {
     totalAttempts: { id: 'Total percobaan:', en: 'Total attempts:' },
     currentStreak: { id: 'Streak saat ini:', en: 'Current streak:' },
     resetConfirm: { id: 'Reset semua progres? Ini tidak bisa dibatalkan.', en: 'Reset all progress? This cannot be undone.' },
-    leaderboard: {
-      title: { id: 'Papan Peringkat Global', en: 'Global Leaderboard' },
-      subtitle: { id: 'Top 10 skor tertinggi', en: 'Top 10 all-time scores' },
-      submitTitle: { id: 'Masukkan Skormu', en: 'Submit Your Score' },
-      usernamePlaceholder: { id: 'Username (2-20 karakter)', en: 'Username (2-20 chars)' },
-      submitBtn: { id: 'Submit Skor', en: 'Submit Score' },
-      submitting: { id: 'Menyimpan...', en: 'Submitting...' },
-      submitted: { id: 'Skor tersimpan!', en: 'Score submitted!' },
-      rank: { id: '#', en: '#' },
-      player: { id: 'Pemain', en: 'Player' },
-      score: { id: 'Skor', en: 'Score' },
-      accuracy: { id: 'Akurasi', en: 'Accuracy' },
-      scenarios: { id: 'Skenario', en: 'Scenarios' },
-      loading: { id: 'Memuat...', en: 'Loading...' },
-      offline: { id: 'Leaderboard tidak tersedia (offline mode)', en: 'Leaderboard unavailable (offline mode)' },
-      noScores: { id: 'Belum ada skor. Jadilah yang pertama!', en: 'No scores yet. Be the first!' },
-      minScore: { id: 'Selesaikan minimal 1 skenario dulu!', en: 'Complete at least 1 scenario first!' },
-    },
   },
 
   // === COST COMPONENT LABELS ===

@@ -12,7 +12,7 @@ export default function Layout() {
     { to: '/', icon: Ship, label: t(T.nav.home, lang) },
     { to: '/learn', icon: BookOpen, label: t(T.nav.learn, lang) },
     { to: '/scenario', icon: Gamepad2, label: t(T.nav.play, lang) },
-    { to: '/pipeline', icon: GitBranch, label: 'Pipeline' },
+    { to: '/pipeline', icon: GitBranch, label: t(T.nav.pipeline, lang) },
     { to: '/progress', icon: BarChart3, label: t(T.nav.progress, lang) },
   ]
 
