@@ -175,7 +175,7 @@ export default function HomePage() {
               <span className="text-lg">{term.emoji}</span>
               <div>
                 <div className="font-mono font-bold text-sm text-primary">{term.code}</div>
-                <div className="text-[11px] text-slate-500">{term.name}</div>
+                <div className="text-[11px] text-slate-500">{t(term.name, lang)}</div>
               </div>
             </Link>
           ))}

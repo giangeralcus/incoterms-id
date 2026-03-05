@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Play, RotateCcw } from 'lucide-react'
+import { t } from '../i18n/translations'
 
 // Risk transfer point as fraction of journey (0 = seller door, 1 = buyer door)
 const TRANSFER_POINTS = {
@@ -41,6 +42,7 @@ export default function IncotermTimeline({ term, lang }) {
 
   const tp = TRANSFER_POINTS[term.code] ?? 0.5
   const freightPayer = FREIGHT_PAYER[term.code] ?? 'split'
+  const insuranceEn = t(term.insurance, 'en')
 
    
   useEffect(() => {
@@ -256,7 +258,7 @@ export default function IncotermTimeline({ term, lang }) {
             {lang === 'id' ? 'Seller menanggung' : 'Seller bears'}
           </div>
           <div className="text-xs text-gray-600 leading-relaxed">
-            {term.costTransferPoint || term.costTransfer}
+            {t(term.costTransferPoint || term.costTransfer, lang)}
           </div>
         </div>
         <div className="bg-primary/10 rounded-lg p-3">
@@ -264,7 +266,7 @@ export default function IncotermTimeline({ term, lang }) {
             {lang === 'id' ? 'Buyer menanggung' : 'Buyer bears'}
           </div>
           <div className="text-xs text-gray-600 leading-relaxed">
-            {term.riskTransferPoint || term.riskTransfer}
+            {t(term.riskTransferPoint || term.riskTransfer, lang)}
           </div>
         </div>
       </div>
@@ -287,7 +289,7 @@ export default function IncotermTimeline({ term, lang }) {
               ? `Freight dibayar: ${freightPayer === 'seller' ? 'Seller' : 'Buyer'}`
               : `Freight paid by: ${freightPayer === 'seller' ? 'Seller' : 'Buyer'}`
             }
-            {term.insurance !== 'None required' && (
+            {insuranceEn !== 'None required' && (
               <span className="ml-auto opacity-60">
                 🛡️ {lang === 'id' ? 'Asuransi wajib' : 'Insurance req.'}
               </span>

@@ -81,12 +81,12 @@ function ScenarioCard({ scenario, onAnswer, lang }) {
           <span className="text-xs text-gray-400">{scenario.type === 'export' ? t(T.common.export, lang) : t(T.common.import, lang)}</span>
         </div>
 
-        <h2 className="text-lg font-bold text-gray-900 mb-2">{scenario.title}</h2>
+        <h2 className="text-lg font-bold text-gray-900 mb-2">{t(scenario.title, lang)}</h2>
 
         {/* Game scene illustration */}
         <SceneIllustration scenario={scenario} />
 
-        <p className="text-sm text-gray-600 leading-relaxed mt-3 mb-4">{scenario.description}</p>
+        <p className="text-sm text-gray-600 leading-relaxed mt-3 mb-4">{t(scenario.description, lang)}</p>
 
         {/* Route Info */}
         <div className="flex items-center gap-2 text-sm bg-ocean/5 rounded-lg p-3">
@@ -142,7 +142,7 @@ function ScenarioCard({ scenario, onAnswer, lang }) {
             {scenario.hints.slice(0, hintIndex).map((hint, i) => (
               <li key={i} className="text-sm text-gray-600 flex items-start gap-2">
                 <HelpCircle className="w-3 h-3 mt-0.5 text-amber-500 shrink-0" />
-                {hint}
+                {t(hint, lang)}
               </li>
             ))}
           </ul>
@@ -228,7 +228,7 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext, lang }) {
       {/* Explanation */}
       <div className="bg-white rounded-xl p-5 shadow-sm border">
         <h4 className="font-semibold text-gray-900 mb-2">{t(T.scenario.explanation, lang)}</h4>
-        <p className="text-sm text-gray-600 leading-relaxed">{scenario.explanation}</p>
+        <p className="text-sm text-gray-600 leading-relaxed">{t(scenario.explanation, lang)}</p>
       </div>
 
       {/* Learning Points */}
@@ -238,7 +238,7 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext, lang }) {
           {scenario.learningPoints.map((point, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
               <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-              {point}
+              {t(point, lang)}
             </li>
           ))}
         </ul>

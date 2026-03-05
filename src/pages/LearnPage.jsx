@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Truck, Ship, Plane, Shield, AlertTriangle, CheckCircle2 } from 'lucide-react'
-import { INCOTERMS, INCOTERM_GROUPS, getIncotermByCode } from '../data/incoterms'
+import { INCOTERMS, INCOTERM_GROUPS, TRANSPORT_MODES, getIncotermByCode } from '../data/incoterms'
 import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
 import ResponsibilityMap from '../components/ResponsibilityMap'
@@ -31,13 +31,13 @@ function IncotermDetail({ term, lang }) {
                 term.difficulty === 'beginner' ? 'bg-green-100 text-green-700' :
                 term.difficulty === 'intermediate' ? 'bg-amber-100 text-amber-700' :
                 'bg-red-100 text-red-700'
-              }`}>{term.difficulty}</span>
+              }`}>{t(T.scenario[term.difficulty], lang)}</span>
             </div>
-            <p className="text-gray-500">{term.name}</p>
+            <p className="text-gray-500">{t(term.name, lang)}</p>
           </div>
           <div className="flex flex-col items-end gap-1">
             <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-              {t(T.learn.group, lang)} {term.group}: {groupInfo.name}
+              {t(T.learn.group, lang)} {term.group}: {t(groupInfo.name, lang)}
             </span>
             <Character
               sprites={CHARACTERS['trader']}
@@ -53,12 +53,12 @@ function IncotermDetail({ term, lang }) {
           {term.transport === 'ANY' ? (
             <>
               <Truck className="w-4 h-4" /><Ship className="w-4 h-4" /><Plane className="w-4 h-4" />
-              <span>Any mode of transport</span>
+              <span>{t(TRANSPORT_MODES.ANY, lang)}</span>
             </>
           ) : (
             <>
               <Ship className="w-4 h-4" />
-              <span>Sea and inland waterway only</span>
+              <span>{t(TRANSPORT_MODES.SEA, lang)}</span>
             </>
           )}
         </div>
@@ -67,15 +67,15 @@ function IncotermDetail({ term, lang }) {
         <div className="grid sm:grid-cols-3 gap-3">
           <div className="bg-danger/5 rounded-lg p-3">
             <div className="text-xs font-semibold text-danger mb-1">{t(T.learn.riskTransfer, lang)}</div>
-            <div className="text-sm text-gray-700">{term.riskTransfer}</div>
+            <div className="text-sm text-gray-700">{t(term.riskTransfer, lang)}</div>
           </div>
           <div className="bg-primary/5 rounded-lg p-3">
             <div className="text-xs font-semibold text-primary mb-1">{t(T.learn.costTransfer, lang)}</div>
-            <div className="text-sm text-gray-700">{term.costTransfer}</div>
+            <div className="text-sm text-gray-700">{t(term.costTransfer, lang)}</div>
           </div>
           <div className="bg-secondary/5 rounded-lg p-3">
             <div className="text-xs font-semibold text-secondary mb-1">{t(T.learn.insurance, lang)}</div>
-            <div className="text-sm text-gray-700">{term.insurance}</div>
+            <div className="text-sm text-gray-700">{t(term.insurance, lang)}</div>
           </div>
         </div>
       </div>
@@ -90,10 +90,10 @@ function IncotermDetail({ term, lang }) {
             <Ship className="w-4 h-4" /> {t(T.learn.sellerOb, lang)}
           </h3>
 <ul className="space-y-2">
-            {term.sellerObligations.map((ob) => (
-              <li key={ob} className="flex items-start gap-2 text-sm text-gray-700">
+            {term.sellerObligations.map((ob, idx) => (
+              <li key={`seller-ob-${idx}`} className="flex items-start gap-2 text-sm text-gray-700">
                 <CheckCircle2 className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
-                {ob}
+                {t(ob, lang)}
               </li>
             ))}
           </ul>
@@ -103,10 +103,10 @@ function IncotermDetail({ term, lang }) {
             <Truck className="w-4 h-4" /> {t(T.learn.buyerOb, lang)}
           </h3>
 <ul className="space-y-2">
-            {term.buyerObligations.map((ob) => (
-              <li key={ob} className="flex items-start gap-2 text-sm text-gray-700">
+            {term.buyerObligations.map((ob, idx) => (
+              <li key={`buyer-ob-${idx}`} className="flex items-start gap-2 text-sm text-gray-700">
                 <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                {ob}
+                {t(ob, lang)}
               </li>
             ))}
           </ul>
@@ -122,13 +122,13 @@ function IncotermDetail({ term, lang }) {
           <h3 className="font-semibold text-secondary mb-2 flex items-center gap-2">
             <Shield className="w-4 h-4" /> {t(T.learn.bestFor, lang)}
           </h3>
-          <p className="text-sm text-gray-700">{term.bestFor}</p>
+          <p className="text-sm text-gray-700">{t(term.bestFor, lang)}</p>
         </div>
         <div className="bg-accent/5 rounded-xl p-5 border border-accent/20">
           <h3 className="font-semibold text-amber-700 mb-2 flex items-center gap-2">
             <AlertTriangle className="w-4 h-4" /> {t(T.learn.commonMistake, lang)}
           </h3>
-          <p className="text-sm text-gray-700">{term.commonMistake}</p>
+          <p className="text-sm text-gray-700">{t(term.commonMistake, lang)}</p>
         </div>
       </div>
 
@@ -138,7 +138,7 @@ function IncotermDetail({ term, lang }) {
           <h3 className="font-semibold text-red-700 mb-2 flex items-center gap-2">
             <span className="text-lg">&#x1F1EE;&#x1F1E9;</span> {t(T.learn.indonesianExample, lang)}
           </h3>
-          <p className="text-sm text-gray-700">{term.indonesianExample}</p>
+          <p className="text-sm text-gray-700">{t(term.indonesianExample, lang)}</p>
         </div>
       )}
 
@@ -147,7 +147,7 @@ function IncotermDetail({ term, lang }) {
           <h3 className="font-semibold text-amber-700 mb-2 flex items-center gap-2">
             <AlertTriangle className="w-4 h-4" /> {t(T.learn.keyTrap, lang)}
           </h3>
-          <p className="text-sm text-gray-700">{term.keyTrap}</p>
+          <p className="text-sm text-gray-700">{t(term.keyTrap, lang)}</p>
         </div>
       )}
 
@@ -167,7 +167,7 @@ function IncotermDetail({ term, lang }) {
       {term.changes2020 && (
         <div className="bg-purple-50/50 rounded-xl p-5 border border-purple-100">
           <h3 className="font-semibold text-purple-700 mb-2">{t(T.learn.changes2020, lang)}</h3>
-          <p className="text-sm text-gray-700">{term.changes2020}</p>
+          <p className="text-sm text-gray-700">{t(term.changes2020, lang)}</p>
         </div>
       )}
 
@@ -181,12 +181,12 @@ function IncotermDetail({ term, lang }) {
             <>
               {prev ? (
                 <Link to={`/learn/${prev.code}`} className="flex items-center gap-2 text-sm text-gray-500 hover:text-primary">
-                  <ArrowLeft className="w-4 h-4" /> {prev.code} - {prev.name}
+                  <ArrowLeft className="w-4 h-4" /> {prev.code} - {t(prev.name, lang)}
                 </Link>
               ) : <div />}
               {next ? (
                 <Link to={`/learn/${next.code}`} className="flex items-center gap-2 text-sm text-gray-500 hover:text-primary">
-                  {next.code} - {next.name} <ArrowRight className="w-4 h-4" />
+                  {next.code} - {t(next.name, lang)} <ArrowRight className="w-4 h-4" />
                 </Link>
               ) : <div />}
             </>
@@ -239,9 +239,9 @@ export default function LearnPage() {
         return (
           <div key={groupKey}>
             <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">
-              {t(T.learn.group, lang)} {groupKey}: {group.name}
+              {t(T.learn.group, lang)} {groupKey}: {t(group.name, lang)}
             </h2>
-            <p className="text-xs text-gray-400 mb-3">{group.description}</p>
+            <p className="text-xs text-gray-400 mb-3">{t(group.description, lang)}</p>
             <div className="grid sm:grid-cols-2 gap-3">
               {terms.map(term => (
                 <Link
@@ -257,10 +257,10 @@ export default function LearnPage() {
                         term.difficulty === 'beginner' ? 'bg-green-100 text-green-700' :
                         term.difficulty === 'intermediate' ? 'bg-amber-100 text-amber-700' :
                         'bg-red-100 text-red-700'
-                      }`}>{term.difficulty}</span>
+                      }`}>{t(T.scenario[term.difficulty], lang)}</span>
                     </div>
-                    <div className="text-sm text-gray-700">{term.name}</div>
-                    <div className="text-xs text-gray-400 mt-1 truncate">{term.bestFor}</div>
+                    <div className="text-sm text-gray-700">{t(term.name, lang)}</div>
+                    <div className="text-xs text-gray-400 mt-1 truncate">{t(term.bestFor, lang)}</div>
                   </div>
                 </Link>
               ))}

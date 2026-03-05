@@ -154,7 +154,7 @@ export default function ResponsibilityMap({ term, lang }) {
                   className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-700 cursor-grab active:cursor-grabbing shadow-sm hover:border-primary hover:shadow-md transition-all"
                 >
                   <GripVertical className="w-3 h-3 text-gray-300 shrink-0" />
-                  <span className="max-w-xs">{item.text}</span>
+                  <span className="max-w-xs">{t(item.text, lang)}</span>
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -198,7 +198,7 @@ export default function ResponsibilityMap({ term, lang }) {
                     ) : (
                       <GripVertical className="w-3 h-3 text-gray-300 shrink-0 mt-0.5" />
                     )}
-                    <span>{item.text}</span>
+                    <span>{t(item.text, lang)}</span>
                   </motion.div>
                 ))}
               </AnimatePresence>
