@@ -23,6 +23,8 @@ import {
   PIPELINE_GAME_LEVELS,
 } from '../../data/pipeline'
 import useGameStore from '../../stores/gameStore'
+import useLanguageStore from '../../stores/languageStore'
+import { t } from '../../i18n/translations'
 
 const ICONS = { Factory, Package, FileCheck, Container, Ship, Truck, Building2 }
 
@@ -44,6 +46,7 @@ function GameNode({
   correctRisk,
   correctCost,
   onTap,
+  lang,
 }) {
   const Icon = ICONS[stage.icon]
   const hasRisk = riskPlacement === index
@@ -174,7 +177,7 @@ function GameNode({
 
       {/* Label */}
       <span className="text-[9px] sm:text-[10px] leading-tight text-center text-gray-500 max-w-12 sm:max-w-14">
-        {stage.label}
+        {t(stage.label, lang)}
       </span>
     </div>
   )
@@ -203,6 +206,7 @@ function GamePipelineRow({
   correctRisk,
   correctCost,
   onTap,
+  lang,
 }) {
   return (
     <div className="flex items-start justify-between gap-0">
@@ -218,6 +222,7 @@ function GamePipelineRow({
             correctRisk={correctRisk}
             correctCost={correctCost}
             onTap={onTap}
+            lang={lang}
           />
           {i < stages.length - 1 && <GameConnector />}
         </div>
@@ -398,6 +403,7 @@ function GameComplete({ totalScore, maxTotalScore, onPlayAgain }) {
 
 export default function DragAndDropGame() {
   const addPipelinePoints = useGameStore((s) => s.addPipelinePoints)
+  const { lang } = useLanguageStore()
 
   const [currentRound, setCurrentRound] = useState(0)
   const [currentTermIndex, setCurrentTermIndex] = useState(0)
@@ -539,7 +545,7 @@ export default function DragAndDropGame() {
     return (
       <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6">
         <RoundSummary
-          roundLabel={round.label}
+          roundLabel={t(round.label, lang)}
           roundScore={roundScore}
           maxScore={maxRoundScore}
           onNext={handleNextRound}
@@ -555,7 +561,7 @@ export default function DragAndDropGame() {
       <div className="flex items-center justify-between">
         <div>
           <p className="text-xs text-gray-400 font-medium">
-            {round.label} &middot; {currentTermIndex + 1}/{round.terms.length}
+            {t(round.label, lang)} &middot; {currentTermIndex + 1}/{round.terms.length}
           </p>
           <h3 className="text-lg font-bold text-gray-800 mt-0.5">
             Where does{' '}
@@ -591,6 +597,7 @@ export default function DragAndDropGame() {
                 correctRisk={submitted ? pipeline.risk : null}
                 correctCost={submitted ? pipeline.cost : null}
                 onTap={handleNodeTap}
+                lang={lang}
               />
               {i < PIPELINE_STAGES.length - 1 && <GameConnector />}
             </div>
@@ -609,6 +616,7 @@ export default function DragAndDropGame() {
           correctRisk={submitted ? pipeline.risk : null}
           correctCost={submitted ? pipeline.cost : null}
           onTap={handleNodeTap}
+          lang={lang}
         />
         <div className="flex justify-end pr-6">
           <div className="w-0.5 h-3 rounded-full bg-gray-200" />
@@ -622,6 +630,7 @@ export default function DragAndDropGame() {
           correctRisk={submitted ? pipeline.risk : null}
           correctCost={submitted ? pipeline.cost : null}
           onTap={handleNodeTap}
+          lang={lang}
         />
       </div>
 
@@ -716,7 +725,7 @@ export default function DragAndDropGame() {
                 <Flag className="w-3 h-3 text-red-500 inline-block mr-0.5 -mt-0.5" />
                 Risk transfers at{' '}
                 <span className="font-semibold text-gray-700">
-                  {PIPELINE_STAGES[pipeline.risk].label}
+                  {t(PIPELINE_STAGES[pipeline.risk].label, lang)}
                 </span>
                 {riskPlacement === pipeline.risk ? (
                   <Check className="w-3 h-3 text-emerald-500 inline-block ml-1 -mt-0.5" />
@@ -728,7 +737,7 @@ export default function DragAndDropGame() {
                 <Coins className="w-3 h-3 text-green-500 inline-block mr-0.5 -mt-0.5" />
                 Cost transfers at{' '}
                 <span className="font-semibold text-gray-700">
-                  {PIPELINE_STAGES[pipeline.cost].label}
+                  {t(PIPELINE_STAGES[pipeline.cost].label, lang)}
                 </span>
                 {costPlacement === pipeline.cost ? (
                   <Check className="w-3 h-3 text-emerald-500 inline-block ml-1 -mt-0.5" />

@@ -3,6 +3,8 @@ import {
   Factory, Ship, Globe, MapPin, Flame, Target, Zap, Coins,
   CheckCircle, Globe2, Lock, Award,
 } from 'lucide-react'
+import useLanguageStore from '../../stores/languageStore'
+import { t } from '../../i18n/translations'
 
 const BADGE_ICONS = { Factory, Ship, Globe, MapPin, Flame, Target, Zap, Coins, CheckCircle, Globe2, Award }
 
@@ -16,9 +18,14 @@ const TIER_BG = {
   silver: 'bg-gray-50',
   gold: 'bg-yellow-50',
 }
-const TIER_LABEL = { bronze: 'Bronze', silver: 'Silver', gold: 'Gold' }
+const TIER_LABEL = {
+  bronze: { id: 'Perunggu', en: 'Bronze' },
+  silver: { id: 'Perak', en: 'Silver' },
+  gold: { id: 'Emas', en: 'Gold' },
+}
 
 export default function BadgeCard({ badge }) {
+  const { lang } = useLanguageStore()
   const { name, description, icon, tier, value, thresholds } = badge
   const Icon = BADGE_ICONS[icon] || Award
   const locked = !tier
@@ -38,9 +45,9 @@ export default function BadgeCard({ badge }) {
           <Icon className="w-8 h-8" style={{ color: tier === 'gold' ? '#FFD700' : tier === 'silver' ? '#A0A0A0' : '#CD7F32' }} />
         )}
       </div>
-      <p className="text-xs font-semibold truncate">{name}</p>
-      {!locked && <p className="text-[10px] text-gray-500">{TIER_LABEL[tier]}</p>}
-      <p className="text-[10px] text-gray-400 mt-1">{description}</p>
+      <p className="text-xs font-semibold truncate">{t(name, lang)}</p>
+      {!locked && <p className="text-[10px] text-gray-500">{t(TIER_LABEL[tier], lang)}</p>}
+      <p className="text-[10px] text-gray-400 mt-1">{t(description, lang)}</p>
       <div className="text-[10px] text-gray-400 mt-1">
         {value} / {thresholds[tier || 'bronze']}
       </div>

@@ -4,22 +4,25 @@ import { Eye, Gamepad2 } from 'lucide-react'
 import { INCOTERMS } from '../data/incoterms'
 import PipelineVisualization from '../components/pipeline/PipelineVisualization'
 import DragAndDropGame from '../components/pipeline/DragAndDropGame'
+import useLanguageStore from '../stores/languageStore'
+import { t } from '../i18n/translations'
 
 const TABS = [
-  { id: 'explore', label: 'Explore', icon: Eye },
-  { id: 'game', label: 'Game', icon: Gamepad2 },
+  { id: 'explore', label: { id: 'Eksplorasi', en: 'Explore' }, icon: Eye },
+  { id: 'game', label: { id: 'Game', en: 'Game' }, icon: Gamepad2 },
 ]
 
 export default function PipelinePage() {
   const [tab, setTab] = useState('explore')
   const [selectedTerm, setSelectedTerm] = useState('FOB')
+  const { lang } = useLanguageStore()
 
   return (
     <div className="space-y-6 py-4">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Supply Chain Pipeline</h1>
+        <h1 className="text-2xl font-bold text-gray-900">{t({ id: 'Pipeline Supply Chain', en: 'Supply Chain Pipeline' }, lang)}</h1>
         <p className="text-sm text-gray-500 mt-1">
-          See how each Incoterm splits responsibility between seller and buyer
+          {t({ id: 'Lihat bagaimana tiap Incoterm membagi tanggung jawab antara penjual dan pembeli', en: 'See how each Incoterm splits responsibility between seller and buyer' }, lang)}
         </p>
       </div>
 
@@ -36,7 +39,7 @@ export default function PipelinePage() {
             }`}
           >
             <Icon className="w-4 h-4" />
-            {label}
+            {t(label, lang)}
           </button>
         ))}
       </div>

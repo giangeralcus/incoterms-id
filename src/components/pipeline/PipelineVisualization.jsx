@@ -12,6 +12,8 @@ import {
   Coins,
 } from 'lucide-react'
 import { PIPELINE_STAGES, INCOTERM_PIPELINE } from '../../data/pipeline'
+import useLanguageStore from '../../stores/languageStore'
+import { t } from '../../i18n/translations'
 
 const ICONS = { Factory, Package, FileCheck, Container, Ship, Truck, Building2 }
 
@@ -25,7 +27,7 @@ function getNodeRole(index, pipeline) {
   return 'neutral'
 }
 
-function NodeCircle({ stage, role, isRiskPoint, isCostPoint, incoterm }) {
+function NodeCircle({ stage, role, isRiskPoint, isCostPoint, incoterm, lang }) {
   const Icon = ICONS[stage.icon]
   const bgColor =
     role === 'seller'
@@ -49,7 +51,7 @@ function NodeCircle({ stage, role, isRiskPoint, isCostPoint, incoterm }) {
               exit={{ opacity: 0, scale: 0.5 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.2 }}
               className="flex items-center justify-center w-5 h-5 rounded-full bg-red-100 border border-red-300"
-              title="Risk Transfer"
+              title={t({ id: 'Transfer Risiko', en: 'Risk Transfer' }, lang)}
             >
               <Flag className="w-3 h-3 text-red-600" />
             </motion.div>
@@ -67,7 +69,7 @@ function NodeCircle({ stage, role, isRiskPoint, isCostPoint, incoterm }) {
                 delay: samePoint ? 0.3 : 0.2,
               }}
               className="flex items-center justify-center w-5 h-5 rounded-full bg-green-100 border border-green-300"
-              title="Cost Transfer"
+              title={t({ id: 'Transfer Biaya', en: 'Cost Transfer' }, lang)}
             >
               <Coins className="w-3 h-3 text-green-600" />
             </motion.div>
@@ -107,7 +109,7 @@ function NodeCircle({ stage, role, isRiskPoint, isCostPoint, incoterm }) {
 
       {/* Label */}
       <span className="text-[10px] leading-tight text-center text-gray-500 max-w-14 truncate">
-        {stage.label}
+        {t(stage.label, lang)}
       </span>
     </div>
   )
@@ -139,7 +141,7 @@ function ConnectorLine({ fromRole }) {
   )
 }
 
-function PipelineRow({ stages, pipeline, incoterm }) {
+function PipelineRow({ stages, pipeline, incoterm, lang }) {
   return (
     <div className="flex items-start justify-between gap-0">
       {stages.map((stage, i) => {
@@ -158,6 +160,7 @@ function PipelineRow({ stages, pipeline, incoterm }) {
               isRiskPoint={isRiskPoint}
               isCostPoint={isCostPoint}
               incoterm={incoterm}
+              lang={lang}
             />
             {showConnector && (
                 <ConnectorLine
@@ -172,6 +175,7 @@ function PipelineRow({ stages, pipeline, incoterm }) {
 }
 
 export default function PipelineVisualization({ incoterm = 'FOB' }) {
+  const { lang } = useLanguageStore()
   const pipeline = INCOTERM_PIPELINE[incoterm]
 
   const transferInfo = useMemo(() => {
@@ -203,6 +207,7 @@ export default function PipelineVisualization({ incoterm = 'FOB' }) {
                   isRiskPoint={isRiskPoint}
                   isCostPoint={isCostPoint}
                   incoterm={incoterm}
+                  lang={lang}
                 />
                 {showConnector && (
                   <ConnectorLine
@@ -221,6 +226,7 @@ export default function PipelineVisualization({ incoterm = 'FOB' }) {
           stages={TOP_ROW}
           pipeline={pipeline}
           incoterm={incoterm}
+          lang={lang}
         />
         {/* Vertical connector bridging the two rows */}
         <div className="flex justify-end pr-6">
@@ -242,6 +248,7 @@ export default function PipelineVisualization({ incoterm = 'FOB' }) {
           stages={BOTTOM_ROW}
           pipeline={pipeline}
           incoterm={incoterm}
+          lang={lang}
         />
       </div>
 
@@ -257,25 +264,25 @@ export default function PipelineVisualization({ incoterm = 'FOB' }) {
         >
           {transferInfo.samePoint ? (
             <p>
-              Risk & Cost transfer at{' '}
+              {t({ id: 'Risiko & Biaya transfer di', en: 'Risk & Cost transfer at' }, lang)}{' '}
               <span className="font-semibold text-gray-700">
-                {transferInfo.riskStage.label}
+                {t(transferInfo.riskStage.label, lang)}
               </span>
             </p>
           ) : (
             <>
               <p>
                 <Flag className="w-3 h-3 text-red-500 inline-block mr-0.5 -mt-0.5" />
-                Risk transfers at{' '}
+                {t({ id: 'Risiko transfer di', en: 'Risk transfers at' }, lang)}{' '}
                 <span className="font-semibold text-gray-700">
-                  {transferInfo.riskStage.label}
+                  {t(transferInfo.riskStage.label, lang)}
                 </span>
               </p>
               <p>
                 <Coins className="w-3 h-3 text-green-500 inline-block mr-0.5 -mt-0.5" />
-                Cost transfers at{' '}
+                {t({ id: 'Biaya transfer di', en: 'Cost transfers at' }, lang)}{' '}
                 <span className="font-semibold text-gray-700">
-                  {transferInfo.costStage.label}
+                  {t(transferInfo.costStage.label, lang)}
                 </span>
               </p>
             </>
@@ -287,19 +294,19 @@ export default function PipelineVisualization({ incoterm = 'FOB' }) {
       <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 pt-1">
         <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded-sm bg-blue-500" />
-          <span className="text-[10px] text-gray-500">Seller</span>
+          <span className="text-[10px] text-gray-500">{t({ id: 'Penjual', en: 'Seller' }, lang)}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded-sm bg-orange-500" />
-          <span className="text-[10px] text-gray-500">Buyer</span>
+          <span className="text-[10px] text-gray-500">{t({ id: 'Pembeli', en: 'Buyer' }, lang)}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <Flag className="w-3 h-3 text-red-500" />
-          <span className="text-[10px] text-gray-500">Risk Transfer</span>
+          <span className="text-[10px] text-gray-500">{t({ id: 'Transfer Risiko', en: 'Risk Transfer' }, lang)}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <Coins className="w-3 h-3 text-green-500" />
-          <span className="text-[10px] text-gray-500">Cost Transfer</span>
+          <span className="text-[10px] text-gray-500">{t({ id: 'Transfer Biaya', en: 'Cost Transfer' }, lang)}</span>
         </div>
       </div>
     </div>

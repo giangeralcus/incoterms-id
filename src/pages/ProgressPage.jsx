@@ -66,7 +66,7 @@ export default function ProgressPage() {
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-gray-900">{level.title}</span>
+            <span className="text-lg font-bold text-gray-900">{t(level.title, lang)}</span>
             <span className="text-sm text-gray-500">Level {level.level}</span>
           </div>
           <div className="mt-2 h-2 bg-gray-100 rounded-full overflow-hidden">

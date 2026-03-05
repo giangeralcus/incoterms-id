@@ -203,8 +203,17 @@ export const translations = {
 }
 
 /**
- * Helper to get a translated string
- * @param {object} obj - Translation object with {id, en}
+ * Helper to get a translated string.
+ * Supports both translation objects ({ id, en }) and plain strings.
+ * @param {object|string} obj
  * @param {string} lang - 'id' or 'en'
  */
-export const t = (obj, lang) => obj?.[lang] || obj?.en || ''
+export const t = (obj, lang) => {
+  if (typeof obj === 'string') return obj
+  return obj?.[lang] || obj?.en || ''
+}
+
+/**
+ * Alias for content translation (semantic alias for data content fields).
+ */
+export const tc = (obj, lang) => t(obj, lang)

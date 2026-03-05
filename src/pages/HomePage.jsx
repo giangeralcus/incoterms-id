@@ -114,7 +114,7 @@ export default function HomePage() {
               <LevelIcon className="w-5 h-5 text-ocean" />
               <span className="text-xs font-medium text-slate-400">Lv.{level.level}</span>
             </div>
-            <div className="font-display text-lg font-bold text-ocean">{level.title}</div>
+            <div className="font-display text-lg font-bold text-ocean">{t(level.title, lang)}</div>
             <div className="mt-1.5 h-1.5 bg-slate-100 rounded-full overflow-hidden">
               <div className="h-full bg-ocean rounded-full transition-all" style={{ width: `${progress}%` }} />
             </div>

@@ -1,12 +1,12 @@
 export const LEVELS = [
-  { level: 1, title: 'Cadet',       xpRequired: 0,    icon: 'Anchor' },
-  { level: 2, title: 'Apprentice',  xpRequired: 100,  icon: 'Compass' },
-  { level: 3, title: 'Officer',     xpRequired: 300,  icon: 'Shield' },
-  { level: 4, title: 'Captain',     xpRequired: 600,  icon: 'Ship' },
-  { level: 5, title: 'Commander',   xpRequired: 1000, icon: 'Star' },
-  { level: 6, title: 'Admiral',     xpRequired: 1500, icon: 'Crown' },
-  { level: 7, title: 'Legend',      xpRequired: 2500, icon: 'Trophy' },
-  { level: 8, title: 'Grandmaster', xpRequired: 4000, icon: 'Gem' },
+  { level: 1, title: { id: 'Kadet', en: 'Cadet' }, xpRequired: 0, icon: 'Anchor' },
+  { level: 2, title: { id: 'Taruna', en: 'Apprentice' }, xpRequired: 100, icon: 'Compass' },
+  { level: 3, title: { id: 'Perwira', en: 'Officer' }, xpRequired: 300, icon: 'Shield' },
+  { level: 4, title: { id: 'Kapten', en: 'Captain' }, xpRequired: 600, icon: 'Ship' },
+  { level: 5, title: { id: 'Komandan', en: 'Commander' }, xpRequired: 1000, icon: 'Star' },
+  { level: 6, title: { id: 'Laksamana', en: 'Admiral' }, xpRequired: 1500, icon: 'Crown' },
+  { level: 7, title: { id: 'Legenda', en: 'Legend' }, xpRequired: 2500, icon: 'Trophy' },
+  { level: 8, title: { id: 'Grandmaster', en: 'Grandmaster' }, xpRequired: 4000, icon: 'Gem' },
 ]
 
 export function getLevel(xp) {
