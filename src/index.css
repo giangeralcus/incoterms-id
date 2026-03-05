@@ -14,10 +14,18 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Sora', 'Segoe UI', system-ui, sans-serif;
+  color: #0f172a;
+  background-color: #f6fbff;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 #root {
   min-height: 100vh;
+}
+
+.font-display {
+  font-family: 'Space Grotesk', 'Sora', system-ui, sans-serif;
+  letter-spacing: -0.015em;
 }

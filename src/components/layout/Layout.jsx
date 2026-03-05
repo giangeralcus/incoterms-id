@@ -129,62 +129,78 @@ export default function Layout() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-ocean/5 to-white flex flex-col">
+    <div className="min-h-screen flex flex-col text-slate-800 bg-[radial-gradient(circle_at_85%_12%,rgba(14,165,233,0.16),transparent_38%),radial-gradient(circle_at_12%_28%,rgba(124,58,237,0.14),transparent_42%),linear-gradient(180deg,#f3f9ff_0%,#ffffff_52%,#f7faff_100%)]">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
-        <NavLink to="/" className="flex items-center gap-2 text-ocean font-bold text-lg">
-          <Ship className="w-6 h-6" />
-          <span className="hidden sm:inline">{t(T.common.appName, lang)}</span>
-        </NavLink>
-        <div className="flex items-center gap-4 text-sm">
-          {streak > 0 && (
-            <span className="text-accent font-semibold">{streak} {t(T.common.streak, lang)}</span>
-          )}
-          <button onClick={toggleLang} className="text-xs font-medium px-2 py-1 rounded border border-gray-200 hover:bg-gray-50 transition-colors">
-            {lang === 'id' ? 'EN' : 'ID'}
-          </button>
-          <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">
-            {score} {t(T.common.points, lang)}
-          </span>
+      <header className="sticky top-0 z-40 border-b border-white/70 bg-white/78 backdrop-blur-xl shadow-[0_10px_28px_rgba(15,23,42,0.06)]">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+          <NavLink to="/" className="group inline-flex items-center gap-2.5 text-ocean font-bold text-lg">
+            <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-ocean-light to-ocean flex items-center justify-center shadow-sm">
+              <Ship className="w-5 h-5 text-white" />
+            </span>
+            <span className="hidden sm:inline font-display tracking-tight group-hover:text-primary transition-colors">
+              {t(T.common.appName, lang)}
+            </span>
+          </NavLink>
+          <div className="flex items-center gap-2.5 sm:gap-3 text-sm">
+            {streak > 0 && (
+              <span className="hidden sm:inline-flex items-center text-amber-700 bg-amber-100/70 border border-amber-200 rounded-full px-2.5 py-1 font-semibold">
+                {streak} {t(T.common.streak, lang)}
+              </span>
+            )}
+            <button
+              onClick={toggleLang}
+              className="text-[11px] sm:text-xs font-semibold px-2.5 py-1.5 rounded-full border border-slate-200 bg-white/80 hover:bg-slate-50 transition-colors"
+            >
+              {lang === 'id' ? 'EN' : 'ID'}
+            </button>
+            <span className="bg-gradient-to-r from-primary/10 to-ocean/15 text-primary px-3 py-1.5 rounded-full font-semibold border border-primary/15">
+              {score} {t(T.common.points, lang)}
+            </span>
+          </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 p-4 max-w-5xl mx-auto w-full">
+      <main className="flex-1 p-4 sm:p-6 max-w-6xl mx-auto w-full">
         <Outlet />
       </main>
 
       {/* Footer */}
-      <div className="flex items-center justify-center gap-4 py-1.5 text-xs text-gray-300">
-        <a href="https://www.instagram.com/giangeralcus/" target="_blank" rel="noopener noreferrer" aria-label="giangeralcus Instagram" className="hover:text-pink-400 transition-colors flex items-center gap-1">
+      <div className="mx-3 sm:mx-6 mb-2 rounded-2xl border border-white/70 bg-white/65 backdrop-blur-md px-3 py-2.5 flex items-center justify-center gap-3 text-[11px] sm:text-xs text-slate-500">
+        <a href="https://www.instagram.com/giangeralcus/" target="_blank" rel="noopener noreferrer" aria-label="giangeralcus Instagram" className="hover:text-pink-500 transition-colors flex items-center gap-1">
           <Instagram className="w-3.5 h-3.5" />
           <span>@giangeralcus</span>
         </a>
         <span>·</span>
-        <a href="https://www.instagram.com/gatewayprimaindonusa/" target="_blank" rel="noopener noreferrer" aria-label="GPIndo Instagram" className="hover:text-pink-400 transition-colors flex items-center gap-1">
+        <a href="https://www.instagram.com/gatewayprimaindonusa/" target="_blank" rel="noopener noreferrer" aria-label="GPIndo Instagram" className="hover:text-pink-500 transition-colors flex items-center gap-1">
           <Instagram className="w-3.5 h-3.5" />
           <span>@gatewayprimaindonusa</span>
         </a>
         <span>·</span>
-        <span>Made by <a href="https://ggcd.tech" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">ggcd.tech</a></span>
+        <span>
+          Made by{' '}
+          <a href="https://ggcd.tech" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-slate-700 transition-colors">
+            ggcd.tech
+          </a>
+        </span>
       </div>
 
-      {/* Bottom Navigation (mobile) */}
-      <nav className="bg-white border-t border-gray-200 grid grid-cols-6 py-2 sm:py-3">
+      {/* Bottom Navigation */}
+      <nav className="sticky bottom-0 z-40 mx-3 mb-3 sm:mb-4 rounded-2xl border border-white/75 bg-white/82 backdrop-blur-xl shadow-[0_14px_34px_rgba(15,23,42,0.14)] grid grid-cols-6 p-1 sm:p-1.5">
         {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink
             key={to}
             to={to}
             end={to === '/'}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-0.5 px-1 py-1 rounded-lg transition-colors text-[10px] sm:text-xs ${
+              `flex flex-col items-center gap-0.5 px-1 py-1.5 rounded-xl transition-all duration-200 text-[10px] sm:text-xs ${
                 isActive
-                  ? 'text-primary font-semibold'
-                  : 'text-gray-400 hover:text-gray-600'
+                  ? 'text-primary font-semibold bg-gradient-to-b from-primary/15 to-ocean-light/10'
+                  : 'text-slate-500 hover:text-slate-700 hover:bg-slate-100/70'
               }`
             }
           >
-            <Icon className="w-5 h-5" />
+            <Icon className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
             <span>{label}</span>
           </NavLink>
         ))}
