@@ -31,6 +31,65 @@
     <meta name="twitter:description" content="Simulator interaktif Incoterms 2020 untuk freight forwarding Indonesia." />
     <meta name="twitter:image" content="https://incoterms.id/og-cover.jpg" />
 
+    <!-- Structured Data: Knowledge Graph -->
+    <script id="knowledge-graph-jsonld" type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://incoterms.id/#organization",
+            "name": "incoterms.id",
+            "url": "https://incoterms.id/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://incoterms.id/og-cover.jpg"
+            },
+            "sameAs": [
+              "https://www.instagram.com/incoterms.id/",
+              "https://www.instagram.com/gatewayprimaindonusa/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://incoterms.id/#website",
+            "url": "https://incoterms.id/",
+            "name": "incoterms.id",
+            "description": "Simulator interaktif Incoterms 2020 untuk belajar ekspor impor Indonesia. 26 skenario nyata, kalkulator pajak impor, dan tracking progress.",
+            "inLanguage": "id",
+            "publisher": {
+              "@id": "https://incoterms.id/#organization"
+            }
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://incoterms.id/#app",
+            "name": "incoterms.id — Simulator Incoterms 2020",
+            "url": "https://incoterms.id/",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web",
+            "inLanguage": "id",
+            "description": "Simulator interaktif untuk belajar Incoterms 2020, ekspor impor Indonesia. 26 skenario nyata, drag & drop, kalkulator pajak.",
+            "isPartOf": {
+              "@id": "https://incoterms.id/#website"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "DefinedTermSet",
+            "@id": "https://incoterms.id/#incoterms2020",
+            "name": "Incoterms 2020",
+            "url": "https://incoterms.id/learn",
+            "description": "Referensi 11 Incoterms 2020 untuk pembelajaran ekspor impor Indonesia."
+          }
+        ]
+      }
+    </script>
+
     <!-- PWA -->
     <meta name="theme-color" content="#0ea5e9" />
     <meta name="mobile-web-app-capable" content="yes" />

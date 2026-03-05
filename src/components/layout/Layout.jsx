@@ -30,6 +30,78 @@ function setMeta(selector, content) {
   element.setAttribute('content', content)
 }
 
+function buildKnowledgeGraph(lang, seo) {
+  const isId = lang === 'id'
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': 'https://incoterms.id/#organization',
+        name: 'incoterms.id',
+        url: 'https://incoterms.id/',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://incoterms.id/og-cover.jpg',
+        },
+        sameAs: [
+          'https://www.instagram.com/incoterms.id/',
+          'https://www.instagram.com/gatewayprimaindonusa/',
+        ],
+      },
+      {
+        '@type': 'WebSite',
+        '@id': 'https://incoterms.id/#website',
+        url: 'https://incoterms.id/',
+        name: 'incoterms.id',
+        description: seo.description,
+        inLanguage: seo.htmlLang,
+        publisher: {
+          '@id': 'https://incoterms.id/#organization',
+        },
+      },
+      {
+        '@type': 'WebApplication',
+        '@id': 'https://incoterms.id/#app',
+        name: seo.title,
+        url: 'https://incoterms.id/',
+        applicationCategory: 'EducationalApplication',
+        operatingSystem: 'Web',
+        inLanguage: seo.htmlLang,
+        description: seo.ogDescription,
+        isPartOf: {
+          '@id': 'https://incoterms.id/#website',
+        },
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+        },
+      },
+      {
+        '@type': 'DefinedTermSet',
+        '@id': 'https://incoterms.id/#incoterms2020',
+        name: 'Incoterms 2020',
+        url: 'https://incoterms.id/learn',
+        description: isId
+          ? 'Referensi 11 Incoterms 2020 untuk pembelajaran ekspor impor Indonesia.'
+          : 'Reference for all 11 Incoterms 2020 rules for export-import learning.',
+      },
+    ],
+  }
+}
+
+function setKnowledgeGraph(lang, seo) {
+  let script = document.getElementById('knowledge-graph-jsonld')
+  if (!script) {
+    script = document.createElement('script')
+    script.id = 'knowledge-graph-jsonld'
+    script.type = 'application/ld+json'
+    document.head.appendChild(script)
+  }
+  script.textContent = JSON.stringify(buildKnowledgeGraph(lang, seo))
+}
+
 export default function Layout() {
   const { score, streak } = useGameStore()
   const { lang, toggleLang } = useLanguageStore()
@@ -44,6 +116,7 @@ export default function Layout() {
     setMeta('meta[property="og:locale"]', seo.ogLocale)
     setMeta('meta[name="twitter:title"]', seo.title)
     setMeta('meta[name="twitter:description"]', seo.twitterDescription)
+    setKnowledgeGraph(lang, seo)
   }, [lang])
 
   const navItems = [
