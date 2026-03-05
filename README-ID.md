@@ -1,5 +1,9 @@
 # Belajar Ekspor Impor
 
+[![Build Check](https://github.com/giangeralcus/incoterms-id/actions/workflows/build-check.yml/badge.svg)](https://github.com/giangeralcus/incoterms-id/actions/workflows/build-check.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 Simulator interaktif untuk belajar Incoterms 2020 & ekspor-impor Indonesia. Belajar sambil bermain lewat skenario pengiriman nyata.
 
 > Read in English: [README.md](README.md)
@@ -11,6 +15,10 @@ Simulator interaktif untuk belajar Incoterms 2020 & ekspor-impor Indonesia. Bela
 - **Simulator Biaya** - Bandingkan biaya penjual vs pembeli + Kalkulator Pajak Impor Indonesia (BM, PPh22, PPN, PPnBM)
 - **Progres Saya** - Pantau penguasaan per Incoterm, akurasi, streak, dan skor
 - **Dwibahasa** - Tersedia dalam Bahasa Indonesia dan English, bisa diganti kapan saja lewat tombol di header
+
+## Preview
+
+![preview incoterms.id](public/og-cover.jpg)
 
 ## Tech Stack
 
@@ -32,6 +40,25 @@ npm run dev
 ```
 
 Buka `http://localhost:5173` di browser. Klik tombol **EN/ID** di header untuk ganti bahasa.
+
+## Kontribusi
+
+Kontribusi terbuka untuk:
+- peningkatan akurasi konten
+- perbaikan terjemahan Indonesia/English
+- penyempurnaan skenario belajar
+- peningkatan UI/UX dan aksesibilitas
+
+Panduan kontribusi: [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## Komunitas
+
+- Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- Lapor isu: [GitHub Issues](https://github.com/giangeralcus/incoterms-id/issues)
+
+## Lisensi
+
+Proyek ini menggunakan lisensi MIT. Lihat [LICENSE](LICENSE).
 
 ## Konteks
 
