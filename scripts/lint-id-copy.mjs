@@ -40,6 +40,7 @@ const UPPERCASE_ALLOWLIST = new Set([
   'NPE',
   'PIB',
   'SPPB',
+  'CEISA',
   'HS',
   'DG',
   'FTZ',
@@ -156,17 +157,17 @@ if (blockingIssues.length) {
 }
 
 if (warningIssues.length) {
-  console.warn('\n[lint-id-copy] Warnings:\n')
+  console.error('\n[lint-id-copy] Warnings (strict mode, treated as failures):\n')
   for (const issue of warningIssues.slice(0, 40)) {
-    console.warn(`- ${issue.file}:${issue.line} | ${issue.reason}`)
+    console.error(`- ${issue.file}:${issue.line} | ${issue.reason}`)
   }
   if (warningIssues.length > 40) {
-    console.warn(`- ... ${warningIssues.length - 40} additional warnings omitted`)
+    console.error(`- ... ${warningIssues.length - 40} additional warnings omitted`)
   }
 }
 
-if (!blockingIssues.length) {
+if (!blockingIssues.length && !warningIssues.length) {
   console.log('[lint-id-copy] OK: no blocking copy issues found.')
 }
 
-process.exit(blockingIssues.length ? 1 : 0)
+process.exit(blockingIssues.length || warningIssues.length ? 1 : 0)

@@ -111,15 +111,15 @@ export const INCOTERMS = [
         "en": "Collect goods from seller's premises at agreed date/time"
       },
       {
-        "id": "Mengatur dan membayar SEMUA transportasi dari lokasi ke tujuan",
+        "id": "Mengatur dan membayar semua transportasi dari lokasi ke tujuan",
         "en": "Arrange and pay for ALL transport from premises to destination"
       },
       {
-        "id": "Menangani bea cukai EKSPOR (PEB) di negara penjual",
+        "id": "Menangani bea cukai ekspor (PEB) di negara penjual",
         "en": "Handle EXPORT customs clearance (PEB) in seller's country"
       },
       {
-        "id": "Menangani bea cukai IMPOR (PIB) di negara sendiri",
+        "id": "Menangani bea cukai impor (PIB) di negara sendiri",
         "en": "Handle IMPORT customs clearance (PIB) in own country"
       },
       {
@@ -146,11 +146,11 @@ export const INCOTERMS = [
       "en": "PT Furniture Jaya Jepara sells teak to an Australian buyer. Buyer's Indonesian agent collects from workshop, arranges trucking to Semarang/Tanjung Emas, and handles PEB submission through CEISA."
     },
     "keyTrap": {
-      "id": "Pembeli harus menangani EKSPOR dari negara penjual - tidak praktis untuk sebagian besar perdagangan internasional. ICC merekomendasikan FCA sebagai gantinya.",
+      "id": "Pembeli harus menangani ekspor dari negara penjual - tidak praktis untuk sebagian besar perdagangan internasional. ICC merekomendasikan FCA sebagai gantinya.",
       "en": "Buyer must handle EXPORT from seller's country - impractical for most international trade. ICC recommends FCA instead."
     },
     "riskTransferPoint": {
-      "id": "Ketika barang ditempatkan sesuai keinginan pembeli di tempat yang disebutkan (TIDAK dimuat ke kendaraan apa pun)",
+      "id": "Ketika barang ditempatkan sesuai keinginan pembeli di tempat yang disebutkan (tidak dimuat ke kendaraan apa pun)",
       "en": "When goods are placed at buyer's disposal at the named place (NOT loaded onto any vehicle)"
     },
     "costTransferPoint": {
@@ -203,7 +203,7 @@ export const INCOTERMS = [
         "en": "Deliver goods to carrier at named place (CY, warehouse, or premises)"
       },
       {
-        "id": "Mengurus clearance EKSPOR (PEB, NPE di Indonesia)",
+        "id": "Mengurus clearance ekspor (PEB, NPE di Indonesia)",
         "en": "Clear goods for EXPORT (PEB, NPE in Indonesia)"
       },
       {
@@ -260,7 +260,7 @@ export const INCOTERMS = [
       "en": "PT Spice Indo Surabaya sells spices via Tanjung Perak. Seller delivers stuffed container to the terminal CY, clears export through CEISA, and risk transfers when carrier receives the container."
     },
     "keyTrap": {
-      "id": "Lokasi pengalihan risiko berbeda-beda, bergantung pada DIMANA pengiriman dilakukan: di tempat penjual = dimuat di kendaraan pembeli; di tempat lain = di angkutan penjual, dibongkar.",
+      "id": "Lokasi pengalihan risiko berbeda-beda, bergantung pada dimana pengiriman dilakukan: di tempat penjual = dimuat di kendaraan pembeli; di tempat lain = di angkutan penjual, dibongkar.",
       "en": "Risk transfer location differs depending on WHERE delivery happens: at seller's premises = loaded on buyer's vehicle; elsewhere = on seller's transport, unloaded."
     },
     "riskTransferPoint": {
@@ -279,7 +279,7 @@ export const INCOTERMS = [
       "en": "Both are \"F\" terms where buyer arranges main carriage, but FOB is sea-only and risk transfers on board vessel, while FCA works for any mode"
     },
     "changes2020": {
-      "id": "BARU: Pembeli dapat menginstruksikan carrier untuk menerbitkan B/L on-board kepada penjual. Memecahkan masalah Letter of Credit di mana bank memerlukan B/L on-board namun pengiriman FCA dilakukan sebelum pemuatan.",
+      "id": "Baru: Pembeli dapat menginstruksikan carrier untuk menerbitkan B/L on-board kepada penjual. Memecahkan masalah Letter of Credit di mana bank memerlukan B/L on-board namun pengiriman FCA dilakukan sebelum pemuatan.",
       "en": "NEW: Buyer can instruct carrier to issue on-board B/L to seller. Solves the Letter of Credit problem where banks require on-board B/L but FCA delivery happens before loading."
     },
     "transportRestriction": {
@@ -317,7 +317,7 @@ export const INCOTERMS = [
         "en": "Deliver goods alongside the vessel at the named port (on quay or barge)"
       },
       {
-        "id": "Mengurus clearance EKSPOR (PEB/NPE di Indonesia)",
+        "id": "Mengurus clearance ekspor (PEB/NPE di Indonesia)",
         "en": "Clear goods for EXPORT (PEB/NPE in Indonesia)"
       },
       {
@@ -339,7 +339,7 @@ export const INCOTERMS = [
         "en": "Nominate vessel and notify seller of vessel name, loading point, and delivery date"
       },
       {
-        "id": "Bayar untuk memuat KE kapal dan semua biaya selanjutnya",
+        "id": "Bayar untuk memuat ke kapal dan semua biaya selanjutnya",
         "en": "Pay for loading ONTO the vessel and all subsequent costs"
       },
       {
@@ -356,7 +356,7 @@ export const INCOTERMS = [
       }
     ],
     "bestFor": {
-      "id": "Kargo breakbulk, kargo curah, kargo proyek yang dimuat dengan derek kapal - BUKAN untuk barang dalam peti kemas",
+      "id": "Kargo breakbulk, kargo curah, kargo proyek yang dimuat dengan derek kapal - bukan untuk barang dalam peti kemas",
       "en": "Breakbulk cargo, bulk cargo, project cargo loaded by ship's crane - NOT for containerized goods"
     },
     "commonMistake": {
@@ -385,7 +385,7 @@ export const INCOTERMS = [
       "FOB"
     ],
     "confusionReason": {
-      "id": "Keduanya merupakan F-term khusus laut, namun risiko FAS berpindah DI SELURUH kapal (sebelum pemuatan), sementara FOB mentransfer DI ATAS (setelah pemuatan)",
+      "id": "Keduanya merupakan F-term khusus laut, namun risiko FAS berpindah di seluruh kapal (sebelum pemuatan), sementara FOB mentransfer di atas (setelah pemuatan)",
       "en": "Both are sea-only F-terms, but FAS risk transfers ALONGSIDE the ship (before loading), while FOB transfers ON BOARD (after loading)"
     },
     "changes2020": {
@@ -393,7 +393,7 @@ export const INCOTERMS = [
       "en": "No major changes from 2010. Remains a niche term for bulk/breakbulk."
     },
     "transportRestriction": {
-      "id": "HANYA jalur laut dan perairan pedalaman. Jangan sekali-kali digunakan untuk kontainer, udara, atau multimoda.",
+      "id": "hanya jalur laut dan perairan pedalaman. Jangan sekali-kali digunakan untuk kontainer, udara, atau multimoda.",
       "en": "Sea and inland waterway ONLY. Never use for containers, air, or multimodal."
     },
     "insuranceDetail": {
@@ -423,11 +423,11 @@ export const INCOTERMS = [
     },
     "sellerObligations": [
       {
-        "id": "Memuat barang DI ATAS kapal yang ditunjuk oleh pembeli di pelabuhan yang ditentukan",
+        "id": "Memuat barang di atas kapal yang ditunjuk oleh pembeli di pelabuhan yang ditentukan",
         "en": "Load goods ON BOARD the vessel nominated by buyer at named port"
       },
       {
-        "id": "Mengurus clearance EKSPOR (PEB, NPE di Indonesia)",
+        "id": "Mengurus clearance ekspor (PEB, NPE di Indonesia)",
         "en": "Clear goods for EXPORT (PEB, NPE in Indonesia)"
       },
       {
@@ -508,7 +508,7 @@ export const INCOTERMS = [
       "en": "No major rule changes. ICC continues emphasizing FCA over FOB for containers."
     },
     "transportRestriction": {
-      "id": "HANYA jalur laut dan perairan pedalaman. Untuk transportasi kontainer, udara, atau multimoda, gunakan FCA sebagai gantinya.",
+      "id": "hanya jalur laut dan perairan pedalaman. Untuk transportasi kontainer, udara, atau multimoda, gunakan FCA sebagai gantinya.",
       "en": "Sea and inland waterway ONLY. For containers, air, or multimodal transport, use FCA instead."
     },
     "insuranceDetail": {
@@ -542,7 +542,7 @@ export const INCOTERMS = [
         "en": "Load goods on board and pay ocean freight to destination port"
       },
       {
-        "id": "Mengurus clearance EKSPOR (PEB/NPE di Indonesia)",
+        "id": "Mengurus clearance ekspor (PEB/NPE di Indonesia)",
         "en": "Clear goods for EXPORT (PEB/NPE in Indonesia)"
       },
       {
@@ -564,7 +564,7 @@ export const INCOTERMS = [
     ],
     "buyerObligations": [
       {
-        "id": "Menanggung risiko sejak barang berada di kapal di ORIGIN (kritis!)",
+        "id": "Menanggung risiko sejak barang berada di kapal di pelabuhan asal (kritis!)",
         "en": "Bear risk from the moment goods are on board at ORIGIN (critical!)"
       },
       {
@@ -576,7 +576,7 @@ export const INCOTERMS = [
         "en": "Pay for unloading at destination (unless included in liner terms)"
       },
       {
-        "id": "Atur dan bayar asuransi kargo - ini BUKAN tugas penjual!",
+        "id": "Atur dan bayar asuransi kargo - ini bukan tugas penjual!",
         "en": "Arrange and pay for cargo insurance - this is NOT seller's duty!"
       },
       {
@@ -589,7 +589,7 @@ export const INCOTERMS = [
       "en": "When seller can negotiate better freight rates than buyer. Common for Asian steel and textile trades."
     },
     "commonMistake": {
-      "id": "Pembeli berasumsi penjual menanggung risiko transit karena penjual membayar ongkos angkut - SALAH! Transfer risiko di pelabuhan muat, transfer biaya di tempat tujuan. Mereka berpisah di titik berbeda!",
+      "id": "Pembeli berasumsi penjual menanggung risiko transit karena penjual membayar ongkos angkut - salah! Transfer risiko di pelabuhan muat, transfer biaya di tempat tujuan. Mereka berpisah di titik berbeda!",
       "en": "Buyer assumes seller covers transit risk because seller pays freight - WRONG! Risk transfers at loading port, cost transfers at destination. They split at different points!"
     },
     "difficulty": "intermediate",
@@ -599,7 +599,7 @@ export const INCOTERMS = [
       "en": "A Surabaya steel importer buys HRC coils from China on CFR Tanjung Perak. The Chinese mill pays freight, but risk transfers when coils are loaded in Shanghai. Indonesian buyer must arrange own insurance."
     },
     "keyTrap": {
-      "id": "Pembagian risiko dan biaya pada poin BERBEDA! Penjual membayar biaya pengiriman ke tujuan, namun menanggung risiko transfer di pelabuhan asal pemuatan. Pembeli tidak diasuransikan selama transit kecuali mereka membeli polis sendiri.",
+      "id": "Pembagian risiko dan biaya pada poin berbeda! Penjual membayar biaya pengiriman ke tujuan, namun menanggung risiko transfer di pelabuhan asal pemuatan. Pembeli tidak diasuransikan selama transit kecuali mereka membeli polis sendiri.",
       "en": "Risk and cost split at DIFFERENT points! Seller pays freight to destination, but risk transfers at origin port loading. Buyer is uninsured during transit unless they buy their own policy."
     },
     "riskTransferPoint": {
@@ -623,11 +623,11 @@ export const INCOTERMS = [
       "en": "No major changes. Cost consolidation in A9/B9 for clarity."
     },
     "transportRestriction": {
-      "id": "HANYA jalur laut dan perairan pedalaman. Untuk multimodal, gunakan CPT saja.",
+      "id": "hanya jalur laut dan perairan pedalaman. Untuk multimodal, gunakan CPT saja.",
       "en": "Sea and inland waterway ONLY. For multimodal, use CPT instead."
     },
     "insuranceDetail": {
-      "id": "Tidak ada kewajiban asuransi untuk penjual. Pembeli menanggung risiko transit dari tempat asal dan HARUS mengatur asuransi kargo laut sendiri. Inilah jebakan kuncinya.",
+      "id": "Tidak ada kewajiban asuransi untuk penjual. Pembeli menanggung risiko transit dari tempat asal dan harus mengatur asuransi kargo laut sendiri. Inilah jebakan kuncinya.",
       "en": "No insurance obligation for seller. Buyer bears transit risk from origin and MUST arrange own marine cargo insurance. This is the key trap."
     }
   },
@@ -644,11 +644,11 @@ export const INCOTERMS = [
       "en": "When goods are on board the vessel at port of shipment"
     },
     "costTransfer": {
-      "id": "Penjual membayar biaya pengiriman DAN asuransi ke pelabuhan tujuan",
+      "id": "Penjual membayar biaya pengiriman dan asuransi ke pelabuhan tujuan",
       "en": "Seller pays freight AND insurance to destination port"
     },
     "insurance": {
-      "id": "DIPERLUKAN: Klausul Kargo Institut Minimum (C) - cakupan dasar saja",
+      "id": "diperlukan: Klausul Kargo Institut Minimum (C) - cakupan dasar saja",
       "en": "REQUIRED: Minimum Institute Cargo Clauses (C) - basic coverage only"
     },
     "sellerObligations": [
@@ -657,7 +657,7 @@ export const INCOTERMS = [
         "en": "Load goods on board and pay ocean freight to destination port"
       },
       {
-        "id": "Mengatur dan membayar asuransi MINIMUM (khusus ICC Klausul C)",
+        "id": "Mengatur dan membayar asuransi minimum (khusus ICC Klausul C)",
         "en": "Arrange and pay for MINIMUM insurance (ICC Clause C only)"
       },
       {
@@ -665,7 +665,7 @@ export const INCOTERMS = [
         "en": "Insurance must cover at least 110% of CIF value"
       },
       {
-        "id": "Mengurus clearance EKSPOR (PEB/NPE)",
+        "id": "Mengurus clearance ekspor (PEB/NPE)",
         "en": "Clear goods for EXPORT (PEB/NPE)"
       },
       {
@@ -679,7 +679,7 @@ export const INCOTERMS = [
     ],
     "buyerObligations": [
       {
-        "id": "Menanggung risiko sejak barang berada di kapal di pelabuhan ASAL",
+        "id": "Menanggung risiko sejak barang berada di kapal di pelabuhan asal",
         "en": "Bear risk from moment goods are on board at ORIGIN port"
       },
       {
@@ -691,7 +691,7 @@ export const INCOTERMS = [
         "en": "Pay for unloading at destination port"
       },
       {
-        "id": "Pertimbangkan untuk membeli asuransi TAMBAHAN di luar ICC(C) minimum",
+        "id": "Pertimbangkan untuk membeli asuransi tambahan di luar ICC(C) minimum",
         "en": "Consider purchasing ADDITIONAL insurance beyond minimum ICC(C)"
       },
       {
@@ -704,7 +704,7 @@ export const INCOTERMS = [
       "en": "Common for commodity trades (coffee, cocoa, spices). Buyer gets basic insurance included. Popular for Indonesian import transactions."
     },
     "commonMistake": {
-      "id": "Dengan asumsi asuransi CIF mencakup semuanya - ICC Klausul C adalah cakupan MINIMUM (hanya kebakaran, tenggelam, tabrakan). Ini TIDAK mencakup pencurian, pencurian, kerusakan akibat air, atau penanganan yang kasar.",
+      "id": "Dengan asumsi asuransi CIF mencakup semuanya - ICC Klausul C adalah cakupan minimum (hanya kebakaran, tenggelam, tabrakan). Ini tidak mencakup pencurian, pencurian, kerusakan akibat air, atau penanganan yang kasar.",
       "en": "Assuming CIF insurance covers everything - ICC Clause C is MINIMUM coverage (fire, sinking, collision only). It does NOT cover theft, pilferage, water damage, or rough handling."
     },
     "difficulty": "beginner",
@@ -714,7 +714,7 @@ export const INCOTERMS = [
       "en": "Indonesian coffee exporter sells CIF Hamburg. Seller pays freight plus minimum ICC(C) insurance. German buyer should consider upgrading to ICC(A) for comprehensive coverage on high-value specialty coffee."
     },
     "keyTrap": {
-      "id": "Asuransi CIF hanya pertanggungan MINIMUM (ICC-C: kebakaran, tenggelam, tabrakan, pembuangan). Pembeli sering kali terlambat menyadari bahwa pencurian, kerusakan akibat air, dan penanganan yang kasar TIDAK ditanggung.",
+      "id": "Asuransi CIF hanya pertanggungan minimum (ICC-C: kebakaran, tenggelam, tabrakan, pembuangan). Pembeli sering kali terlambat menyadari bahwa pencurian, kerusakan akibat air, dan penanganan yang kasar tidak ditanggung.",
       "en": "CIF insurance is MINIMUM coverage only (ICC-C: fire, sinking, collision, jettison). Buyers often discover too late that theft, water damage, and rough handling are NOT covered."
     },
     "riskTransferPoint": {
@@ -734,15 +734,15 @@ export const INCOTERMS = [
       "en": "CIF vs CIP: CIF is sea-only with basic ICC(C) insurance; CIP is any-mode with all-risk ICC(A). CIF vs CFR: only difference is CIF includes minimum insurance."
     },
     "changes2020": {
-      "id": "Asuransi CIF tetap di ICC Klausul C (dasar). Berbeda dengan CIP yang UPGRADE menjadi ICC(A) pada tahun 2020.",
+      "id": "Asuransi CIF tetap di ICC Klausul C (dasar). Berbeda dengan CIP yang upgrade menjadi ICC(A) pada tahun 2020.",
       "en": "CIF insurance stays at ICC Clause C (basic). This is different from CIP which was UPGRADED to ICC(A) in 2020."
     },
     "transportRestriction": {
-      "id": "HANYA jalur laut dan perairan pedalaman. Untuk multimoda atau udara, gunakan CIP saja.",
+      "id": "hanya jalur laut dan perairan pedalaman. Untuk multimoda atau udara, gunakan CIP saja.",
       "en": "Sea and inland waterway ONLY. For multimodal or air, use CIP instead."
     },
     "insuranceDetail": {
-      "id": "Penjual HARUS mengatur ICC Klausul C (dasar: kebakaran, ledakan, tenggelam, tabrakan, pembuangan, rata-rata umum). Minimal 110% dari nilai CIF. TIDAK mencakup gempa bumi, petir, pencurian, pencucian ke laut.",
+      "id": "Penjual harus mengatur ICC Klausul C (dasar: kebakaran, ledakan, tenggelam, tabrakan, pembuangan, rata-rata umum). Minimal 110% dari nilai CIF. tidak mencakup gempa bumi, petir, pencurian, pencucian ke laut.",
       "en": "Seller MUST arrange ICC Clause C (basic: fire, explosion, sinking, collision, jettison, general average). Minimum 110% of CIF value. Does NOT cover earthquake, lightning, theft, washing overboard."
     }
   },
@@ -772,7 +772,7 @@ export const INCOTERMS = [
         "en": "Deliver goods to the first carrier and pay carriage to destination"
       },
       {
-        "id": "Mengurus clearance EKSPOR",
+        "id": "Mengurus clearance ekspor",
         "en": "Clear goods for EXPORT"
       },
       {
@@ -790,7 +790,7 @@ export const INCOTERMS = [
     ],
     "buyerObligations": [
       {
-        "id": "Menanggung risiko dari pengiriman ke carrier pertama (BUKAN dari tujuan!)",
+        "id": "Menanggung risiko dari pengiriman ke carrier pertama (bukan dari tujuan!)",
         "en": "Bear risk from delivery to first carrier (NOT from destination!)"
       },
       {
@@ -811,7 +811,7 @@ export const INCOTERMS = [
       "en": "Multimodal transport or air freight where seller pays carriage. The \"any-mode\" version of CFR."
     },
     "commonMistake": {
-      "id": "Tidak menyadari risiko dan pengalihan biaya di titik BERBEDA - risiko di maskapai pertama, biaya di tempat tujuan. Perangkap yang sama seperti CFR tetapi untuk multimodal.",
+      "id": "Tidak menyadari risiko dan pengalihan biaya di titik berbeda - risiko di maskapai pertama, biaya di tempat tujuan. Perangkap yang sama seperti CFR tetapi untuk multimodal.",
       "en": "Not realizing risk and cost transfer at DIFFERENT points - risk at first carrier, cost at destination. Same trap as CFR but for multimodal."
     },
     "difficulty": "intermediate",
@@ -821,7 +821,7 @@ export const INCOTERMS = [
       "en": "Jakarta electronics exporter ships via air freight CPT Munich airport. Seller pays airfreight, but risk transfers when goods are handed to the airline at Soekarno-Hatta. Buyer should insure."
     },
     "keyTrap": {
-      "id": "Seperti CFR, risiko dan biaya dibagi pada titik yang berbeda. Risiko berpindah ke pembeli saat diserahkan ke carrier PERTAMA, meskipun penjual membayar seluruh biaya sampai ke tujuan.",
+      "id": "Seperti CFR, risiko dan biaya dibagi pada titik yang berbeda. Risiko berpindah ke pembeli saat diserahkan ke carrier pertama, meskipun penjual membayar seluruh biaya sampai ke tujuan.",
       "en": "Like CFR, risk and cost split at different points. Risk transfers to buyer at the FIRST carrier, even though seller pays all the way to destination."
     },
     "riskTransferPoint": {
@@ -866,11 +866,11 @@ export const INCOTERMS = [
       "en": "When goods are handed to the first carrier"
     },
     "costTransfer": {
-      "id": "Penjual membayar freight DAN asuransi ke tujuan yang disebutkan",
+      "id": "Penjual membayar freight dan asuransi ke tujuan yang disebutkan",
       "en": "Seller pays carriage AND insurance to named destination"
     },
     "insurance": {
-      "id": "DIPERLUKAN: Institute Cargo Clauses (A) - cakupan SEMUA RISIKO (ditingkatkan pada tahun 2020!)",
+      "id": "diperlukan: Institute Cargo Clauses (A) - cakupan semua risiko (ditingkatkan pada tahun 2020!)",
       "en": "REQUIRED: Institute Cargo Clauses (A) - ALL RISKS coverage (upgraded in 2020!)"
     },
     "sellerObligations": [
@@ -879,7 +879,7 @@ export const INCOTERMS = [
         "en": "Deliver goods to the first carrier and pay carriage to destination"
       },
       {
-        "id": "Mengatur dan membayar asuransi SEMUA RISIKO - ICC Klausul A",
+        "id": "Mengatur dan membayar asuransi semua risiko - ICC Klausul A",
         "en": "Arrange and pay for ALL RISKS insurance - ICC Clause A"
       },
       {
@@ -887,7 +887,7 @@ export const INCOTERMS = [
         "en": "Insurance must cover at least 110% of CIP value"
       },
       {
-        "id": "Mengurus clearance EKSPOR",
+        "id": "Mengurus clearance ekspor",
         "en": "Clear goods for EXPORT"
       },
       {
@@ -928,7 +928,7 @@ export const INCOTERMS = [
       "en": "Small Bali artisan cooperative exports handwoven textiles CIP Sydney. Uses truck Bali→Surabaya then sea→Sydney. CIP provides ICC(A) all-risk insurance covering the entire multimodal journey."
     },
     "keyTrap": {
-      "id": "CIP 2020 mensyaratkan ICC Clause A (all-risk) - ini merupakan standar yang LEBIH TINGGI dibandingkan CIF yang hanya mensyaratkan ICC Clause C (dasar). Banyak orang yang belum mengetahui perubahan tahun 2020 ini.",
+      "id": "CIP 2020 mensyaratkan ICC Clause A (all-risk) - ini merupakan standar yang lebih tinggi dibandingkan CIF yang hanya mensyaratkan ICC Clause C (dasar). Banyak orang yang belum mengetahui perubahan tahun 2020 ini.",
       "en": "CIP 2020 requires ICC Clause A (all-risks) - this is a HIGHER standard than CIF which only requires ICC Clause C (basic). Many people don't know about this 2020 change."
     },
     "riskTransferPoint": {
@@ -947,7 +947,7 @@ export const INCOTERMS = [
       "en": "Both include seller-paid insurance, but CIF = sea-only + basic ICC(C), while CIP = any-mode + all-risk ICC(A). CIP is strictly better insurance."
     },
     "changes2020": {
-      "id": "PERUBAHAN UTAMA: Asuransi ditingkatkan dari ICC Clause C menjadi ICC Clause A (all-risk). Ini merupakan perubahan asuransi terbesar di Incoterms 2020.",
+      "id": "perubahan utama: Asuransi ditingkatkan dari ICC Clause C menjadi ICC Clause A (all-risk). Ini merupakan perubahan asuransi terbesar di Incoterms 2020.",
       "en": "MAJOR CHANGE: Insurance upgraded from ICC Clause C to ICC Clause A (all-risks). This is the biggest insurance change in Incoterms 2020."
     },
     "transportRestriction": {
@@ -955,7 +955,7 @@ export const INCOTERMS = [
       "en": "Any mode of transport including multimodal. Preferred over CIF for containerized, air, or multimodal shipments."
     },
     "insuranceDetail": {
-      "id": "Penjual HARUS mengatur ICC Klausul A (semua risiko: mencakup semuanya KECUALI perang, pemogokan, sifat buruk yang melekat, penundaan). Minimal 110% dari nilai CIP. Ini adalah cakupan yang komprehensif.",
+      "id": "Penjual harus mengatur ICC Klausul A (semua risiko: mencakup semuanya kecuali perang, pemogokan, sifat buruk yang melekat, penundaan). Minimal 110% dari nilai CIP. Ini adalah cakupan yang komprehensif.",
       "en": "Seller MUST arrange ICC Clause A (all-risks: covers everything EXCEPT war, strikes, inherent vice, delay). Minimum 110% of CIP value. This is comprehensive coverage."
     }
   },
@@ -985,11 +985,11 @@ export const INCOTERMS = [
         "en": "Deliver goods to the named destination, ready for unloading from arriving vehicle"
       },
       {
-        "id": "Menanggung SEMUA risiko dan biaya selama seluruh transportasi ke tujuan",
+        "id": "Menanggung semua risiko dan biaya selama seluruh transportasi ke tujuan",
         "en": "Bear ALL risks and costs during entire transport to destination"
       },
       {
-        "id": "Mengurus clearance EKSPOR",
+        "id": "Mengurus clearance ekspor",
         "en": "Clear goods for EXPORT"
       },
       {
@@ -1011,7 +1011,7 @@ export const INCOTERMS = [
         "en": "Unload goods from arriving vehicle at destination"
       },
       {
-        "id": "Menangani pengurusan bea cukai IMPOR (PIB via PPJK di Indonesia)",
+        "id": "Menangani pengurusan bea cukai impor (PIB via PPJK di Indonesia)",
         "en": "Handle IMPORT customs clearance (PIB via PPJK in Indonesia)"
       },
       {
@@ -1024,7 +1024,7 @@ export const INCOTERMS = [
       }
     ],
     "bestFor": {
-      "id": "Pengiriman pintu tempat pembeli menangani izin impor. Sangat umum terjadi pada impor KE Indonesia dimana penjual asing melakukan pengiriman ke pelabuhan/gudang.",
+      "id": "Pengiriman pintu tempat pembeli menangani izin impor. Sangat umum terjadi pada impor ke Indonesia dimana penjual asing melakukan pengiriman ke pelabuhan/gudang.",
       "en": "Door delivery where buyer handles import clearance. Very common for imports INTO Indonesia where foreign seller delivers to port/warehouse."
     },
     "commonMistake": {
@@ -1038,7 +1038,7 @@ export const INCOTERMS = [
       "en": "Chinese machinery seller delivers DAP to buyer's factory in Cikarang Industrial Estate. The Indonesian buyer handles all customs clearance through their PPJK, pays BM+PPN+PPh22."
     },
     "keyTrap": {
-      "id": "Penjual menanggung risiko sampai ke tujuan tetapi TIDAK menangani izin impor. Jika terjadi keterlambatan bea cukai, pembeli menunda tetapi barang penjual tertahan dan beresiko.",
+      "id": "Penjual menanggung risiko sampai ke tujuan tetapi tidak menangani izin impor. Jika terjadi keterlambatan bea cukai, pembeli menunda tetapi barang penjual tertahan dan beresiko.",
       "en": "Seller bears risk all the way to destination but does NOT handle import clearance. If customs delays happen, the buyer delays but the seller's goods are stuck and at risk."
     },
     "riskTransferPoint": {
@@ -1092,15 +1092,15 @@ export const INCOTERMS = [
     },
     "sellerObligations": [
       {
-        "id": "Mengirim DAN BONGKAR barang di tempat tujuan yang disebutkan",
+        "id": "Mengirim dan bongkar barang di tempat tujuan yang disebutkan",
         "en": "Deliver AND UNLOAD goods at the named destination"
       },
       {
-        "id": "Menanggung SEMUA resiko dan biaya termasuk pembongkaran di tempat tujuan",
+        "id": "Menanggung semua resiko dan biaya termasuk pembongkaran di tempat tujuan",
         "en": "Bear ALL risks and costs including unloading at destination"
       },
       {
-        "id": "Mengurus clearance EKSPOR",
+        "id": "Mengurus clearance ekspor",
         "en": "Clear goods for EXPORT"
       },
       {
@@ -1118,11 +1118,11 @@ export const INCOTERMS = [
     ],
     "buyerObligations": [
       {
-        "id": "Menangani pengurusan bea cukai IMPOR (PIB) dan membayar semua bea/pajak",
+        "id": "Menangani pengurusan bea cukai impor (PIB) dan membayar semua bea/pajak",
         "en": "Handle IMPORT customs clearance (PIB) and pay all duties/taxes"
       },
       {
-        "id": "Tanggung resiko hanya SETELAH barang dibongkar di tempat tujuan",
+        "id": "Tanggung resiko hanya setelah barang dibongkar di tempat tujuan",
         "en": "Bear risk only AFTER goods are unloaded at destination"
       },
       {
@@ -1135,7 +1135,7 @@ export const INCOTERMS = [
       "en": "When seller can arrange unloading at destination (has equipment, local agent). Project cargo, heavy machinery."
     },
     "commonMistake": {
-      "id": "Ini adalah SATU-SATUNYA Incoterm dimana penjual harus membongkar barang di tempat tujuan. Pastikan penjual benar-benar memiliki kemampuan bongkar muat di sana.",
+      "id": "Ini adalah satu-satunya Incoterm dimana penjual harus membongkar barang di tempat tujuan. Pastikan penjual benar-benar memiliki kemampuan bongkar muat di sana.",
       "en": "This is the ONLY Incoterm where seller must unload at destination. Make sure seller actually has unloading capability there."
     },
     "difficulty": "advanced",
@@ -1145,7 +1145,7 @@ export const INCOTERMS = [
       "en": "German heavy machinery exporter delivers DPU to PT Semen Indonesia's factory in Tuban. Seller arranges crane and rigging crew to unload the equipment from the truck."
     },
     "keyTrap": {
-      "id": "DPU adalah SATU-SATUNYA istilah D yang mewajibkan penjual untuk membongkar. Jika penjual tidak dapat mengatur pembongkaran (crane, forklift, tenaga kerja) di lokasi pembeli, jangan gunakan DPU - gunakan DAP saja.",
+      "id": "DPU adalah satu-satunya istilah D yang mewajibkan penjual untuk membongkar. Jika penjual tidak dapat mengatur pembongkaran (crane, forklift, tenaga kerja) di lokasi pembeli, jangan gunakan DPU - gunakan DAP saja.",
       "en": "DPU is the ONLY D-term requiring seller to unload. If the seller cannot arrange unloading (crane, forklift, labor) at the buyer's location, do not use DPU - use DAP instead."
     },
     "riskTransferPoint": {
@@ -1165,7 +1165,7 @@ export const INCOTERMS = [
       "en": "DPU was renamed from DAT (Delivered at Terminal) in 2020. Unlike DAP, DPU includes unloading. Unlike old DAT, DPU can be any place - not just a terminal."
     },
     "changes2020": {
-      "id": "DIGANTI NAMAnya dari DAT (Dikirim di Terminal) menjadi DPU (Dikirim di Tempat Bongkar). Tujuan sekarang bisa di mana saja, bukan hanya terminal - pabrik, gudang, lokasi konstruksi, dll.",
+      "id": "diganti NAMAnya dari DAT (Dikirim di Terminal) menjadi DPU (Dikirim di Tempat Bongkar). Tujuan sekarang bisa di mana saja, bukan hanya terminal - pabrik, gudang, lokasi konstruksi, dll.",
       "en": "RENAMED from DAT (Delivered at Terminal) to DPU (Delivered at Place Unloaded). Destination can now be ANY place, not just a terminal - factory, warehouse, construction site, etc."
     },
     "transportRestriction": {
@@ -1190,7 +1190,7 @@ export const INCOTERMS = [
       "en": "When goods are placed at buyer's disposal at destination, cleared for import"
     },
     "costTransfer": {
-      "id": "Penjual menanggung SEMUA biaya termasuk bea masuk, pajak, dan izin",
+      "id": "Penjual menanggung semua biaya termasuk bea masuk, pajak, dan izin",
       "en": "Seller bears ALL costs including import duties, taxes, and clearance"
     },
     "insurance": {
@@ -1199,11 +1199,11 @@ export const INCOTERMS = [
     },
     "sellerObligations": [
       {
-        "id": "Kirim barang sampai tujuan, DIBERSIHKAN UNTUK IMPORT",
+        "id": "Kirim barang sampai tujuan, dibersihkan untuk import",
         "en": "Deliver goods to destination, CLEARED FOR IMPORT"
       },
       {
-        "id": "Menanggung SEMUA risiko dan SEMUA biaya dari pintu ke pintu",
+        "id": "Menanggung semua risiko dan semua biaya dari pintu ke pintu",
         "en": "Bear ALL risks and ALL costs door-to-door"
       },
       {
@@ -1211,7 +1211,7 @@ export const INCOTERMS = [
         "en": "Handle EXPORT clearance in origin country (PEB)"
       },
       {
-        "id": "Menangani pengurusan IMPOR di negara tujuan (PIB)",
+        "id": "Menangani pengurusan impor di negara tujuan (PIB)",
         "en": "Handle IMPORT clearance in destination country (PIB)"
       },
       {
@@ -1242,7 +1242,7 @@ export const INCOTERMS = [
       "en": "Maximum seller obligation (opposite of EXW). E-commerce, intra-company trade, when seller wants full control of logistics chain."
     },
     "commonMistake": {
-      "id": "Di Indonesia, penjual asing TIDAK BISA langsung menangani izin impor tanpa NIK (ID Pabean) dan izin API. Mereka harus menunjuk PPJK (broker bea cukai) setempat untuk bertindak atas nama mereka.",
+      "id": "Di Indonesia, penjual asing tidak bisa langsung menangani izin impor tanpa NIK (ID Pabean) dan izin API. Mereka harus menunjuk PPJK (broker bea cukai) setempat untuk bertindak atas nama mereka.",
       "en": "In Indonesia, foreign sellers CANNOT directly handle import clearance without NIK (Customs ID) and API license. They must appoint a local PPJK (customs broker) to act on their behalf."
     },
     "difficulty": "advanced",
@@ -1260,7 +1260,7 @@ export const INCOTERMS = [
       "en": "At the named destination, when goods are at buyer's disposal, cleared for import and ready for unloading"
     },
     "costTransferPoint": {
-      "id": "Penjual membayar SEMUANYA: transportasi, asuransi, clearance ekspor, izin impor, bea, pajak. Pembeli hanya membayar bongkar.",
+      "id": "Penjual membayar semuanya: transportasi, asuransi, clearance ekspor, izin impor, bea, pajak. Pembeli hanya membayar bongkar.",
       "en": "Seller pays EVERYTHING: transport, insurance, export clearance, import clearance, duties, taxes. Buyer pays only unloading."
     },
     "confusedWith": [

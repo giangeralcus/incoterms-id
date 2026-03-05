@@ -67,7 +67,7 @@ export const SCENARIOS = [
         "en": "When the buyer has global logistics contracts, let them control freight"
       },
       {
-        "id": "Kemasan kayu memerlukan sertifikat fumigasi ISPM-15 untuk masuk ke UE",
+        "id": "Kemasan kayu memerlukan sertifikat fumigasi ispm-15 untuk masuk ke UE",
         "en": "Wooden packaging requires ISPM-15 fumigation certificate for EU entry"
       }
     ]
@@ -178,7 +178,7 @@ export const SCENARIOS = [
     },
     "hints": [
       {
-        "id": "Ini BUKAN kontainer penuh -- kotak-kotak tersebut berbagi ruang dengan eksportir lain",
+        "id": "Ini bukan kontainer penuh -- kotak-kotak tersebut berbagi ruang dengan eksportir lain",
         "en": "This is NOT a full container -- the boxes share space with other exporters"
       },
       {
@@ -239,7 +239,7 @@ export const SCENARIOS = [
       "FOB"
     ],
     "explanation": {
-      "id": "FOB Jakarta benar. Titik FOB harus merupakan pelabuhan muat internasional yang sebenarnya (Tanjung Priok), bukan pulau asal (Bangka). Pembeli asal Vietnam mengatur freight di jalur pendek Jakarta-HCMC. Menggunakan \"FOB Pangkal Pinang\" adalah keliru -- tidak ada layanan kontainer internasional dari Bangka.",
+      "id": "FOB Jakarta benar. Titik FOB harus merupakan pelabuhan muat internasional yang sebenarnya (Tanjung Priok), bukan pulau asal (Bangka). Pembeli asal Vietnam mengatur freight di jalur pendek Jakarta-hcmc. Menggunakan \"FOB Pangkal Pinang\" adalah keliru -- tidak ada layanan kontainer internasional dari Bangka.",
       "en": "FOB Jakarta is correct. The FOB point must be the actual international loading port (Tanjung Priok), not the origin island (Bangka). The Vietnamese buyer arranges freight on the short Jakarta-HCMC lane. Using \"FOB Pangkal Pinang\" would be wrong -- there is no international container service from Bangka."
     },
     "hints": [
@@ -311,7 +311,7 @@ export const SCENARIOS = [
     },
     "hints": [
       {
-        "id": "Pemasok menawarkan untuk menangani freight DAN asuransi",
+        "id": "Pemasok menawarkan untuk menangani freight dan asuransi",
         "en": "The supplier offers to handle freight AND insurance"
       },
       {
@@ -377,7 +377,7 @@ export const SCENARIOS = [
     },
     "hints": [
       {
-        "id": "Pemasok India mengutip harga TERMASUK pengiriman dan asuransi",
+        "id": "Pemasok India mengutip harga termasuk pengiriman dan asuransi",
         "en": "The Indian supplier quotes a price INCLUDING freight and insurance"
       },
       {
@@ -438,7 +438,7 @@ export const SCENARIOS = [
       "CFR"
     ],
     "explanation": {
-      "id": "CFR Jakarta benar. \"CNF\" banyak digunakan dalam perdagangan Asia tetapi BUKAN merupakan Incoterm resmi -- singkatan yang tepat adalah \"CFR\" (Cost and Freight). Pabrik di Tiongkok ini memiliki volume freight yang besar dan menegosiasikan harga yang bersaing. Pembeli Indonesia mempunyai polis asuransi tahunan mereka sendiri, sehingga CIF akan menjadi mubazir. Selalu gunakan \"CFR\" dalam kontrak formal dan Letters of Credit, jangan pernah menggunakan \"CNF\".",
+      "id": "CFR Jakarta benar. \"CNF\" banyak digunakan dalam perdagangan Asia tetapi bukan merupakan Incoterm resmi -- singkatan yang tepat adalah \"CFR\" (Cost and Freight). Pabrik di Tiongkok ini memiliki volume freight yang besar dan menegosiasikan harga yang bersaing. Pembeli Indonesia mempunyai polis asuransi tahunan mereka sendiri, sehingga CIF akan menjadi mubazir. Selalu gunakan \"CFR\" dalam kontrak formal dan Letters of Credit, jangan pernah menggunakan \"CNF\".",
       "en": "CFR Jakarta is correct. \"CNF\" is widely used in Asian trade but is NOT an official Incoterm -- the proper abbreviation is \"CFR\" (Cost and Freight). The Chinese mill has massive freight volumes and negotiates competitive rates. The Indonesian buyer has their own annual insurance policy, so CIF would be redundant. Always use \"CFR\" in formal contracts and Letters of Credit, never \"CNF.\""
     },
     "hints": [
@@ -576,7 +576,7 @@ export const SCENARIOS = [
     },
     "hints": [
       {
-        "id": "Penjual MEMILIKI kapal tanker -- mereka mengendalikan logistik",
+        "id": "Penjual memiliki kapal tanker -- mereka mengendalikan logistik",
         "en": "The seller OWNS tanker vessels -- they control the logistics"
       },
       {
@@ -664,7 +664,7 @@ export const SCENARIOS = [
         "en": "20GP is preferred for heavy cargo like coffee -- weight limit hits before volume"
       },
       {
-        "id": "Peraturan Deforestasi Uni Eropa (EUDR) kini mewajibkan ketertelusuran di tingkat petani",
+        "id": "Peraturan Deforestasi Uni Eropa (eudr) kini mewajibkan ketertelusuran di tingkat petani",
         "en": "EU Deforestation Regulation (EUDR) now requires farm-level traceability"
       }
     ]
@@ -678,7 +678,7 @@ export const SCENARIOS = [
       "en": "Natural Rubber to Qingdao"
     },
     "description": {
-      "id": "Sebuah pengolah karet Sumatera Selatan mengekspor 20 MT SIR 20 (Standar Karet Indonesia grade 20) dalam bentuk bal dari Palembang ke Qingdao. Produsen ban Tiongkok membeli dari 5 pelabuhan berbeda di Sumatera dan Kalimantan. Penetapan harga karet di bursa SICOM dikutip sebagai \"FOB pelabuhan Indonesia\".",
+      "id": "Sebuah pengolah karet Sumatera Selatan mengekspor 20 MT SIR 20 (Standar Karet Indonesia grade 20) dalam bentuk bal dari Palembang ke Qingdao. Produsen ban Tiongkok membeli dari 5 pelabuhan berbeda di Sumatera dan Kalimantan. Penetapan harga karet di bursa sicom dikutip sebagai \"FOB pelabuhan Indonesia\".",
       "en": "A South Sumatra rubber processor exports 20 MT of SIR 20 (Standard Indonesian Rubber grade 20) in bales from Palembang to Qingdao. Chinese tire manufacturers buy from 5 different ports across Sumatra and Kalimantan. Rubber pricing on the SICOM exchange is quoted as \"FOB Indonesian port.\""
     },
     "commodity": {
@@ -703,7 +703,7 @@ export const SCENARIOS = [
       "FOB"
     ],
     "explanation": {
-      "id": "FOB Palembang mengikuti konvensi bursa komoditi. Penetapan harga berjangka SICOM mengacu pada \"FOB Pelabuhan Indonesia\" sebagai dasar penetapan harga. Pembeli Tiongkok menggabungkan pembelian dari beberapa pelabuhan dan mengatur pengiriman mereka sendiri. Penggunaan CIF akan bersifat transparan -- pembeli cukup mengurangi ongkos angkut dari CFR/CIF untuk menghitung FOB efektif, lalu membandingkannya dengan pemasok lain.",
+      "id": "FOB Palembang mengikuti konvensi bursa komoditi. Penetapan harga berjangka sicom mengacu pada \"FOB Pelabuhan Indonesia\" sebagai dasar penetapan harga. Pembeli Tiongkok menggabungkan pembelian dari beberapa pelabuhan dan mengatur pengiriman mereka sendiri. Penggunaan CIF akan bersifat transparan -- pembeli cukup mengurangi ongkos angkut dari CFR/CIF untuk menghitung FOB efektif, lalu membandingkannya dengan pemasok lain.",
       "en": "FOB Palembang follows the commodity exchange convention. SICOM futures pricing references \"FOB Indonesian port\" as the pricing basis. Chinese buyers consolidate purchases from multiple ports and arrange their own freight. Using CIF would be transparent -- buyers simply deduct freight from CFR/CIF to calculate effective FOB, then compare against other suppliers."
     },
     "hints": [
@@ -774,7 +774,7 @@ export const SCENARIOS = [
     },
     "hints": [
       {
-        "id": "Toyota mengontrol SEMUA pengiriman masuk dari 6 negara ASEAN",
+        "id": "Toyota mengontrol semua pengiriman masuk dari 6 negara ASEAN",
         "en": "Toyota controls ALL inbound shipments from 6 ASEAN countries"
       },
       {
@@ -835,7 +835,7 @@ export const SCENARIOS = [
       "CFR"
     ],
     "explanation": {
-      "id": "CFR Jeddah benar. Eksportir Indonesia mengatur pengiriman yang kompetitif, namun pembeli Saudi HARUS mengasuransikan dengan perusahaan asuransi lokal yang berlisensi Saudi. Jika CIF digunakan, polis asuransi penjual Indonesia mungkin tidak dapat diklaim di Arab Saudi. CFR memungkinkan pembeli mengatur asuransi yang sesuai dengan peraturan lokal. Verifikasi legalitas kayu V-Legal/SVLK wajib dilakukan pada seluruh ekspor kayu Indonesia.",
+      "id": "CFR Jeddah benar. Eksportir Indonesia mengatur pengiriman yang kompetitif, namun pembeli Saudi harus mengasuransikan dengan perusahaan asuransi lokal yang berlisensi Saudi. Jika CIF digunakan, polis asuransi penjual Indonesia mungkin tidak dapat diklaim di Arab Saudi. CFR memungkinkan pembeli mengatur asuransi yang sesuai dengan peraturan lokal. Verifikasi legalitas kayu V-Legal/svlk wajib dilakukan pada seluruh ekspor kayu Indonesia.",
       "en": "CFR Jeddah is correct. The Indonesian exporter arranges competitive freight, but the Saudi buyer MUST insure with a local Saudi-licensed insurer. If CIF were used, the Indonesian seller's insurance policy might not be claimable in Saudi Arabia. CFR lets the buyer arrange locally-compliant insurance. V-Legal/SVLK timber legality verification is mandatory for all Indonesian wood exports."
     },
     "hints": [
@@ -862,7 +862,7 @@ export const SCENARIOS = [
         "en": "CFR = seller pays freight, buyer arranges their own insurance"
       },
       {
-        "id": "V-Legal/SVLK bersifat wajib bagi SELURUH ekspor produk kayu Indonesia",
+        "id": "V-Legal/svlk bersifat wajib bagi seluruh ekspor produk kayu Indonesia",
         "en": "V-Legal/SVLK is mandatory for ALL Indonesian wood product exports"
       }
     ]
@@ -876,7 +876,7 @@ export const SCENARIOS = [
       "en": "Steel Coils from Busan"
     },
     "description": {
-      "id": "Sebuah distributor baja Indonesia mengimpor 500 MT gulungan baja canai panas dari pabrik Korea (POSCO). Pabrik tersebut memberikan harga yang sudah termasuk biaya pengiriman ke Surabaya. Pembeli Indonesia mempunyai polis asuransi open-cover tahunan dengan perusahaan asuransi lokal. Kumparan baja terlalu berat untuk kontainer standar.",
+      "id": "Sebuah distributor baja Indonesia mengimpor 500 MT gulungan baja canai panas dari pabrik Korea (posco). Pabrik tersebut memberikan harga yang sudah termasuk biaya pengiriman ke Surabaya. Pembeli Indonesia mempunyai polis asuransi open-cover tahunan dengan perusahaan asuransi lokal. Kumparan baja terlalu berat untuk kontainer standar.",
       "en": "An Indonesian steel distributor imports 500 MT of hot-rolled steel coils from a Korean mill (POSCO). The mill quotes a price that includes freight to Surabaya. The Indonesian buyer has an annual open-cover insurance policy with a local insurer. Steel coils are too heavy for standard containers."
     },
     "commodity": {
@@ -1008,7 +1008,7 @@ export const SCENARIOS = [
       "en": "Ready-to-Eat Food from Bangkok"
     },
     "description": {
-      "id": "Distributor makanan Indonesia mengimpor bumbu mie instan dan makanan ringan buah kering dari pabrik Thailand. Penjual Thailand mengirimkan ke Indonesia setiap bulan dengan tarif pengiriman ASEAN yang kompetitif. Sejak Oktober 2024, SEMUA produk pangan yang dijual di Indonesia harus memiliki sertifikasi halal. Pembeli menangani registrasi BPOM.",
+      "id": "Distributor makanan Indonesia mengimpor bumbu mie instan dan makanan ringan buah kering dari pabrik Thailand. Penjual Thailand mengirimkan ke Indonesia setiap bulan dengan tarif pengiriman ASEAN yang kompetitif. Sejak Oktober 2024, semua produk pangan yang dijual di Indonesia harus memiliki sertifikasi halal. Pembeli menangani registrasi BPOM.",
       "en": "An Indonesian food distributor imports instant noodle seasonings and dried fruit snacks from a Thai factory. The Thai seller ships to Indonesia monthly with competitive ASEAN freight rates. Since October 2024, ALL food products sold in Indonesia must have halal certification. The buyer handles BPOM registration."
     },
     "commodity": {
@@ -1043,7 +1043,7 @@ export const SCENARIOS = [
         "en": "The Thai factory ships to Indonesia every month"
       },
       {
-        "id": "Sertifikasi halal kini menjadi hal wajib bagi SEMUA produk pangan di Indonesia",
+        "id": "Sertifikasi halal kini menjadi hal wajib bagi semua produk pangan di Indonesia",
         "en": "Halal certification is now mandatory for ALL food products in Indonesia"
       },
       {
@@ -1057,7 +1057,7 @@ export const SCENARIOS = [
         "en": "Halal certification (UU JPH) is mandatory for food imports since October 2024"
       },
       {
-        "id": "BPOM ML (Registrasi Pangan Luar Negeri) harus diperoleh SEBELUM pengiriman",
+        "id": "BPOM ML (Registrasi Pangan Luar Negeri) harus diperoleh sebelum pengiriman",
         "en": "BPOM ML (Foreign Food Registration) must be obtained BEFORE shipping"
       },
       {
@@ -1105,7 +1105,7 @@ export const SCENARIOS = [
     },
     "hints": [
       {
-        "id": "Pabrikan mengirimkan ke pabrik DAN memasang peralatan",
+        "id": "Pabrikan mengirimkan ke pabrik dan memasang peralatan",
         "en": "The manufacturer delivers to the factory AND installs the equipment"
       },
       {
@@ -1260,7 +1260,7 @@ export const SCENARIOS = [
         "en": "FCA works for FTZ because it does not imply standard export clearance"
       },
       {
-        "id": "Barang yang berpindah dari FTZ Batam ke daratan Indonesia diperlakukan sebagai IMPOR",
+        "id": "Barang yang berpindah dari FTZ Batam ke daratan Indonesia diperlakukan sebagai impor",
         "en": "Goods moving from Batam FTZ to Indonesian mainland are treated as IMPORTS"
       }
     ]
@@ -1312,7 +1312,7 @@ export const SCENARIOS = [
         "en": "Reefer container slots from Makassar are scarce"
       },
       {
-        "id": "Asuransi CIF standar (ICC-C) TIDAK mencakup kerusakan reefer",
+        "id": "Asuransi CIF standar (ICC-C) tidak mencakup kerusakan reefer",
         "en": "Standard CIF insurance (ICC-C) does NOT cover reefer breakdown"
       }
     ],
@@ -1340,7 +1340,7 @@ export const SCENARIOS = [
       "en": "Ferronickel to Tianjin (Bulk)"
     },
     "description": {
-      "id": "Sebuah pabrik peleburan di Halmahera mengekspor 1.000 MT batangan feronikel (USD 2,4 juta) ke Tiongkok melalui kapal curah. Produsen baja tahan karat Tiongkok menyewa kapal mereka sendiri untuk rute ini -- 90% nikel Indonesia dikirim ke Tiongkok. Penting: ekspor bijih nikel mentah telah DILARANG sejak tahun 2020; hanya produk olahan seperti feronikel yang legal.",
+      "id": "Sebuah pabrik peleburan di Halmahera mengekspor 1.000 MT batangan feronikel (USD 2,4 juta) ke Tiongkok melalui kapal curah. Produsen baja tahan karat Tiongkok menyewa kapal mereka sendiri untuk rute ini -- 90% nikel Indonesia dikirim ke Tiongkok. Penting: ekspor bijih nikel mentah telah dilarang sejak tahun 2020; hanya produk olahan seperti feronikel yang legal.",
       "en": "A smelter in Halmahera exports 1,000 MT of ferronickel ingots (USD 2.4M) to China via breakbulk carrier. Chinese stainless steel manufacturers charter their own vessels for this route -- 90% of Indonesian nickel goes to China. Important: raw nickel ore export has been BANNED since 2020; only processed products like ferronickel are legal."
     },
     "commodity": {
@@ -1365,7 +1365,7 @@ export const SCENARIOS = [
       "FOB"
     ],
     "explanation": {
-      "id": "FOB Pelabuhan Indonesia sudah benar. Pembeli Tiongkok menyewa kapal curah mereka sendiri -- mereka telah mendedikasikan pengaturan pengiriman untuk arus perdagangan besar-besaran ini. Penggunaan CIF tidak ada gunanya karena pembeli sudah memiliki kapal. EXW sama sekali tidak praktis karena pabrik peleburannya berada di pulau terpencil. Pengetahuan utama: bijih nikel mentah (HS 2604) DILARANG ekspor sejak tahun 2020. Hanya produk olahan (feronikel HS 7202.60) yang legal.",
+      "id": "FOB Pelabuhan Indonesia sudah benar. Pembeli Tiongkok menyewa kapal curah mereka sendiri -- mereka telah mendedikasikan pengaturan pengiriman untuk arus perdagangan besar-besaran ini. Penggunaan CIF tidak ada gunanya karena pembeli sudah memiliki kapal. EXW sama sekali tidak praktis karena pabrik peleburannya berada di pulau terpencil. Pengetahuan utama: bijih nikel mentah (HS 2604) dilarang ekspor sejak tahun 2020. Hanya produk olahan (feronikel HS 7202.60) yang legal.",
       "en": "FOB Indonesian Port is correct. Chinese buyers charter their own bulk vessels -- they have dedicated shipping arrangements for this massive trade flow. Using CIF would be pointless since the buyer already has vessels. EXW is completely impractical -- the smelter is on a remote island. Key knowledge: raw nickel ore (HS 2604) is BANNED for export since 2020. Only processed products (ferronickel HS 7202.60) are legal."
     },
     "hints": [
@@ -1431,7 +1431,7 @@ export const SCENARIOS = [
       "DAP"
     ],
     "explanation": {
-      "id": "DAP Jakarta (pabrik pembeli) benar. Pabrikan asal Tiongkok itu sudah berpengalaman mengirimkan alat berat secara global. DAP berarti penjual mengirim ke pabrik -- menangani clearance ekspor, ocean freight berat, dan pengiriman darat dengan peralatan khusus (derek, trailer beralas rendah). Pembeli Indonesia menangani bea cukai impor (memerlukan lisensi API). DDP SALAH karena penjual China tidak dapat mengajukan Pemberitahuan Impor Indonesia (PIB).",
+      "id": "DAP Jakarta (pabrik pembeli) benar. Pabrikan asal Tiongkok itu sudah berpengalaman mengirimkan alat berat secara global. DAP berarti penjual mengirim ke pabrik -- menangani clearance ekspor, ocean freight berat, dan pengiriman darat dengan peralatan khusus (derek, trailer beralas rendah). Pembeli Indonesia menangani bea cukai impor (memerlukan lisensi API). DDP salah karena penjual China tidak dapat mengajukan Pemberitahuan Impor Indonesia (PIB).",
       "en": "DAP Jakarta (buyer's factory) is correct. The Chinese manufacturer has experience shipping heavy equipment globally. DAP means the seller delivers to the factory -- handling export clearance, heavy-lift ocean freight, and inland delivery with specialized equipment (crane, low-bed trailer). The Indonesian buyer handles import customs (requires API license). DDP is WRONG because the Chinese seller cannot file Indonesian import declarations (PIB)."
     },
     "hints": [
@@ -1472,7 +1472,7 @@ export const SCENARIOS = [
       "en": "Industrial Chemicals (Dangerous Goods)"
     },
     "description": {
-      "id": "Sebuah pabrik kimia Indonesia mengimpor 20 MT soda kaustik (larutan NaOH 50%) dari Rotterdam dalam tangki ISO 20'. Ini adalah IMO Kelas 8 (korosif) -- tidak semua perusahaan pelayaran menerimanya. Pabrikan Eropa (BASF/Nouryon) memiliki infrastruktur logistik bersertifikat DG dan armada tangki ISO khusus. Pembeli Indonesia membutuhkan izin impor B3 (bahan berbahaya).",
+      "id": "Sebuah pabrik kimia Indonesia mengimpor 20 MT soda kaustik (larutan NaOH 50%) dari Rotterdam dalam tangki ISO 20'. Ini adalah IMO Kelas 8 (korosif) -- tidak semua perusahaan pelayaran menerimanya. Pabrikan Eropa (basf/Nouryon) memiliki infrastruktur logistik bersertifikat DG dan armada tangki ISO khusus. Pembeli Indonesia membutuhkan izin impor B3 (bahan berbahaya).",
       "en": "An Indonesian chemical factory imports 20 MT of caustic soda (50% NaOH solution) from Rotterdam in a 20' ISO tank. This is IMO Class 8 (corrosive) -- not every shipping line accepts it. The European manufacturer (BASF/Nouryon) has DG-certified logistics infrastructure and specialized ISO tank fleets. The Indonesian buyer needs B3 (hazardous material) import permits."
     },
     "commodity": {
@@ -1591,7 +1591,7 @@ export const SCENARIOS = [
         "en": "CKD imports have special customs regimes (Pre-Entry Classification / PKB)"
       },
       {
-        "id": "Fasilitas masterlist dari BKPM memungkinkan pengurangan bea masuk komponen CKD",
+        "id": "Fasilitas masterlist dari bkpm memungkinkan pengurangan bea masuk komponen CKD",
         "en": "Masterlist facility from BKPM allows reduced duty on CKD components"
       }
     ]
@@ -1671,7 +1671,7 @@ export const SCENARIOS = [
       "en": "Semiconductors to Batam FTZ"
     },
     "description": {
-      "id": "Seorang perakit elektronik Batam mengimpor chip IC dan kapasitor senilai USD 520,000 dari Taiwan (Kaohsiung) untuk perakitan PCB. Batam adalah Zona Perdagangan Bebas - barang masuk TANPA membayar bea masuk atau PPN Indonesia. Produk rakitan tersebut akan diekspor kembali ke Singapura. Pemasok Taiwan sering mengirim ke Batam.",
+      "id": "Seorang perakit elektronik Batam mengimpor chip IC dan kapasitor senilai USD 520,000 dari Taiwan (Kaohsiung) untuk perakitan PCB. Batam adalah Zona Perdagangan Bebas - barang masuk tanpa membayar bea masuk atau PPN Indonesia. Produk rakitan tersebut akan diekspor kembali ke Singapura. Pemasok Taiwan sering mengirim ke Batam.",
       "en": "A Batam electronics assembler imports USD 520,000 of IC chips and capacitors from Taiwan (Kaohsiung) for PCB assembly. Batam is a Free Trade Zone -- goods enter WITHOUT paying Indonesian import duties or VAT. The assembled products will be re-exported to Singapore. The Taiwanese supplier ships to Batam frequently."
     },
     "commodity": {
@@ -1697,7 +1697,7 @@ export const SCENARIOS = [
       "CIP"
     ],
     "explanation": {
-      "id": "CIF Batam benar. Pemasok Taiwan menangani freight dan asuransi di jalur perdagangan yang sudah mapan ini. Jebakan utamanya: DDP TIDAK BERARTI di Zona Perdagangan Bebas karena tidak ada “kewajiban” yang harus dibayar. Barang FTZ Batam masuk bebas bea dan bebas PPN untuk diproses dan diekspor kembali. Izin standar bea cukai Indonesia (DJBC) tidak berlaku -- Batam menggunakan otoritas BP Batam. Jika produk jadi dijual ke daratan Indonesia (misalnya Jakarta), ITU memicu bea masuk.",
+      "id": "CIF Batam benar. Pemasok Taiwan menangani freight dan asuransi di jalur perdagangan yang sudah mapan ini. Jebakan utamanya: DDP tidak berarti di Zona Perdagangan Bebas karena tidak ada “kewajiban” yang harus dibayar. Barang FTZ Batam masuk bebas bea dan bebas PPN untuk diproses dan diekspor kembali. Izin standar bea cukai Indonesia (djbc) tidak berlaku -- Batam menggunakan otoritas BP Batam. Jika produk jadi dijual ke daratan Indonesia (misalnya Jakarta), ITU memicu bea masuk.",
       "en": "CIF Batam is correct. The Taiwanese supplier handles freight and insurance on this established trade lane. The key trap: DDP is MEANINGLESS in a Free Trade Zone because there is no \"duty\" to pay. Batam FTZ goods enter duty-free and VAT-free for processing and re-export. Standard Indonesian customs (DJBC) clearance does not apply -- Batam uses BP Batam authority. If finished products are sold to Indonesian mainland (e.g., Jakarta), THAT triggers import duties."
     },
     "hints": [
