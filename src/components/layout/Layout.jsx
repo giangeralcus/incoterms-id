@@ -129,12 +129,12 @@ export default function Layout() {
   ]
 
   return (
-    <div className="min-h-screen flex flex-col text-slate-800 bg-[radial-gradient(circle_at_85%_12%,rgba(14,165,233,0.16),transparent_38%),radial-gradient(circle_at_12%_28%,rgba(124,58,237,0.14),transparent_42%),linear-gradient(180deg,#f3f9ff_0%,#ffffff_52%,#f7faff_100%)]">
+    <div className="min-h-screen flex flex-col text-[#1d1d1f] bg-[radial-gradient(circle_at_50%_-8%,rgba(0,113,227,0.15),transparent_42%),radial-gradient(circle_at_95%_22%,rgba(90,178,255,0.16),transparent_38%),linear-gradient(180deg,#f5f5f7_0%,#ffffff_50%,#f5f5f7_100%)]">
       {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-white/70 bg-white/78 backdrop-blur-xl shadow-[0_10px_28px_rgba(15,23,42,0.06)]">
+      <header className="sticky top-0 z-40 border-b border-[#00000012] bg-[rgba(255,255,255,0.72)] backdrop-blur-2xl shadow-[0_10px_28px_rgba(0,0,0,0.05)]">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <NavLink to="/" className="group inline-flex items-center gap-2.5 text-ocean font-bold text-lg">
-            <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-ocean-light to-ocean flex items-center justify-center shadow-sm">
+          <NavLink to="/" className="group inline-flex items-center gap-2.5 text-[#1d1d1f] font-bold text-lg">
+            <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-light to-primary flex items-center justify-center shadow-sm">
               <Ship className="w-5 h-5 text-white" />
             </span>
             <span className="hidden sm:inline font-display tracking-tight group-hover:text-primary transition-colors">
@@ -143,17 +143,17 @@ export default function Layout() {
           </NavLink>
           <div className="flex items-center gap-2.5 sm:gap-3 text-sm">
             {streak > 0 && (
-              <span className="hidden sm:inline-flex items-center text-amber-700 bg-amber-100/70 border border-amber-200 rounded-full px-2.5 py-1 font-semibold">
+              <span className="hidden sm:inline-flex items-center text-[#7a4d00] bg-[#fff1cc] border border-[#f0d28a] rounded-full px-2.5 py-1 font-semibold">
                 {streak} {t(T.common.streak, lang)}
               </span>
             )}
             <button
               onClick={toggleLang}
-              className="text-[11px] sm:text-xs font-semibold px-2.5 py-1.5 rounded-full border border-slate-200 bg-white/80 hover:bg-slate-50 transition-colors"
+              className="text-[11px] sm:text-xs font-semibold px-2.5 py-1.5 rounded-full border border-[#00000012] bg-white/80 hover:bg-[#f7f7f9] transition-colors"
             >
               {lang === 'id' ? 'EN' : 'ID'}
             </button>
-            <span className="bg-gradient-to-r from-primary/10 to-ocean/15 text-primary px-3 py-1.5 rounded-full font-semibold border border-primary/15">
+            <span className="bg-[#e9f3ff] text-primary px-3 py-1.5 rounded-full font-semibold border border-[#b8dbff]">
               {score} {t(T.common.points, lang)}
             </span>
           </div>
@@ -166,27 +166,27 @@ export default function Layout() {
       </main>
 
       {/* Footer */}
-      <div className="mx-3 sm:mx-6 mb-2 rounded-2xl border border-white/70 bg-white/65 backdrop-blur-md px-3 py-2.5 flex items-center justify-center gap-3 text-[11px] sm:text-xs text-slate-500">
-        <a href="https://www.instagram.com/giangeralcus/" target="_blank" rel="noopener noreferrer" aria-label="giangeralcus Instagram" className="hover:text-pink-500 transition-colors flex items-center gap-1">
+      <div className="mx-3 sm:mx-6 mb-2 rounded-2xl border border-[#00000010] bg-[rgba(255,255,255,0.72)] backdrop-blur-xl px-3 py-2.5 flex items-center justify-center gap-3 text-[11px] sm:text-xs text-[#6e6e73]">
+        <a href="https://www.instagram.com/giangeralcus/" target="_blank" rel="noopener noreferrer" aria-label="giangeralcus Instagram" className="hover:text-primary transition-colors flex items-center gap-1">
           <Instagram className="w-3.5 h-3.5" />
           <span>@giangeralcus</span>
         </a>
         <span>·</span>
-        <a href="https://www.instagram.com/gatewayprimaindonusa/" target="_blank" rel="noopener noreferrer" aria-label="GPIndo Instagram" className="hover:text-pink-500 transition-colors flex items-center gap-1">
+        <a href="https://www.instagram.com/gatewayprimaindonusa/" target="_blank" rel="noopener noreferrer" aria-label="GPIndo Instagram" className="hover:text-primary transition-colors flex items-center gap-1">
           <Instagram className="w-3.5 h-3.5" />
           <span>@gatewayprimaindonusa</span>
         </a>
         <span>·</span>
         <span>
           Made by{' '}
-          <a href="https://ggcd.tech" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-slate-700 transition-colors">
+          <a href="https://ggcd.tech" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-[#1d1d1f] transition-colors">
             ggcd.tech
           </a>
         </span>
       </div>
 
       {/* Bottom Navigation */}
-      <nav className="sticky bottom-0 z-40 mx-3 mb-3 sm:mb-4 rounded-2xl border border-white/75 bg-white/82 backdrop-blur-xl shadow-[0_14px_34px_rgba(15,23,42,0.14)] grid grid-cols-6 p-1 sm:p-1.5">
+      <nav className="sticky bottom-0 z-40 mx-3 mb-3 sm:mb-4 rounded-2xl border border-[#00000010] bg-[rgba(255,255,255,0.78)] backdrop-blur-2xl shadow-[0_14px_34px_rgba(0,0,0,0.12)] grid grid-cols-6 p-1 sm:p-1.5">
         {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink
             key={to}
@@ -195,8 +195,8 @@ export default function Layout() {
             className={({ isActive }) =>
               `flex flex-col items-center gap-0.5 px-1 py-1.5 rounded-xl transition-all duration-200 text-[10px] sm:text-xs ${
                 isActive
-                  ? 'text-primary font-semibold bg-gradient-to-b from-primary/15 to-ocean-light/10'
-                  : 'text-slate-500 hover:text-slate-700 hover:bg-slate-100/70'
+                  ? 'text-primary font-semibold bg-[#e9f3ff]'
+                  : 'text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-[#f1f1f4]'
               }`
             }
           >
