@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Calculator, ArrowRight, Info, DollarSign, Landmark, ChevronDown, ChevronUp, HelpCircle, Ship, BookOpen, ToggleLeft, ToggleRight } from 'lucide-react'
+import { Calculator, Info, Landmark, ChevronDown, ChevronUp, HelpCircle, Ship, BookOpen, ToggleLeft, ToggleRight } from 'lucide-react'
 import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
 import Character from '../components/PixelArt/Character'
@@ -76,6 +76,76 @@ const ABBREVIATIONS = [
   { abbr: 'PIB', full: 'Pemberitahuan Impor Barang', en: 'Import Declaration' },
   { abbr: 'SPPB', full: 'Surat Persetujuan Pengeluaran Barang', en: 'Goods Release Approval' },
   { abbr: 'D/O', full: 'Delivery Order', en: 'Container Release Document' },
+]
+
+const LEGAL_BASICS = [
+  {
+    title: {
+      id: 'Landasan utama kepabeanan',
+      en: 'Core customs legal framework',
+    },
+    detail: {
+      id: 'Kegiatan ekspor-impor di Indonesia mengacu pada UU Kepabeanan: UU No. 10 Tahun 1995 yang telah diubah melalui UU No. 17 Tahun 2006.',
+      en: 'Export-import activities in Indonesia are governed by the Customs Law: Law No. 10/1995 as amended by Law No. 17/2006.',
+    },
+  },
+  {
+    title: {
+      id: 'Kewajiban pemberitahuan pabean',
+      en: 'Customs declaration obligations',
+    },
+    detail: {
+      id: 'Dalam impor untuk dipakai, importir wajib menyampaikan pemberitahuan pabean serta memenuhi ketentuan larangan/pembatasan (lartas) yang berlaku.',
+      en: 'For import for use, importers must submit customs declarations and comply with applicable prohibition/restriction (lartas) rules.',
+    },
+  },
+  {
+    title: {
+      id: 'Registrasi pelaku usaha',
+      en: 'Business registration',
+    },
+    detail: {
+      id: 'Pelaku usaha perlu registrasi kepabeanan sebelum proses impor/ekspor formal agar dapat mengakses layanan kepabeanan.',
+      en: 'Businesses need customs registration before formal import/export processes so they can access customs services.',
+    },
+  },
+  {
+    title: {
+      id: 'Klasifikasi HS/BTKI menentukan pungutan',
+      en: 'HS/BTKI classification determines import charges',
+    },
+    detail: {
+      id: 'Tarif bea masuk dan pajak impor dihitung berdasarkan klasifikasi HS/BTKI, termasuk kemungkinan tarif preferensi FTA jika syarat asal barang terpenuhi.',
+      en: 'Import duty and import taxes are calculated from HS/BTKI classification, including potential FTA preferential rates if rules of origin are met.',
+    },
+  },
+]
+
+const LEGAL_REFERENCES = [
+  {
+    label: { id: 'UU No. 10 Tahun 1995 (Kepabeanan)', en: 'Law No. 10/1995 (Customs)' },
+    url: 'https://jdih.dpr.go.id/setjen/detail-dokumen/tipe/uu/id/502',
+  },
+  {
+    label: { id: 'UU No. 17 Tahun 2006 (Perubahan UU Kepabeanan)', en: 'Law No. 17/2006 (Amendment to Customs Law)' },
+    url: 'https://jdih.dpr.go.id/setjen/detail-dokumen/tipe/uu/id/73',
+  },
+  {
+    label: { id: 'DJBC - Ketentuan Kepabeanan di Bidang Impor', en: 'DGCE - Customs Provisions in Imports' },
+    url: 'https://www.beacukai.go.id/faq/ketentuan-kepabeanan-di-bidang-impor.html',
+  },
+  {
+    label: { id: 'DJBC - Registrasi Kepabeanan', en: 'DGCE - Customs Registration' },
+    url: 'https://www.beacukai.go.id/faq/registrasi-kepabeanan.html',
+  },
+  {
+    label: { id: 'DJBC - BTKI dan Tarif', en: 'DGCE - BTKI and Tariff' },
+    url: 'https://www.beacukai.go.id/btki-dan-tarif',
+  },
+  {
+    label: { id: 'INSW Portal Nasional', en: 'National INSW Portal' },
+    url: 'https://www.insw.go.id',
+  },
 ]
 
 function formatIDR(value) {
@@ -231,14 +301,14 @@ export default function CostSimulator() {
         <div className="flex gap-4 text-xs mb-2 px-3 pt-3">
           <span className="flex items-center gap-1">
             <span className="inline-block w-5 h-5 rounded text-center font-bold bg-cargo/10 text-cargo leading-5">S</span>
-            {lang === 'id' ? 'Seller (Penjual)' : 'Seller'}
+            {t(T.common.seller, lang)}
           </span>
           <span className="flex items-center gap-1">
             <span className="inline-block w-5 h-5 rounded text-center font-bold bg-primary/10 text-primary leading-5">B</span>
-            {lang === 'id' ? 'Buyer (Pembeli)' : 'Buyer'}
+            {t(T.common.buyer, lang)}
           </span>
           <span className="flex items-center gap-1 text-gray-400">
-            Costs in USD
+            {t(T.cost.costsInUsd, lang)}
           </span>
         </div>
         <table className="w-full text-sm">
@@ -391,7 +461,7 @@ export default function CostSimulator() {
                 max="200"
                 step="1"
               />
-              <p className="text-[10px] text-gray-400 mt-1">Luxury Goods Tax rate (10-200%)</p>
+              <p className="text-[10px] text-gray-400 mt-1">{t(T.cost.ppnbmHint, lang)}</p>
             </motion.div>
           )}
 
@@ -455,16 +525,9 @@ export default function CostSimulator() {
           <div className="bg-amber-50 rounded-lg p-3 border border-amber-200 flex items-start gap-2">
             <Info className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
             <div className="text-xs text-amber-700 space-y-1">
-              <p>
-                <strong>PPh 22</strong> is a prepaid income tax (creditable against annual PPh).
-                Rate is 2.5% with API/NIB or 7.5% without.
-              </p>
-              <p>
-                <strong>PPN</strong> is 12% (since 2025). Base = NDPBM (CIF + BM).
-              </p>
-              <p>
-                Actual rates depend on HS Code classification. Check INSW (insw.go.id) for your product.
-              </p>
+              <p>{t(T.cost.taxLinePph22, lang)}</p>
+              <p>{t(T.cost.taxLinePpn, lang)}</p>
+              <p>{t(T.cost.taxLineHs, lang)}</p>
             </div>
           </div>
         </div>
@@ -476,8 +539,8 @@ export default function CostSimulator() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b">
-                <th className="text-left py-2 pr-4 text-gray-500 font-normal text-xs">Charge</th>
-                <th className="text-left py-2 text-gray-500 font-normal text-xs">Typical Range</th>
+                <th className="text-left py-2 pr-4 text-gray-500 font-normal text-xs">{t(T.cost.chargeHeader, lang)}</th>
+                <th className="text-left py-2 text-gray-500 font-normal text-xs">{t(T.cost.rangeHeader, lang)}</th>
               </tr>
             </thead>
             <tbody>
@@ -510,6 +573,42 @@ export default function CostSimulator() {
               </div>
             </div>
           ))}
+        </div>
+      </CollapsibleSection>
+
+      {/* Section D: Customs Legal Basics */}
+      <CollapsibleSection title={t(T.cost.legalBasics, lang)} icon={HelpCircle} defaultOpen={false}>
+        <p className="text-xs text-gray-600 mb-3">{t(T.cost.legalIntro, lang)}</p>
+
+        <div className="space-y-2">
+          {LEGAL_BASICS.map((item, index) => (
+            <div key={`legal-basic-${index}`} className="rounded-lg border border-gray-100 bg-gray-50 p-3">
+              <h4 className="text-xs font-semibold text-gray-900">{t(item.title, lang)}</h4>
+              <p className="mt-1 text-xs text-gray-600">{t(item.detail, lang)}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs text-amber-700">
+          {t(T.cost.legalDisclaimer, lang)}
+        </div>
+
+        <div className="mt-3">
+          <h4 className="text-xs font-semibold text-gray-900 mb-2">{t(T.cost.legalSources, lang)}</h4>
+          <ul className="space-y-1">
+            {LEGAL_REFERENCES.map((ref, index) => (
+              <li key={`legal-ref-${index}`}>
+                <a
+                  href={ref.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs text-primary hover:underline"
+                >
+                  {t(ref.label, lang)}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </CollapsibleSection>
     </div>

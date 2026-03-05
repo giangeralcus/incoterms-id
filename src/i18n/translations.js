@@ -135,7 +135,7 @@ export const translations = {
     sellerPays: { id: 'S = Penjual bayar', en: 'S = Seller pays' },
     buyerPays: { id: 'B = Pembeli bayar', en: 'B = Buyer pays' },
     note: {
-      id: 'Catatan: Ini model yang disederhanakan. Biaya sebenarnya bervariasi berdasarkan rute, carrier, musim, dan negosiasi.',
+      id: 'Catatan: Ini model yang disederhanakan untuk belajar. Biaya aktual bisa berubah tergantung rute, carrier, musim, dan hasil negosiasi.',
       en: 'Note: This is a simplified model. Real costs vary by route, carrier, season, and negotiation.',
     },
     // Tax Calculator
@@ -157,14 +157,40 @@ export const translations = {
     totalLanded: { id: 'TOTAL BIAYA MENDARAT', en: 'TOTAL LANDED COST' },
     effectiveRate: { id: 'Tarif efektif', en: 'Effective tax rate' },
     taxNote: {
-      id: 'PPh 22 dapat dikreditkan terhadap pajak tahunan. Tarif PPN 12% berlaku sejak 2025.',
-      en: 'PPh 22 is creditable against annual tax. PPN rate of 12% effective since 2025.',
+      id: 'Simulasi edukasi: nilai riil mengikuti kode HS, fasilitas FTA, dan ketentuan terbaru yang berlaku saat impor.',
+      en: 'Educational simulation: actual values follow HS code, FTA facilities, and the latest applicable regulations.',
+    },
+    costsInUsd: { id: 'Biaya dalam USD', en: 'Costs in USD' },
+    chargeHeader: { id: 'Jenis Biaya', en: 'Charge' },
+    rangeHeader: { id: 'Kisaran Umum', en: 'Typical Range' },
+    ppnbmHint: { id: 'Tarif PPnBM umumnya berada di rentang 10-200% tergantung jenis barang.', en: 'PPnBM rates are generally in the 10-200% range depending on product type.' },
+    taxLinePph22: {
+      id: 'PPh 22 adalah pajak di muka yang dapat dikreditkan dalam SPT tahunan.',
+      en: 'PPh 22 is a prepaid income tax that can be credited in annual filing.',
+    },
+    taxLinePpn: {
+      id: 'PPN dihitung dari NDPBM (CIF + Bea Masuk). Untuk simulasi ini digunakan asumsi tarif 12%.',
+      en: 'PPN is calculated from NDPBM (CIF + import duty). This simulator uses a 12% assumption.',
+    },
+    taxLineHs: {
+      id: 'Tarif riil mengikuti klasifikasi HS/BTKI dan ketentuan lartas. Selalu verifikasi di INSW dan peraturan terbaru.',
+      en: 'Actual rates follow HS/BTKI classification and lartas requirements. Always verify via INSW and latest regulations.',
     },
     // Port charges
     portCharges: { id: 'Referensi Biaya Pelabuhan', en: 'Port Charges Reference' },
     portNote: { id: 'Tarif tipikal untuk Tanjung Priok, Jakarta', en: 'Typical rates for Tanjung Priok, Jakarta' },
     // Glossary
     glossary: { id: 'Singkatan Umum', en: 'Common Abbreviations' },
+    legalBasics: { id: 'Dasar Hukum Bea Cukai (Ringkas)', en: 'Customs Legal Basics (Quick)' },
+    legalIntro: {
+      id: 'Ringkasan ini untuk pengetahuan umum agar kamu lebih paham konteks saat memilih Incoterm dan menghitung landed cost.',
+      en: 'This summary is for general knowledge so you can better understand context when choosing Incoterms and calculating landed cost.',
+    },
+    legalDisclaimer: {
+      id: 'Bukan nasihat hukum/pajak. Untuk transaksi riil, cek peraturan terbaru dan konsultasikan dengan PPJK atau konsultan kepabeanan.',
+      en: 'Not legal/tax advice. For live transactions, verify current rules and consult a licensed customs broker or advisor.',
+    },
+    legalSources: { id: 'Rujukan Resmi', en: 'Official References' },
   },
 
   // === PROGRESS PAGE ===
