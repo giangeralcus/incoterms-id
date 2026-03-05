@@ -45,7 +45,7 @@ function buildKnowledgeGraph(lang, seo) {
           url: 'https://incoterms.id/og-cover.jpg',
         },
         sameAs: [
-          'https://www.instagram.com/incoterms.id/',
+          'https://www.instagram.com/giangeralcus/',
           'https://www.instagram.com/gatewayprimaindonusa/',
         ],
       },
@@ -156,9 +156,9 @@ export default function Layout() {
 
       {/* Footer */}
       <div className="flex items-center justify-center gap-4 py-1.5 text-xs text-gray-300">
-        <a href="https://www.instagram.com/incoterms.id/" target="_blank" rel="noopener noreferrer" aria-label="incoterms.id Instagram" className="hover:text-pink-400 transition-colors flex items-center gap-1">
+        <a href="https://www.instagram.com/giangeralcus/" target="_blank" rel="noopener noreferrer" aria-label="giangeralcus Instagram" className="hover:text-pink-400 transition-colors flex items-center gap-1">
           <Instagram className="w-3.5 h-3.5" />
-          <span>@incoterms.id</span>
+          <span>@giangeralcus</span>
         </a>
         <span>·</span>
         <a href="https://www.instagram.com/gatewayprimaindonusa/" target="_blank" rel="noopener noreferrer" aria-label="GPIndo Instagram" className="hover:text-pink-400 transition-colors flex items-center gap-1">
