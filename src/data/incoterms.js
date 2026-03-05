@@ -7,41 +7,41 @@
 export const INCOTERM_GROUPS = {
   "E": {
     "name": {
-      "id": "Keberangkatan",
+      "id": "Departure",
       "en": "Departure"
     },
     "description": {
-      "id": "Penjual menyediakan barang di tempat mereka",
+      "id": "Penjual menyediakan barang di lokasi penjual.",
       "en": "Seller makes goods available at their premises"
     }
   },
   "F": {
     "name": {
-      "id": "Pengangkutan Utama Belum Dibayar",
+      "id": "Main Carriage Unpaid",
       "en": "Main Carriage Unpaid"
     },
     "description": {
-      "id": "Penjual mengirimkan ke operator yang ditunjuk oleh pembeli",
+      "id": "Penjual menyerahkan barang ke carrier yang ditunjuk pembeli.",
       "en": "Seller delivers to carrier nominated by buyer"
     }
   },
   "C": {
     "name": {
-      "id": "Pengangkutan Utama Dibayar",
+      "id": "Main Carriage Paid",
       "en": "Main Carriage Paid"
     },
     "description": {
-      "id": "Penjual mengontrak dan membayar pengangkutan utama",
+      "id": "Penjual mengatur dan membayar freight utama.",
       "en": "Seller contracts and pays for main carriage"
     }
   },
   "D": {
     "name": {
-      "id": "Kedatangan",
+      "id": "Arrival",
       "en": "Arrival"
     },
     "description": {
-      "id": "Penjual menanggung semua biaya dan risiko terhadap tujuan",
+      "id": "Penjual menanggung biaya dan risiko sampai tujuan.",
       "en": "Seller bears all costs and risks to destination"
     }
   }
@@ -49,11 +49,11 @@ export const INCOTERM_GROUPS = {
 
 export const TRANSPORT_MODES = {
   "ANY": {
-    "id": "Moda transportasi apa pun",
+    "id": "Semua moda transportasi",
     "en": "Any mode of transport"
   },
   "SEA": {
-    "id": "Hanya jalur laut dan perairan pedalaman",
+    "id": "Khusus laut dan perairan pedalaman",
     "en": "Sea and inland waterway only"
   }
 }
@@ -62,7 +62,7 @@ export const INCOTERMS = [
   {
     "code": "EXW",
     "name": {
-      "id": "Mantan Karya",
+      "id": "Ex Works",
       "en": "Ex Works"
     },
     "group": "E",
@@ -132,11 +132,11 @@ export const INCOTERMS = [
       }
     ],
     "bestFor": {
-      "id": "Penjualan domestik atau ketika pembeli memiliki agen lokal di negara penjual yang dapat menangani izin ekspor",
+      "id": "Penjualan domestik atau ketika pembeli memiliki agen lokal di negara penjual yang dapat menangani clearance ekspor",
       "en": "Domestic sales or when buyer has a local agent in seller's country who can handle export clearance"
     },
     "commonMistake": {
-      "id": "Pembeli asing berasumsi bahwa mereka dapat dengan mudah menangani izin ekspor di Indonesia - namun pengajuan PEB memerlukan NIK (Nomor Pabean) dan pengetahuan lokal tentang sistem CEISA",
+      "id": "Pembeli asing berasumsi bahwa mereka dapat dengan mudah menangani clearance ekspor di Indonesia - namun pengajuan PEB memerlukan NIK (Nomor Pabean) dan pengetahuan lokal tentang sistem CEISA",
       "en": "Foreign buyers assume they can easily handle export clearance in Indonesia - but PEB submission requires NIK (Customs ID) and local knowledge of CEISA system"
     },
     "difficulty": "beginner",
@@ -161,7 +161,7 @@ export const INCOTERMS = [
       "FCA"
     ],
     "confusionReason": {
-      "id": "Keduanya merupakan istilah \"penjemputan\", namun FCA mencakup izin ekspor oleh penjual yang jauh lebih praktis untuk penjualan internasional",
+      "id": "Keduanya merupakan istilah \"penjemputan\", namun FCA mencakup clearance ekspor oleh penjual yang jauh lebih praktis untuk penjualan internasional",
       "en": "Both are \"pickup\" terms, but FCA includes export clearance by seller which is far more practical for international sales"
     },
     "changes2020": {
@@ -180,13 +180,13 @@ export const INCOTERMS = [
   {
     "code": "FCA",
     "name": {
-      "id": "Operator Gratis",
+      "id": "Free Carrier",
       "en": "Free Carrier"
     },
     "group": "F",
     "transport": "ANY",
     "riskTransfer": {
-      "id": "Ketika barang diserahkan kepada pengangkut di tempat yang disebutkan",
+      "id": "Ketika barang diserahkan kepada carrier di tempat yang disebutkan",
       "en": "When goods are handed to the carrier at the named place"
     },
     "costTransfer": {
@@ -199,7 +199,7 @@ export const INCOTERMS = [
     },
     "sellerObligations": [
       {
-        "id": "Mengirimkan barang ke pengangkut di tempat yang ditentukan (CY, gudang, atau lokasi)",
+        "id": "Mengirimkan barang ke carrier di tempat yang ditentukan (CY, gudang, atau lokasi)",
         "en": "Deliver goods to carrier at named place (CY, warehouse, or premises)"
       },
       {
@@ -207,11 +207,11 @@ export const INCOTERMS = [
         "en": "Clear goods for EXPORT (PEB, NPE in Indonesia)"
       },
       {
-        "id": "Memberikan dokumen transportasi yang membuktikan pengiriman ke operator",
+        "id": "Memberikan dokumen transportasi yang membuktikan pengiriman ke carrier",
         "en": "Provide transport document proving delivery to carrier"
       },
       {
-        "id": "Menanggung biaya dan risiko hingga pengiriman ke operator",
+        "id": "Menanggung biaya dan risiko hingga pengiriman ke carrier",
         "en": "Bear costs and risks up to delivery to carrier"
       },
       {
@@ -219,13 +219,13 @@ export const INCOTERMS = [
         "en": "Assist buyer in obtaining on-board B/L if requested (2020 new option)"
       },
       {
-        "id": "Memberikan informasi bagi pembeli untuk mengatur pengangkutan dan asuransi",
+        "id": "Memberikan informasi bagi pembeli untuk mengatur freight dan asuransi",
         "en": "Provide information for buyer to arrange carriage and insurance"
       }
     ],
     "buyerObligations": [
       {
-        "id": "Nominasikan operator dan beri tahu penjual tentang rincian operator dan tanggal pengiriman",
+        "id": "Nominasikan carrier dan beri tahu penjual tentang rincian carrier dan tanggal pengiriman",
         "en": "Nominate carrier and notify seller of carrier details and delivery date"
       },
       {
@@ -237,11 +237,11 @@ export const INCOTERMS = [
         "en": "Handle import customs clearance (PIB) in destination country"
       },
       {
-        "id": "Menanggung semua risiko setelah barang dikirim ke operator",
+        "id": "Menanggung semua risiko setelah barang dikirim ke carrier",
         "en": "Bear all risks after goods delivered to carrier"
       },
       {
-        "id": "Dapat menginstruksikan operator untuk menerbitkan B/L on-board kepada penjual (untuk transaksi L/C)",
+        "id": "Dapat menginstruksikan carrier untuk menerbitkan B/L on-board kepada penjual (untuk transaksi L/C)",
         "en": "Can instruct carrier to issue on-board B/L to seller (for L/C transactions)"
       }
     ],
@@ -256,7 +256,7 @@ export const INCOTERMS = [
     "difficulty": "beginner",
     "emoji": "📦",
     "indonesianExample": {
-      "id": "PT Spice Indo Surabaya menjual rempah-rempah melalui Tanjung Perak. Penjual mengirimkan peti kemas yang diisi ke terminal CY, menyelesaikan ekspor melalui CEISA, dan pengalihan risiko ketika pengangkut menerima peti kemas tersebut.",
+      "id": "PT Spice Indo Surabaya menjual rempah-rempah melalui Tanjung Perak. Penjual mengirimkan peti kemas yang diisi ke terminal CY, menyelesaikan ekspor melalui CEISA, dan pengalihan risiko ketika carrier menerima peti kemas tersebut.",
       "en": "PT Spice Indo Surabaya sells spices via Tanjung Perak. Seller delivers stuffed container to the terminal CY, clears export through CEISA, and risk transfers when carrier receives the container."
     },
     "keyTrap": {
@@ -268,18 +268,18 @@ export const INCOTERMS = [
       "en": "At seller's premises: when loaded onto buyer's collecting vehicle. At other place (CY, terminal): when on seller's vehicle, at buyer's disposal for unloading."
     },
     "costTransferPoint": {
-      "id": "Di tempat pengiriman yang disebutkan - penjual membayar transportasi lokal ke titik tersebut ditambah izin ekspor",
+      "id": "Di tempat pengiriman yang disebutkan - penjual membayar transportasi lokal ke titik tersebut ditambah clearance ekspor",
       "en": "At the named place of delivery - seller pays local transport to that point plus export clearance"
     },
     "confusedWith": [
       "FOB"
     ],
     "confusionReason": {
-      "id": "Keduanya adalah istilah \"F\" di mana pembeli mengatur pengangkutan utama, namun FOB hanya berlaku di laut dan pengalihan risiko dilakukan di atas kapal, sedangkan FCA dapat digunakan untuk moda apa pun",
+      "id": "Keduanya adalah istilah \"F\" di mana pembeli mengatur freight utama, namun FOB hanya berlaku di laut dan pengalihan risiko dilakukan di atas kapal, sedangkan FCA dapat digunakan untuk moda apa pun",
       "en": "Both are \"F\" terms where buyer arranges main carriage, but FOB is sea-only and risk transfers on board vessel, while FCA works for any mode"
     },
     "changes2020": {
-      "id": "BARU: Pembeli dapat menginstruksikan operator untuk menerbitkan B/L di dalam pesawat kepada penjual. Memecahkan masalah Letter of Credit di mana bank memerlukan B/L on-board namun pengiriman FCA dilakukan sebelum pemuatan.",
+      "id": "BARU: Pembeli dapat menginstruksikan carrier untuk menerbitkan B/L on-board kepada penjual. Memecahkan masalah Letter of Credit di mana bank memerlukan B/L on-board namun pengiriman FCA dilakukan sebelum pemuatan.",
       "en": "NEW: Buyer can instruct carrier to issue on-board B/L to seller. Solves the Letter of Credit problem where banks require on-board B/L but FCA delivery happens before loading."
     },
     "transportRestriction": {
@@ -294,7 +294,7 @@ export const INCOTERMS = [
   {
     "code": "FAS",
     "name": {
-      "id": "Gratis Di Samping Kapal",
+      "id": "Free Alongside Ship",
       "en": "Free Alongside Ship"
     },
     "group": "F",
@@ -404,7 +404,7 @@ export const INCOTERMS = [
   {
     "code": "FOB",
     "name": {
-      "id": "Gratis Di Pesawat",
+      "id": "Free On Board",
       "en": "Free On Board"
     },
     "group": "F",
@@ -431,7 +431,7 @@ export const INCOTERMS = [
         "en": "Clear goods for EXPORT (PEB, NPE in Indonesia)"
       },
       {
-        "id": "Memberikan B/L atau dokumen pengangkutan sebagai bukti penyerahan di kapal",
+        "id": "Memberikan B/L atau dokumen freight sebagai bukti penyerahan di kapal",
         "en": "Provide B/L or transport document as proof of delivery on board"
       },
       {
@@ -453,7 +453,7 @@ export const INCOTERMS = [
         "en": "Nominate vessel and notify seller of vessel name and loading dates"
       },
       {
-        "id": "Bayar angkutan laut dan semua biaya mulai dari pemuatan dan seterusnya",
+        "id": "Bayar ocean freight dan semua biaya mulai dari pemuatan dan seterusnya",
         "en": "Pay ocean freight and all costs from loading onward"
       },
       {
@@ -470,7 +470,7 @@ export const INCOTERMS = [
       }
     ],
     "bestFor": {
-      "id": "Incoterm terpopuler untuk ekspor curah Indonesia (CPO, batu bara, karet). Standar angkutan laut tradisional.",
+      "id": "Incoterm terpopuler untuk ekspor curah Indonesia (CPO, batu bara, karet). Standar ocean freight tradisional.",
       "en": "The most popular Incoterm for Indonesian bulk exports (CPO, coal, rubber). Traditional sea freight standard."
     },
     "commonMistake": {
@@ -500,7 +500,7 @@ export const INCOTERMS = [
       "CFR"
     ],
     "confusionReason": {
-      "id": "FOB vs FCA: keduanya diserahkan kepada pihak pengangkut pembeli, namun FOB hanya berlaku di laut. FOB vs CFR: titik risiko yang sama, tetapi penjual CFR juga membayar ongkos angkut.",
+      "id": "FOB vs FCA: keduanya diserahkan kepada pihak carrier pembeli, namun FOB hanya berlaku di laut. FOB vs CFR: titik risiko yang sama, tetapi penjual CFR juga membayar ongkos angkut.",
       "en": "FOB vs FCA: both hand off to buyer's carrier, but FOB is sea-only. FOB vs CFR: same risk point, but CFR seller also pays freight."
     },
     "changes2020": {
@@ -519,7 +519,7 @@ export const INCOTERMS = [
   {
     "code": "CFR",
     "name": {
-      "id": "Biaya dan Pengangkutan",
+      "id": "Cost and Freight",
       "en": "Cost and Freight"
     },
     "group": "C",
@@ -538,7 +538,7 @@ export const INCOTERMS = [
     },
     "sellerObligations": [
       {
-        "id": "Muat barang ke kapal dan bayar angkutan laut ke pelabuhan tujuan",
+        "id": "Muat barang ke kapal dan bayar ocean freight ke pelabuhan tujuan",
         "en": "Load goods on board and pay ocean freight to destination port"
       },
       {
@@ -546,7 +546,7 @@ export const INCOTERMS = [
         "en": "Clear goods for EXPORT (PEB/NPE in Indonesia)"
       },
       {
-        "id": "Menyediakan dokumen pengangkutan (B/L) yang mencakup pengangkutan ke tujuan",
+        "id": "Menyediakan dokumen freight (B/L) yang mencakup freight ke tujuan",
         "en": "Provide transport document (B/L) covering carriage to destination"
       },
       {
@@ -634,7 +634,7 @@ export const INCOTERMS = [
   {
     "code": "CIF",
     "name": {
-      "id": "Biaya, Asuransi dan Pengangkutan",
+      "id": "Cost, Insurance and Freight",
       "en": "Cost, Insurance and Freight"
     },
     "group": "C",
@@ -653,7 +653,7 @@ export const INCOTERMS = [
     },
     "sellerObligations": [
       {
-        "id": "Muat barang ke kapal dan bayar angkutan laut ke pelabuhan tujuan",
+        "id": "Muat barang ke kapal dan bayar ocean freight ke pelabuhan tujuan",
         "en": "Load goods on board and pay ocean freight to destination port"
       },
       {
@@ -749,17 +749,17 @@ export const INCOTERMS = [
   {
     "code": "CPT",
     "name": {
-      "id": "Pengangkutan Dibayar Ke",
+      "id": "Carriage Paid To",
       "en": "Carriage Paid To"
     },
     "group": "C",
     "transport": "ANY",
     "riskTransfer": {
-      "id": "Saat barang diserahkan ke pengangkut pertama",
+      "id": "Saat barang diserahkan ke carrier pertama",
       "en": "When goods are handed to the first carrier"
     },
     "costTransfer": {
-      "id": "Penjual membayar pengangkutan ke tujuan yang disebutkan",
+      "id": "Penjual membayar freight ke tujuan yang disebutkan",
       "en": "Seller pays carriage to named destination"
     },
     "insurance": {
@@ -768,7 +768,7 @@ export const INCOTERMS = [
     },
     "sellerObligations": [
       {
-        "id": "Mengirimkan barang ke pengangkut pertama dan membayar pengangkutan ke tujuan",
+        "id": "Mengirimkan barang ke carrier pertama dan membayar freight ke tujuan",
         "en": "Deliver goods to the first carrier and pay carriage to destination"
       },
       {
@@ -776,7 +776,7 @@ export const INCOTERMS = [
         "en": "Clear goods for EXPORT"
       },
       {
-        "id": "Memberikan dokumen transportasi yang mencakup pengangkutan ke tujuan yang disepakati",
+        "id": "Memberikan dokumen transportasi yang mencakup freight ke tujuan yang disepakati",
         "en": "Provide transport document covering carriage to agreed destination"
       },
       {
@@ -790,7 +790,7 @@ export const INCOTERMS = [
     ],
     "buyerObligations": [
       {
-        "id": "Menanggung risiko dari pengiriman ke operator pertama (BUKAN dari tujuan!)",
+        "id": "Menanggung risiko dari pengiriman ke carrier pertama (BUKAN dari tujuan!)",
         "en": "Bear risk from delivery to first carrier (NOT from destination!)"
       },
       {
@@ -802,12 +802,12 @@ export const INCOTERMS = [
         "en": "Arrange and pay for insurance if desired (strongly recommended)"
       },
       {
-        "id": "Membayar pembongkaran di tempat tujuan kecuali termasuk dalam kontrak pengangkutan",
+        "id": "Membayar pembongkaran di tempat tujuan kecuali termasuk dalam kontrak freight",
         "en": "Pay for unloading at destination unless included in carriage contract"
       }
     ],
     "bestFor": {
-      "id": "Transportasi multimoda atau angkutan udara dimana penjual membayar biaya pengangkutan. CFR versi \"mode apa pun\".",
+      "id": "Transportasi multimoda atau angkutan udara dimana penjual membayar biaya freight. CFR versi \"mode apa pun\".",
       "en": "Multimodal transport or air freight where seller pays carriage. The \"any-mode\" version of CFR."
     },
     "commonMistake": {
@@ -821,15 +821,15 @@ export const INCOTERMS = [
       "en": "Jakarta electronics exporter ships via air freight CPT Munich airport. Seller pays airfreight, but risk transfers when goods are handed to the airline at Soekarno-Hatta. Buyer should insure."
     },
     "keyTrap": {
-      "id": "Seperti CFR, risiko dan biaya dibagi pada titik yang berbeda. Risiko berpindah ke pembeli di pihak pengangkut PERTAMA, meskipun penjual membayar seluruh biaya sampai ke tujuan.",
+      "id": "Seperti CFR, risiko dan biaya dibagi pada titik yang berbeda. Risiko berpindah ke pembeli di pihak carrier PERTAMA, meskipun penjual membayar seluruh biaya sampai ke tujuan.",
       "en": "Like CFR, risk and cost split at different points. Risk transfers to buyer at the FIRST carrier, even though seller pays all the way to destination."
     },
     "riskTransferPoint": {
-      "id": "Ketika barang dikirim ke pengangkut pertama (atau pengirim barang)",
+      "id": "Ketika barang dikirim ke carrier pertama (atau pengirim barang)",
       "en": "When goods are delivered to the first carrier (or freight forwarder)"
     },
     "costTransferPoint": {
-      "id": "Nama tujuan - penjual membayar biaya pengangkutan ke titik tersebut",
+      "id": "Nama tujuan - penjual membayar biaya freight ke titik tersebut",
       "en": "Named destination - seller pays carriage costs to that point"
     },
     "confusedWith": [
@@ -849,24 +849,24 @@ export const INCOTERMS = [
       "en": "Any mode of transport including multimodal. Use this instead of CFR when transport is not purely sea."
     },
     "insuranceDetail": {
-      "id": "Tidak ada kewajiban asuransi untuk penjual. Pembeli mempunyai risiko mulai dari pengangkut pertama dan seterusnya dan harus mempertimbangkan untuk mengatur asuransi kargo.",
+      "id": "Tidak ada kewajiban asuransi untuk penjual. Pembeli mempunyai risiko mulai dari carrier pertama dan seterusnya dan harus mempertimbangkan untuk mengatur asuransi kargo.",
       "en": "No insurance obligation for seller. Buyer is at risk from first carrier onward and should strongly consider arranging cargo insurance."
     }
   },
   {
     "code": "CIP",
     "name": {
-      "id": "Pengangkutan dan Asuransi Dibayar Kepada",
+      "id": "Carriage and Insurance Paid To",
       "en": "Carriage and Insurance Paid To"
     },
     "group": "C",
     "transport": "ANY",
     "riskTransfer": {
-      "id": "Saat barang diserahkan ke pengangkut pertama",
+      "id": "Saat barang diserahkan ke carrier pertama",
       "en": "When goods are handed to the first carrier"
     },
     "costTransfer": {
-      "id": "Penjual membayar pengangkutan DAN asuransi ke tujuan yang disebutkan",
+      "id": "Penjual membayar freight DAN asuransi ke tujuan yang disebutkan",
       "en": "Seller pays carriage AND insurance to named destination"
     },
     "insurance": {
@@ -875,7 +875,7 @@ export const INCOTERMS = [
     },
     "sellerObligations": [
       {
-        "id": "Mengirimkan barang ke pengangkut pertama dan membayar pengangkutan ke tujuan",
+        "id": "Mengirimkan barang ke carrier pertama dan membayar freight ke tujuan",
         "en": "Deliver goods to the first carrier and pay carriage to destination"
       },
       {
@@ -901,7 +901,7 @@ export const INCOTERMS = [
     ],
     "buyerObligations": [
       {
-        "id": "Menanggung risiko dari pengiriman ke operator pertama",
+        "id": "Menanggung risiko dari pengiriman ke carrier pertama",
         "en": "Bear risk from delivery to first carrier"
       },
       {
@@ -909,7 +909,7 @@ export const INCOTERMS = [
         "en": "Handle import customs clearance at destination"
       },
       {
-        "id": "Membayar pembongkaran di tempat tujuan kecuali termasuk dalam kontrak pengangkutan",
+        "id": "Membayar pembongkaran di tempat tujuan kecuali termasuk dalam kontrak freight",
         "en": "Pay for unloading at destination unless included in carriage contract"
       }
     ],
@@ -932,11 +932,11 @@ export const INCOTERMS = [
       "en": "CIP 2020 requires ICC Clause A (all-risks) - this is a HIGHER standard than CIF which only requires ICC Clause C (basic). Many people don't know about this 2020 change."
     },
     "riskTransferPoint": {
-      "id": "Saat barang dikirim ke pengangkut pertama (sama seperti CPT)",
+      "id": "Saat barang dikirim ke carrier pertama (sama seperti CPT)",
       "en": "When goods are delivered to the first carrier (same as CPT)"
     },
     "costTransferPoint": {
-      "id": "Nama tujuan - penjual membayar pengangkutan + asuransi semua risiko ke titik tersebut",
+      "id": "Nama tujuan - penjual membayar freight + asuransi semua risiko ke titik tersebut",
       "en": "Named destination - seller pays carriage + all-risk insurance to that point"
     },
     "confusedWith": [
@@ -962,7 +962,7 @@ export const INCOTERMS = [
   {
     "code": "DAP",
     "name": {
-      "id": "Dikirim di Tempat",
+      "id": "Delivered at Place",
       "en": "Delivered at Place"
     },
     "group": "D",
@@ -1073,7 +1073,7 @@ export const INCOTERMS = [
   {
     "code": "DPU",
     "name": {
-      "id": "Diantar di Tempat Dibongkar",
+      "id": "Delivered at Place Unloaded",
       "en": "Delivered at Place Unloaded"
     },
     "group": "D",
@@ -1149,7 +1149,7 @@ export const INCOTERMS = [
       "en": "DPU is the ONLY D-term requiring seller to unload. If the seller cannot arrange unloading (crane, forklift, labor) at the buyer's location, do not use DPU - use DAP instead."
     },
     "riskTransferPoint": {
-      "id": "Setelah barang diturunkan dari alat pengangkut yang tiba di tempat tujuan yang ditentukan",
+      "id": "Setelah barang diturunkan dari alat carrier yang tiba di tempat tujuan yang ditentukan",
       "en": "After goods are unloaded from the arriving means of transport at the named destination"
     },
     "costTransferPoint": {
@@ -1180,7 +1180,7 @@ export const INCOTERMS = [
   {
     "code": "DDP",
     "name": {
-      "id": "Tugas Dikirim Dibayar",
+      "id": "Delivered Duty Paid",
       "en": "Delivered Duty Paid"
     },
     "group": "D",
@@ -1207,7 +1207,7 @@ export const INCOTERMS = [
         "en": "Bear ALL risks and ALL costs door-to-door"
       },
       {
-        "id": "Menangani izin EKSPOR di negara asal (PEB)",
+        "id": "Menangani clearance ekspor di negara asal (PEB)",
         "en": "Handle EXPORT clearance in origin country (PEB)"
       },
       {
@@ -1260,7 +1260,7 @@ export const INCOTERMS = [
       "en": "At the named destination, when goods are at buyer's disposal, cleared for import and ready for unloading"
     },
     "costTransferPoint": {
-      "id": "Penjual membayar SEMUANYA: transportasi, asuransi, izin ekspor, izin impor, bea, pajak. Pembeli hanya membayar bongkar.",
+      "id": "Penjual membayar SEMUANYA: transportasi, asuransi, clearance ekspor, izin impor, bea, pajak. Pembeli hanya membayar bongkar.",
       "en": "Seller pays EVERYTHING: transport, insurance, export clearance, import clearance, duties, taxes. Buyer pays only unloading."
     },
     "confusedWith": [
