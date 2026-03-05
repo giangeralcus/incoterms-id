@@ -1,26 +1,29 @@
 import { useEffect } from 'react'
 import { Outlet, NavLink } from 'react-router-dom'
-import { Ship, BookOpen, Gamepad2, GitBranch, BarChart3, Calculator, Instagram } from 'lucide-react'
+import { Ship, BookOpen, Gamepad2, GitBranch, BarChart3, Calculator, Instagram, Globe } from 'lucide-react'
 import useGameStore from '../../stores/gameStore'
 import useLanguageStore from '../../stores/languageStore'
 import { translations as T, t } from '../../i18n/translations'
+
+const BRAND_MOTTO = 'powering your knowledge in supply chain'
+const KNOWLEDGE_HUB_NAME = 'GATEWAY PRIMA INDONUSA Knowledge Hub'
 
 const SEO_BY_LANG = {
   id: {
     htmlLang: 'id',
     ogLocale: 'id_ID',
-    title: 'incoterms.id — Simulator Incoterms 2020',
-    description: 'Simulator interaktif Incoterms 2020 untuk belajar ekspor impor Indonesia. 26 skenario nyata, kalkulator pajak impor, dan tracking progress.',
-    ogDescription: 'Simulator interaktif untuk belajar Incoterms 2020, ekspor impor Indonesia. 26 skenario nyata, drag & drop, kalkulator pajak.',
-    twitterDescription: 'Simulator interaktif Incoterms 2020 untuk freight forwarding Indonesia.',
+    title: 'incoterms.id — Simulator Incoterms 2020 | Powering your knowledge in supply chain',
+    description: 'Simulator interaktif Incoterms 2020 untuk belajar ekspor impor Indonesia. 26 skenario nyata, kalkulator pajak impor, dan tracking progress. Powering your knowledge in supply chain.',
+    ogDescription: 'Simulator interaktif untuk belajar Incoterms 2020, ekspor impor Indonesia. 26 skenario nyata, drag & drop, kalkulator pajak. Powering your knowledge in supply chain.',
+    twitterDescription: 'Simulator interaktif Incoterms 2020 untuk freight forwarding Indonesia. Powering your knowledge in supply chain.',
   },
   en: {
     htmlLang: 'en',
     ogLocale: 'en_US',
-    title: 'incoterms.id — Incoterms 2020 Learning Simulator',
-    description: 'Interactive Incoterms 2020 simulator for Indonesian export-import learning. 26 real scenarios, import tax calculator, and progress tracking.',
-    ogDescription: 'Interactive simulator to learn Incoterms 2020 and Indonesian export-import basics. 26 real scenarios, drag and drop exercises, and tax tools.',
-    twitterDescription: 'Interactive Incoterms 2020 simulator for Indonesian trade learning.',
+    title: 'incoterms.id — Incoterms 2020 Learning Simulator | Powering your knowledge in supply chain',
+    description: 'Interactive Incoterms 2020 simulator for Indonesian export-import learning. 26 real scenarios, import tax calculator, and progress tracking. Powering your knowledge in supply chain.',
+    ogDescription: 'Interactive simulator to learn Incoterms 2020 and Indonesian export-import basics. 26 real scenarios, drag and drop exercises, and tax tools. Powering your knowledge in supply chain.',
+    twitterDescription: 'Interactive Incoterms 2020 simulator for Indonesian trade learning. Powering your knowledge in supply chain.',
   },
 }
 
@@ -38,15 +41,17 @@ function buildKnowledgeGraph(lang, seo) {
       {
         '@type': 'Organization',
         '@id': 'https://incoterms.id/#organization',
-        name: 'incoterms.id',
+        name: KNOWLEDGE_HUB_NAME,
+        alternateName: 'incoterms.id',
         url: 'https://incoterms.id/',
+        slogan: BRAND_MOTTO,
         logo: {
           '@type': 'ImageObject',
           url: 'https://incoterms.id/og-cover.jpg',
         },
         sameAs: [
           'https://www.instagram.com/giangeralcus/',
-          'https://www.instagram.com/gatewayprimaindonusa/',
+          'https://gpindo.co.id/',
         ],
       },
       {
@@ -54,6 +59,8 @@ function buildKnowledgeGraph(lang, seo) {
         '@id': 'https://incoterms.id/#website',
         url: 'https://incoterms.id/',
         name: 'incoterms.id',
+        alternateName: KNOWLEDGE_HUB_NAME,
+        slogan: BRAND_MOTTO,
         description: seo.description,
         inLanguage: seo.htmlLang,
         publisher: {
@@ -166,16 +173,20 @@ export default function Layout() {
       </main>
 
       {/* Footer */}
-      <div className="mx-3 sm:mx-6 mb-2 rounded-2xl border border-[#00000010] bg-[rgba(255,255,255,0.72)] backdrop-blur-xl px-3 py-2.5 flex items-center justify-center gap-3 text-[11px] sm:text-xs text-[#6e6e73]">
+      <div className="mx-3 sm:mx-6 mb-2 rounded-2xl border border-[#00000010] bg-[rgba(255,255,255,0.72)] backdrop-blur-xl px-3 py-2.5 flex flex-wrap items-center justify-center gap-3 text-[11px] sm:text-xs text-[#6e6e73]">
         <a href="https://www.instagram.com/giangeralcus/" target="_blank" rel="noopener noreferrer" aria-label="giangeralcus Instagram" className="hover:text-primary transition-colors flex items-center gap-1">
           <Instagram className="w-3.5 h-3.5" />
           <span>@giangeralcus</span>
         </a>
         <span>·</span>
-        <a href="https://www.instagram.com/gatewayprimaindonusa/" target="_blank" rel="noopener noreferrer" aria-label="GPIndo Instagram" className="hover:text-primary transition-colors flex items-center gap-1">
-          <Instagram className="w-3.5 h-3.5" />
-          <span>@gatewayprimaindonusa</span>
+        <a href="https://gpindo.co.id/" target="_blank" rel="noopener noreferrer" aria-label="GPIndo website" className="hover:text-primary transition-colors flex items-center gap-1">
+          <Globe className="w-3.5 h-3.5" />
+          <span>gpindo.co.id</span>
         </a>
+        <span>·</span>
+        <span>{KNOWLEDGE_HUB_NAME}</span>
+        <span>·</span>
+        <span>incoterms.id — {BRAND_MOTTO}</span>
         <span>·</span>
         <span>
           Made by{' '}
