@@ -1,17 +1,56 @@
+import { useEffect } from 'react'
 import { Outlet, NavLink } from 'react-router-dom'
-import { Ship, BookOpen, Gamepad2, GitBranch, BarChart3, Instagram } from 'lucide-react'
+import { Ship, BookOpen, Gamepad2, GitBranch, BarChart3, Calculator, Instagram } from 'lucide-react'
 import useGameStore from '../../stores/gameStore'
 import useLanguageStore from '../../stores/languageStore'
 import { translations as T, t } from '../../i18n/translations'
+
+const SEO_BY_LANG = {
+  id: {
+    htmlLang: 'id',
+    ogLocale: 'id_ID',
+    title: 'incoterms.id — Simulator Incoterms 2020',
+    description: 'Simulator interaktif Incoterms 2020 untuk belajar ekspor impor Indonesia. 26 skenario nyata, kalkulator pajak impor, dan tracking progress.',
+    ogDescription: 'Simulator interaktif untuk belajar Incoterms 2020, ekspor impor Indonesia. 26 skenario nyata, drag & drop, kalkulator pajak.',
+    twitterDescription: 'Simulator interaktif Incoterms 2020 untuk freight forwarding Indonesia.',
+  },
+  en: {
+    htmlLang: 'en',
+    ogLocale: 'en_US',
+    title: 'incoterms.id — Incoterms 2020 Learning Simulator',
+    description: 'Interactive Incoterms 2020 simulator for Indonesian export-import learning. 26 real scenarios, import tax calculator, and progress tracking.',
+    ogDescription: 'Interactive simulator to learn Incoterms 2020 and Indonesian export-import basics. 26 real scenarios, drag and drop exercises, and tax tools.',
+    twitterDescription: 'Interactive Incoterms 2020 simulator for Indonesian trade learning.',
+  },
+}
+
+function setMeta(selector, content) {
+  const element = document.querySelector(selector)
+  if (!element) return
+  element.setAttribute('content', content)
+}
 
 export default function Layout() {
   const { score, streak } = useGameStore()
   const { lang, toggleLang } = useLanguageStore()
 
+  useEffect(() => {
+    const seo = SEO_BY_LANG[lang] || SEO_BY_LANG.id
+    document.documentElement.lang = seo.htmlLang
+    document.title = seo.title
+    setMeta('meta[name="description"]', seo.description)
+    setMeta('meta[property="og:title"]', seo.title)
+    setMeta('meta[property="og:description"]', seo.ogDescription)
+    setMeta('meta[property="og:locale"]', seo.ogLocale)
+    setMeta('meta[name="twitter:title"]', seo.title)
+    setMeta('meta[name="twitter:description"]', seo.twitterDescription)
+  }, [lang])
+
   const navItems = [
     { to: '/', icon: Ship, label: t(T.nav.home, lang) },
     { to: '/learn', icon: BookOpen, label: t(T.nav.learn, lang) },
     { to: '/scenario', icon: Gamepad2, label: t(T.nav.play, lang) },
+    { to: '/cost-simulator', icon: Calculator, label: t(T.nav.costs, lang) },
     { to: '/pipeline', icon: GitBranch, label: t(T.nav.pipeline, lang) },
     { to: '/progress', icon: BarChart3, label: t(T.nav.progress, lang) },
   ]
@@ -58,14 +97,14 @@ export default function Layout() {
       </div>
 
       {/* Bottom Navigation (mobile) */}
-      <nav className="bg-white border-t border-gray-200 flex justify-around py-2 sm:py-3">
+      <nav className="bg-white border-t border-gray-200 grid grid-cols-6 py-2 sm:py-3">
         {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink
             key={to}
             to={to}
             end={to === '/'}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition-colors text-xs ${
+              `flex flex-col items-center gap-0.5 px-1 py-1 rounded-lg transition-colors text-[10px] sm:text-xs ${
                 isActive
                   ? 'text-primary font-semibold'
                   : 'text-gray-400 hover:text-gray-600'

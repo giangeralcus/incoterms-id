@@ -113,7 +113,7 @@ function NodeCircle({ stage, role, isRiskPoint, isCostPoint, incoterm }) {
   )
 }
 
-function ConnectorLine({ fromRole, toRole, incoterm }) {
+function ConnectorLine({ fromRole }) {
   // Color the connector by the "from" node's responsibility
   const color =
     fromRole === 'seller'
@@ -149,8 +149,6 @@ function PipelineRow({ stages, pipeline, incoterm }) {
 
         // Connector line after each node except the last in this row
         const showConnector = i < stages.length - 1
-        const nextStage = showConnector ? stages[i + 1] : null
-        const nextRole = nextStage ? getNodeRole(nextStage.x, pipeline) : null
 
         return (
           <div key={stage.id} className="contents">
@@ -162,12 +160,10 @@ function PipelineRow({ stages, pipeline, incoterm }) {
               incoterm={incoterm}
             />
             {showConnector && (
-              <ConnectorLine
-                fromRole={role}
-                toRole={nextRole}
-                incoterm={incoterm}
-              />
-            )}
+                <ConnectorLine
+                  fromRole={role}
+                />
+              )}
           </div>
         )
       })}
@@ -198,8 +194,6 @@ export default function PipelineVisualization({ incoterm = 'FOB' }) {
             const isRiskPoint = pipeline.risk === stage.x
             const isCostPoint = pipeline.cost === stage.x
             const showConnector = i < PIPELINE_STAGES.length - 1
-            const nextStage = showConnector ? PIPELINE_STAGES[i + 1] : null
-            const nextRole = nextStage ? getNodeRole(nextStage.x, pipeline) : null
 
             return (
               <div key={stage.id} className="contents">
@@ -213,8 +207,6 @@ export default function PipelineVisualization({ incoterm = 'FOB' }) {
                 {showConnector && (
                   <ConnectorLine
                     fromRole={role}
-                    toRole={nextRole}
-                    incoterm={incoterm}
                   />
                 )}
               </div>

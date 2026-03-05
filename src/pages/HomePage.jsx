@@ -13,7 +13,7 @@ import { computeAllBadges } from '../data/badges'
 const LEVEL_ICONS = { Anchor, Compass, Shield, Ship, Star, Crown, Trophy, Gem }
 
 export default function HomePage() {
-  const { score, totalCorrect, totalAttempted, scenariosCompleted } = useGameStore()
+  const { score, totalCorrect, totalAttempted } = useGameStore()
   const { lang } = useLanguageStore()
   const accuracy = totalAttempted > 0 ? Math.round((totalCorrect / totalAttempted) * 100) : 0
   const gameState = useGameStore.getState()
