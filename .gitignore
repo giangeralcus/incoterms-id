@@ -23,7 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .env.local
-scripts/
+scripts/*
+!scripts/lint-id-copy.mjs
 
 .vercel
 HANDOVER*.md

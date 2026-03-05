@@ -1299,7 +1299,7 @@ export const SCENARIOS = [
       "CFR"
     ],
     "explanation": {
-      "id": "CFR Tokyo benar. Penjual mengatur pengiriman karena slot reefer dari Makassar langka -- eksportir mempunyai hubungan dengan carrier. Namun pembeli Jepang mengasuransikan secara terpisah dengan cakupan komprehensif termasuk kerusakan reefer dan pembusukan (standar CIF hanya mensyaratkan ICC-C minimum yang TIDAK TERMASUK kerusakan reefer). Jebakan utama: di bawah CFR, penjual MEMBAYAR ongkos angkut tetapi risiko beralih di pelabuhan muat. Jika udang tiba dalam keadaan dicairkan, itu risiko pembeli.",
+      "id": "CFR Tokyo benar. Penjual mengatur pengiriman karena slot reefer dari Makassar langka -- eksportir mempunyai hubungan dengan carrier. Namun pembeli Jepang mengasuransikan secara terpisah dengan cakupan komprehensif termasuk kerusakan reefer dan pembusukan (standar CIF hanya mensyaratkan ICC-C minimum yang tidak mencakup kerusakan reefer). Jebakan utama: di bawah CFR, penjual membayar ongkos angkut tetapi risiko beralih di pelabuhan muat. Jika udang tiba dalam keadaan dicairkan, itu risiko pembeli.",
       "en": "CFR Tokyo is correct. The seller arranges freight because reefer slots from Makassar are scarce -- the exporter has carrier relationships. But the Japanese buyer insures separately with comprehensive coverage including reefer breakdown and spoilage (standard CIF only requires minimum ICC-C which EXCLUDES reefer breakdown). Key trap: under CFR, seller PAYS freight but RISK transfers at loading port. If shrimp arrives thawed, it's the buyer's risk."
     },
     "hints": [

@@ -6,6 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "lint:copy": "node scripts/lint-id-copy.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
