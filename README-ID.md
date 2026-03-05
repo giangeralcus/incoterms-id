@@ -12,8 +12,9 @@ Simulator interaktif untuk belajar Incoterms 2020 & ekspor-impor Indonesia. Bela
 
 - **Pelajari Incoterms 2020** - 11 aturan lengkap dengan panduan visual, kewajiban penjual/pembeli, titik transfer risiko/biaya, dan contoh perdagangan Indonesia
 - **Main Skenario** - Pilih Incoterm yang tepat untuk 26 skenario pengiriman nyata dari/ke Indonesia (pemula, menengah, lanjutan)
+- **Pipeline Explorer + Game** - Visualisasikan 9 tahap alur supply chain dan main tantangan placement bendera risiko/biaya di halaman `/pipeline`
 - **Simulator Biaya** - Bandingkan biaya penjual vs pembeli + Kalkulator Pajak Impor Indonesia (BM, PPh22, PPN, PPnBM)
-- **Progres Saya** - Pantau penguasaan per Incoterm, akurasi, streak, dan skor
+- **Progres Saya** - Pantau penguasaan, level XP, badges, akurasi, streak, dan skor (semua lokal di localStorage)
 - **Dwibahasa** - Tersedia dalam Bahasa Indonesia dan English, bisa diganti kapan saja lewat tombol di header
 
 ## Preview

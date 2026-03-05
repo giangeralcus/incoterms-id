@@ -12,8 +12,9 @@ Interactive Incoterms 2020 & Export-Import Simulator Game. Learn Indonesian frei
 
 - **Learn Incoterms 2020** - All 11 rules with visual guides, obligations, risk/cost transfer points, and Indonesian trade context
 - **Play Scenarios** - Pick the correct Incoterm for 26 real-world shipping scenarios from/to Indonesia (beginner, intermediate, advanced)
+- **Pipeline Explorer + Game** - Visualize 9-stage supply-chain flow and play risk/cost flag placement challenges on `/pipeline`
 - **Cost Simulator** - Compare seller vs buyer costs across Incoterms + Indonesian Import Tax Calculator (BM, PPh22, PPN, PPnBM)
-- **Progress Tracking** - Track mastery per Incoterm, accuracy, streaks, and scores
+- **Progress Tracking** - Track mastery, XP levels, badges, accuracy, streaks, and score (all local, persisted in localStorage)
 - **Bilingual** - Available in Indonesian and English, switchable anytime via header toggle
 
 ## Preview
