@@ -173,7 +173,7 @@ export const SCENARIOS = [
       "FCA"
     ],
     "explanation": {
-      "id": "FCA Denpasar benar karena penjual mengirimkan barang ke gudang freight forwarder -- bukan langsung ke kapal. Untuk kargo LCL, barang digabungkan dengan pengiriman lainnya, sehingga FOB (yang berarti pemuatan di kapal) tidak berlaku. ICC merekomendasikan FCA untuk semua LCL dan kargo kontainer. EXW akan memaksa pembeli Australia untuk menangani clearance ekspor Indonesia, yang mana hal ini tidak mungkin dilakukan.",
+      "id": "FCA Denpasar benar karena penjual mengirimkan barang ke gudang freight forwarder -- bukan langsung ke kapal. Untuk kargo LCL, barang digabungkan dengan pengiriman lainnya, sehingga FOB (yang berarti pemuatan di kapal) tidak berlaku. ICC merekomendasikan FCA untuk semua LCL dan kargo kontainer. EXW akan memaksa pembeli Australia untuk menangani clearance ekspor Indonesia, yang secara praktik hampir tidak mungkin dilakukan.",
       "en": "FCA Denpasar is correct because the seller delivers goods to a freight forwarder's warehouse -- not directly onto a vessel. For LCL cargo, goods are consolidated with other shipments, so FOB (which implies loading on board) does not apply. ICC recommends FCA for all LCL and container cargo. EXW would force the Australian buyer to handle Indonesian export clearance, which is not possible."
     },
     "hints": [
@@ -239,7 +239,7 @@ export const SCENARIOS = [
       "FOB"
     ],
     "explanation": {
-      "id": "FOB Jakarta benar. Titik FOB harus merupakan pelabuhan muat internasional yang sebenarnya (Tanjung Priok), bukan pulau asal (Bangka). Pembeli asal Vietnam mengatur freight di jalur pendek Jakarta-HCMC. Menggunakan \"FOB Pangkal Pinang\" adalah tindakan yang salah -- tidak ada layanan kontainer internasional dari Bangka.",
+      "id": "FOB Jakarta benar. Titik FOB harus merupakan pelabuhan muat internasional yang sebenarnya (Tanjung Priok), bukan pulau asal (Bangka). Pembeli asal Vietnam mengatur freight di jalur pendek Jakarta-HCMC. Menggunakan \"FOB Pangkal Pinang\" adalah keliru -- tidak ada layanan kontainer internasional dari Bangka.",
       "en": "FOB Jakarta is correct. The FOB point must be the actual international loading port (Tanjung Priok), not the origin island (Bangka). The Vietnamese buyer arranges freight on the short Jakarta-HCMC lane. Using \"FOB Pangkal Pinang\" would be wrong -- there is no international container service from Bangka."
     },
     "hints": [
@@ -306,7 +306,7 @@ export const SCENARIOS = [
       "CIP"
     ],
     "explanation": {
-      "id": "CIF Jakarta paling praktis bagi importir e-commerce kecil. Pemasok Shenzhen menangani freight dan asuransi -- mereka dikelilingi oleh ratusan freight forwarder dan mendapatkan tarif LCL yang kompetitif. Pembeli Indonesia hanya menangani bea cukai impor (yang memerlukan lisensi API). Jangan pernah menggunakan DDP di sini -- Pemasok Tiongkok yang menawarkan \"DDP dari pintu ke pintu\" sering kali menggunakan kurir saluran abu-abu yang mendeklarasikan barang secara tidak benar.",
+      "id": "CIF Jakarta paling praktis bagi importir e-commerce kecil. Pemasok Shenzhen menangani freight dan asuransi -- mereka dikelilingi oleh ratusan freight forwarder dan mendapatkan tarif LCL yang kompetitif. Pembeli Indonesia hanya menangani bea cukai impor (yang memerlukan lisensi API). Jangan pernah menggunakan DDP di sini -- Pemasok Tiongkok yang menawarkan \"DDP dari pintu ke pintu\" sering kali menggunakan kurir jalur abu-abu yang mendeklarasikan barang secara tidak benar.",
       "en": "CIF Jakarta is most practical for small e-commerce importers. The Shenzhen supplier handles freight and insurance -- they are surrounded by hundreds of freight forwarders and get competitive LCL rates. The Indonesian buyer only handles import customs (which requires API license). Never use DDP here -- Chinese suppliers offering \"DDP door-to-door\" often use grey-channel couriers that improperly declare goods."
     },
     "hints": [
@@ -319,7 +319,7 @@ export const SCENARIOS = [
         "en": "This is a small e-commerce importer buying from Alibaba"
       },
       {
-        "id": "Pembeli hanya perlu melewati bea cukai di pihak mereka",
+        "id": "Pembeli hanya perlu melewati bea cukai di negara tujuan",
         "en": "The buyer just needs to clear customs on their end"
       }
     ],
@@ -329,7 +329,7 @@ export const SCENARIOS = [
         "en": "CIF is the simplest term for small importers -- one all-inclusive price"
       },
       {
-        "id": "Waspadalah terhadap tawaran \"DDP\" dari Alibaba -- sering kali berarti kurir saluran abu-abu",
+        "id": "Waspadalah terhadap tawaran \"DDP\" dari Alibaba -- sering kali berarti kurir jalur abu-abu",
         "en": "Beware of \"DDP\" offers from Alibaba -- often means grey-channel courier"
       },
       {
@@ -612,7 +612,7 @@ export const SCENARIOS = [
       "en": "Arabica Coffee to Hamburg"
     },
     "description": {
-      "id": "Seorang eksportir kopi Surabaya mengirimkan 1x20GP (320 kantong, 19.200 kg) Arabika kualitas Mandheling ke roaster spesialti Jerman. Sang pemanggang membeli dari 8 negara asal dan menggunakan satu penyedia logistik untuk semua pengiriman masuk. Kopi itu berat -- kopi mencapai batas berat kontainer sebelum memenuhi volumenya.",
+      "id": "Seorang eksportir kopi Surabaya mengirimkan 1x20GP (320 kantong, 19.200 kg) Arabika kualitas Mandheling ke roaster spesialti Jerman. Roaster tersebut membeli dari 8 negara asal dan menggunakan satu penyedia logistik untuk semua pengiriman masuk. Kopi itu berat -- kopi mencapai batas berat kontainer sebelum memenuhi volumenya.",
       "en": "A Surabaya coffee exporter ships 1x20GP (320 bags, 19,200 kg) of Mandheling grade Arabica to a German specialty roaster. The roaster buys from 8 origin countries and uses one logistics provider for all inbound shipments. Coffee is heavy -- it hits the container weight limit before filling the volume."
     },
     "commodity": {
@@ -637,12 +637,12 @@ export const SCENARIOS = [
       "FOB"
     ],
     "explanation": {
-      "id": "FOB Surabaya adalah standar perdagangan kopi global. Para roaster kopi dan pedagang di Eropa mempunyai pengaturan pengaturan freight mereka sendiri. Spread FOB-CIF pada rute ini adalah USD 2.900+ per kontainer -- pembeli Eropa ingin mengendalikan biaya ini. FCA secara teknis lebih tepat untuk kontainer, namun industri kopi global (termasuk European Contract for Coffee / ECC) menggunakan FOB.",
+      "id": "FOB Surabaya adalah standar perdagangan kopi global. Para roaster kopi dan pedagang di Eropa punya pengaturan freight mereka sendiri. Spread FOB-CIF pada rute ini adalah USD 2.900+ per kontainer -- pembeli Eropa ingin mengendalikan biaya ini. FCA secara teknis lebih tepat untuk kontainer, namun industri kopi global (termasuk European Contract for Coffee / ECC) menggunakan FOB.",
       "en": "FOB Surabaya is the global coffee trade standard. European roasters and traders have their own freight arrangements. The FOB-CIF spread on this route is USD 2,900+ per container -- European buyers want to control this cost. FCA is technically more precise for containers, but the global coffee industry (including European Contract for Coffee / ECC) uses FOB."
     },
     "hints": [
       {
-        "id": "Pemanggang Jerman membeli dari 8 negara dengan satu penyedia logistik",
+        "id": "Roaster Jerman membeli dari 8 negara dengan satu penyedia logistik",
         "en": "The German roaster buys from 8 countries with one logistics provider"
       },
       {
@@ -650,7 +650,7 @@ export const SCENARIOS = [
         "en": "The coffee industry has a specific trade convention for pricing"
       },
       {
-        "id": "Kopi itu kental -- 20GP lebih disukai daripada 40GP karena batasan berat",
+        "id": "Densitas kopi tinggi -- 20GP lebih disukai daripada 40GP karena batasan berat",
         "en": "Coffee is dense -- 20GP preferred over 40GP due to weight limits"
       }
     ],
@@ -1299,7 +1299,7 @@ export const SCENARIOS = [
       "CFR"
     ],
     "explanation": {
-      "id": "CFR Tokyo benar. Penjual mengatur pengiriman karena slot reefer dari Makassar langka -- eksportir mempunyai hubungan dengan carrier. Namun pembeli Jepang mengasuransikan secara terpisah dengan cakupan komprehensif termasuk kerusakan reefer dan pembusukan (standar CIF hanya mensyaratkan ICC-C minimum yang TIDAK TERMASUK kerusakan reefer). Jebakan utama: di bawah CFR, penjual MEMBAYAR ongkos angkut tetapi RISIKO ditransfer di pelabuhan muat. Jika udang tiba dalam keadaan dicairkan, itu risiko pembeli.",
+      "id": "CFR Tokyo benar. Penjual mengatur pengiriman karena slot reefer dari Makassar langka -- eksportir mempunyai hubungan dengan carrier. Namun pembeli Jepang mengasuransikan secara terpisah dengan cakupan komprehensif termasuk kerusakan reefer dan pembusukan (standar CIF hanya mensyaratkan ICC-C minimum yang TIDAK TERMASUK kerusakan reefer). Jebakan utama: di bawah CFR, penjual MEMBAYAR ongkos angkut tetapi risiko beralih di pelabuhan muat. Jika udang tiba dalam keadaan dicairkan, itu risiko pembeli.",
       "en": "CFR Tokyo is correct. The seller arranges freight because reefer slots from Makassar are scarce -- the exporter has carrier relationships. But the Japanese buyer insures separately with comprehensive coverage including reefer breakdown and spoilage (standard CIF only requires minimum ICC-C which EXCLUDES reefer breakdown). Key trap: under CFR, seller PAYS freight but RISK transfers at loading port. If shrimp arrives thawed, it's the buyer's risk."
     },
     "hints": [
@@ -1318,7 +1318,7 @@ export const SCENARIOS = [
     ],
     "learningPoints": [
       {
-        "id": "CFR = penjual membayar ongkos angkut, tetapi risiko ditransfer di pelabuhan asal pemuatan",
+        "id": "CFR = penjual membayar ongkos angkut, tetapi risiko beralih di pelabuhan asal pemuatan",
         "en": "CFR = seller pays freight, but risk transfers at origin port loading"
       },
       {
@@ -1406,7 +1406,7 @@ export const SCENARIOS = [
       "en": "CNC Machinery from Shanghai (Heavy Lift)"
     },
     "description": {
-      "id": "Sebuah pabrik UKM di Jakarta mengimpor satu mesin penggilingan CNC (12 ton, tinggi 3,2 m, USD 320,000) dari Shanghai. Pabrikan Tiongkok ini telah mengirimkan 200+ alat berat ke seluruh dunia dengan freight forwarder heavy-lift khusus. Pembeli Indonesia belum pernah mengimpor apa pun sebelumnya. Mesin tidak muat dalam kontainer standar.",
+      "id": "Sebuah pabrik UKM di Jakarta mengimpor satu mesin penggilingan CNC (12 ton, tinggi 3,2 m, USD 320,000) dari Shanghai. Pabrikan Tiongkok ini telah mengirimkan 200+ alat berat ke seluruh dunia dengan freight forwarder heavy-lift khusus. Pembeli Indonesia belum pernah melakukan impor sebelumnya. Mesin tidak muat dalam kontainer standar.",
       "en": "A Jakarta SME factory imports a single CNC milling machine (12 tons, 3.2m tall, USD 320,000) from Shanghai. The Chinese manufacturer has shipped 200+ machines worldwide with specialized heavy-lift forwarders. The Indonesian buyer has never imported anything before. The machine does not fit in a standard container."
     },
     "commodity": {
@@ -1440,7 +1440,7 @@ export const SCENARIOS = [
         "en": "The Chinese manufacturer has shipped 200 machines worldwide"
       },
       {
-        "id": "Pembeli Indonesia belum pernah mengimpor apa pun sebelumnya",
+        "id": "Pembeli Indonesia belum pernah melakukan impor sebelumnya",
         "en": "The Indonesian buyer has never imported anything before"
       },
       {
@@ -1497,7 +1497,7 @@ export const SCENARIOS = [
       "CIF"
     ],
     "explanation": {
-      "id": "CIF Jakarta benar. Produsen bahan kimia Eropa memiliki logistik khusus DG: gudang bersertifikat, armada tangki ISO, dan kontrak dengan carrier yang menerima DG. Pembeli Indonesia tidak dapat mengatur pengiriman DG dari Eropa -- tidak semua perusahaan pelayaran menerima IMO Kelas 8 di semua rute. DAP menggiurkan namun salah: Ditjen Bea Cukai memerlukan izin B3 Indonesia dari Kementerian Lingkungan Hidup (KLHK). Hanya importir lokal yang dapat memperolehnya.",
+      "id": "CIF Jakarta benar. Produsen bahan kimia Eropa memiliki logistik khusus DG: gudang bersertifikat, armada tangki ISO, dan kontrak dengan carrier yang menerima DG. Pembeli Indonesia tidak dapat mengatur pengiriman DG dari Eropa -- tidak semua perusahaan pelayaran menerima IMO Kelas 8 di semua rute. DAP terlihat menarik, tetapi kurang tepat: Ditjen Bea Cukai memerlukan izin B3 Indonesia dari Kementerian Lingkungan Hidup (KLHK). Hanya importir lokal yang dapat memperolehnya.",
       "en": "CIF Jakarta is correct. European chemical manufacturers have specialized DG logistics: certified warehouses, ISO tank fleets, and contracts with DG-accepting carriers. The Indonesian buyer cannot arrange DG freight from Europe -- not all shipping lines accept IMO Class 8 on all routes. DAP is tempting but wrong: DG customs clearance requires Indonesian B3 permits from the Ministry of Environment (KLHK). Only the local importer can obtain these."
     },
     "hints": [
@@ -1630,7 +1630,7 @@ export const SCENARIOS = [
       "CIF"
     ],
     "explanation": {
-      "id": "CIF Jakarta benar. Produsen API India mendominasi pasokan global dan telah menetapkan kontrak freight. Pembeli Indonesia berfokus pada kepatuhan terhadap peraturan -- registrasi BPOM, verifikasi GMP, Sertifikat Analisis tingkat batch. DAP memang menggiurkan, namun salah: izin LARTAS di bea cukai memerlukan izin impor obat-obatan yang hanya dimiliki oleh importir Indonesia. Izin LARTAS dapat memakan waktu 2-3 minggu, jadi rencanakan biaya penyimpanan di pelabuhan.",
+      "id": "CIF Jakarta benar. Produsen API India mendominasi pasokan global dan telah menetapkan kontrak freight. Pembeli Indonesia berfokus pada kepatuhan terhadap peraturan -- registrasi BPOM, verifikasi GMP, Sertifikat Analisis tingkat batch. DAP terlihat menarik, tetapi kurang tepat: izin LARTAS di bea cukai memerlukan izin impor obat-obatan yang hanya dimiliki oleh importir Indonesia. Izin LARTAS dapat memakan waktu 2-3 minggu, jadi rencanakan biaya penyimpanan di pelabuhan.",
       "en": "CIF Jakarta is correct. Indian API manufacturers dominate global supply and have established freight contracts. The Indonesian buyer focuses on regulatory compliance -- BPOM registration, GMP verification, batch-level Certificate of Analysis. DAP is tempting but wrong: LARTAS clearance at customs requires pharmaceutical import licenses that only the Indonesian importer holds. LARTAS clearance can take 2-3 weeks, so plan for port storage costs."
     },
     "hints": [
@@ -1710,7 +1710,7 @@ export const SCENARIOS = [
         "en": "DDP implies paying duties -- but what if there are none?"
       },
       {
-        "id": "Barang-barang tersebut akan dirakit dan diekspor kembali, bukan dijual di dalam negeri",
+        "id": "Barang-barang tersebut akan dirakit dan diekspor kembali, bukan dijual di pasar domestik",
         "en": "These goods will be assembled and re-exported, not sold domestically"
       }
     ],

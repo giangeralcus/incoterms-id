@@ -93,7 +93,7 @@ export const INCOTERMS = [
         "en": "Assist with export formalities at buyer's request and cost"
       },
       {
-        "id": "Paket barang cocok untuk transportasi",
+        "id": "Mengemas barang agar layak untuk transportasi",
         "en": "Package goods suitable for transport"
       },
       {
@@ -199,11 +199,11 @@ export const INCOTERMS = [
     },
     "sellerObligations": [
       {
-        "id": "Mengirimkan barang ke carrier di tempat yang ditentukan (CY, gudang, atau lokasi)",
+        "id": "Mengirimkan barang ke carrier di tempat yang disepakati (CY, gudang, atau lokasi)",
         "en": "Deliver goods to carrier at named place (CY, warehouse, or premises)"
       },
       {
-        "id": "Barang bening untuk EKSPOR (PEB, NPE di Indonesia)",
+        "id": "Mengurus clearance EKSPOR (PEB, NPE di Indonesia)",
         "en": "Clear goods for EXPORT (PEB, NPE in Indonesia)"
       },
       {
@@ -317,7 +317,7 @@ export const INCOTERMS = [
         "en": "Deliver goods alongside the vessel at the named port (on quay or barge)"
       },
       {
-        "id": "Barang bening untuk EKSPOR (PEB/NPE di Indonesia)",
+        "id": "Mengurus clearance EKSPOR (PEB/NPE di Indonesia)",
         "en": "Clear goods for EXPORT (PEB/NPE in Indonesia)"
       },
       {
@@ -427,7 +427,7 @@ export const INCOTERMS = [
         "en": "Load goods ON BOARD the vessel nominated by buyer at named port"
       },
       {
-        "id": "Barang bening untuk EKSPOR (PEB, NPE di Indonesia)",
+        "id": "Mengurus clearance EKSPOR (PEB, NPE di Indonesia)",
         "en": "Clear goods for EXPORT (PEB, NPE in Indonesia)"
       },
       {
@@ -500,7 +500,7 @@ export const INCOTERMS = [
       "CFR"
     ],
     "confusionReason": {
-      "id": "FOB vs FCA: keduanya diserahkan kepada pihak carrier pembeli, namun FOB hanya berlaku di laut. FOB vs CFR: titik risiko yang sama, tetapi penjual CFR juga membayar ongkos angkut.",
+      "id": "FOB vs FCA: keduanya diserahkan ke carrier yang ditunjuk pembeli, namun FOB hanya berlaku di laut. FOB vs CFR: titik risiko yang sama, tetapi penjual CFR juga membayar ongkos angkut.",
       "en": "FOB vs FCA: both hand off to buyer's carrier, but FOB is sea-only. FOB vs CFR: same risk point, but CFR seller also pays freight."
     },
     "changes2020": {
@@ -542,7 +542,7 @@ export const INCOTERMS = [
         "en": "Load goods on board and pay ocean freight to destination port"
       },
       {
-        "id": "Barang bening untuk EKSPOR (PEB/NPE di Indonesia)",
+        "id": "Mengurus clearance EKSPOR (PEB/NPE di Indonesia)",
         "en": "Clear goods for EXPORT (PEB/NPE in Indonesia)"
       },
       {
@@ -665,7 +665,7 @@ export const INCOTERMS = [
         "en": "Insurance must cover at least 110% of CIF value"
       },
       {
-        "id": "Barang bening untuk EKSPOR (PEB/NPE)",
+        "id": "Mengurus clearance EKSPOR (PEB/NPE)",
         "en": "Clear goods for EXPORT (PEB/NPE)"
       },
       {
@@ -772,7 +772,7 @@ export const INCOTERMS = [
         "en": "Deliver goods to the first carrier and pay carriage to destination"
       },
       {
-        "id": "Barang bening untuk EKSPOR",
+        "id": "Mengurus clearance EKSPOR",
         "en": "Clear goods for EXPORT"
       },
       {
@@ -821,11 +821,11 @@ export const INCOTERMS = [
       "en": "Jakarta electronics exporter ships via air freight CPT Munich airport. Seller pays airfreight, but risk transfers when goods are handed to the airline at Soekarno-Hatta. Buyer should insure."
     },
     "keyTrap": {
-      "id": "Seperti CFR, risiko dan biaya dibagi pada titik yang berbeda. Risiko berpindah ke pembeli di pihak carrier PERTAMA, meskipun penjual membayar seluruh biaya sampai ke tujuan.",
+      "id": "Seperti CFR, risiko dan biaya dibagi pada titik yang berbeda. Risiko berpindah ke pembeli saat diserahkan ke carrier PERTAMA, meskipun penjual membayar seluruh biaya sampai ke tujuan.",
       "en": "Like CFR, risk and cost split at different points. Risk transfers to buyer at the FIRST carrier, even though seller pays all the way to destination."
     },
     "riskTransferPoint": {
-      "id": "Ketika barang dikirim ke carrier pertama (atau pengirim barang)",
+      "id": "Saat barang diserahkan ke carrier pertama (atau freight forwarder)",
       "en": "When goods are delivered to the first carrier (or freight forwarder)"
     },
     "costTransferPoint": {
@@ -887,7 +887,7 @@ export const INCOTERMS = [
         "en": "Insurance must cover at least 110% of CIP value"
       },
       {
-        "id": "Barang bening untuk EKSPOR",
+        "id": "Mengurus clearance EKSPOR",
         "en": "Clear goods for EXPORT"
       },
       {
@@ -989,7 +989,7 @@ export const INCOTERMS = [
         "en": "Bear ALL risks and costs during entire transport to destination"
       },
       {
-        "id": "Barang bening untuk EKSPOR",
+        "id": "Mengurus clearance EKSPOR",
         "en": "Clear goods for EXPORT"
       },
       {
@@ -1100,7 +1100,7 @@ export const INCOTERMS = [
         "en": "Bear ALL risks and costs including unloading at destination"
       },
       {
-        "id": "Barang bening untuk EKSPOR",
+        "id": "Mengurus clearance EKSPOR",
         "en": "Clear goods for EXPORT"
       },
       {
