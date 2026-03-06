@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Outlet, NavLink } from 'react-router-dom'
-import { Ship, BookOpen, Gamepad2, GitBranch, BarChart3, Calculator, Instagram, Globe } from 'lucide-react'
+import { Ship, BookOpen, Gamepad2, GitBranch, BarChart3, Calculator } from 'lucide-react'
 import useGameStore from '../../stores/gameStore'
 import useLanguageStore from '../../stores/languageStore'
 import { translations as T, t } from '../../i18n/translations'
@@ -136,9 +136,9 @@ export default function Layout() {
   ]
 
   return (
-    <div className="min-h-screen flex flex-col text-[#1d1d1f] bg-[radial-gradient(circle_at_50%_-8%,rgba(0,113,227,0.15),transparent_42%),radial-gradient(circle_at_95%_22%,rgba(90,178,255,0.16),transparent_38%),linear-gradient(180deg,#f5f5f7_0%,#ffffff_50%,#f5f5f7_100%)]">
+    <div className="min-h-screen flex flex-col text-[#1d1d1f]">
       {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-[#00000012] bg-[rgba(255,255,255,0.72)] backdrop-blur-2xl shadow-[0_10px_28px_rgba(0,0,0,0.05)]">
+      <header className="sticky top-0 z-40 border-b border-[#00000012] bg-[rgba(255,255,255,0.82)] backdrop-blur-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <NavLink to="/" className="group inline-flex items-center gap-2.5 text-[#1d1d1f] font-bold text-lg">
             <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-light to-primary flex items-center justify-center shadow-sm">
@@ -146,6 +146,9 @@ export default function Layout() {
             </span>
             <span className="hidden sm:inline font-display tracking-tight group-hover:text-primary transition-colors">
               {t(T.common.appName, lang)}
+            </span>
+            <span className="hidden md:inline text-[11px] font-normal text-[#8e8e93] ml-0.5">
+              — {BRAND_MOTTO}
             </span>
           </NavLink>
           <div className="flex items-center gap-2.5 sm:gap-3 text-sm">
@@ -174,16 +177,6 @@ export default function Layout() {
 
       {/* Footer */}
       <div className="mx-3 sm:mx-6 mb-2 rounded-2xl border border-[#00000010] bg-[rgba(255,255,255,0.72)] backdrop-blur-xl px-3 py-2.5 flex flex-wrap items-center justify-center gap-3 text-[11px] sm:text-xs text-[#6e6e73]">
-        <a href="https://www.instagram.com/giangeralcus/" target="_blank" rel="noopener noreferrer" aria-label="giangeralcus Instagram" className="hover:text-primary transition-colors flex items-center gap-1">
-          <Instagram className="w-3.5 h-3.5" />
-          <span>@giangeralcus</span>
-        </a>
-        <span>·</span>
-        <a href="https://gpindo.co.id/" target="_blank" rel="noopener noreferrer" aria-label="GPIndo website" className="hover:text-primary transition-colors flex items-center gap-1">
-          <Globe className="w-3.5 h-3.5" />
-          <span>gpindo.co.id</span>
-        </a>
-        <span>·</span>
         <span>{KNOWLEDGE_HUB_NAME}</span>
         <span>·</span>
         <span>incoterms.id — {BRAND_MOTTO}</span>
@@ -197,7 +190,7 @@ export default function Layout() {
       </div>
 
       {/* Bottom Navigation */}
-      <nav className="sticky bottom-0 z-40 mx-3 mb-3 sm:mb-4 rounded-2xl border border-[#00000010] bg-[rgba(255,255,255,0.78)] backdrop-blur-2xl shadow-[0_14px_34px_rgba(0,0,0,0.12)] grid grid-cols-6 p-1 sm:p-1.5">
+      <nav className="sticky bottom-0 z-40 mx-3 mb-3 sm:mb-4 rounded-2xl border border-[#00000010] bg-[rgba(255,255,255,0.88)] backdrop-blur-xl shadow-[0_4px_16px_rgba(0,0,0,0.08)] grid grid-cols-6 p-1 sm:p-1.5">
         {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink
             key={to}
