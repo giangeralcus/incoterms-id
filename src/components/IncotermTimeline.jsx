@@ -72,15 +72,15 @@ export default function IncotermTimeline({ term, lang }) {
   const buyerDuration = (1 - tp) * totalDuration * (1 - pauseFraction)
 
   return (
-    <div className="bg-white rounded-xl p-5 shadow-sm border space-y-4">
+    <div className="glass-card p-5 space-y-4">
 
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="font-semibold text-gray-900">
+          <h3 className="font-display font-semibold text-[#1d1d1f]">
             {lang === 'id' ? 'Alur Perjalanan Kargo' : 'Cargo Journey'}
           </h3>
-          <p className="text-xs text-gray-500 mt-0.5">
+          <p className="text-xs text-[#6e6e73] mt-0.5">
             {lang === 'id'
               ? 'Tekan Animasi untuk melihat kapan risiko berpindah'
               : 'Press Animate to see where risk transfers'}
@@ -89,7 +89,7 @@ export default function IncotermTimeline({ term, lang }) {
         <div className="flex items-center gap-2">
           <button
             onClick={reset}
-            className="text-gray-400 hover:text-gray-600 p-1.5 rounded-lg hover:bg-gray-50 transition-colors"
+            className="text-[#8e8e93] hover:text-[#1d1d1f] p-1.5 rounded-full hover:bg-white/60 transition-colors"
             title="Reset"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -97,7 +97,7 @@ export default function IncotermTimeline({ term, lang }) {
           <button
             onClick={play}
             disabled={playing}
-            className="text-xs bg-primary text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 hover:bg-primary/90 disabled:opacity-50 transition-colors"
+            className="text-xs bg-primary text-white px-3 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-primary/90 disabled:opacity-50 transition-colors"
           >
             <Play className="w-3 h-3" />
             {lang === 'id' ? 'Animasi' : 'Animate'}
@@ -113,7 +113,7 @@ export default function IncotermTimeline({ term, lang }) {
             {lang === 'id' ? 'Penjual (Seller)' : 'Seller'}
           </span>
         </div>
-        <div className="text-xs text-gray-400">
+        <div className="text-xs text-[#8e8e93]">
           {lang === 'id' ? 'transfer risiko' : 'risk transfer'}
         </div>
         <div className="flex items-center gap-1.5">
@@ -244,7 +244,7 @@ export default function IncotermTimeline({ term, lang }) {
               width: '52px',
             }}
           >
-            <span className="text-xs text-gray-400 leading-none">
+            <span className="text-xs text-[#8e8e93] leading-none">
               {lang === 'id' ? stage.id : stage.en}
             </span>
           </div>
@@ -257,7 +257,7 @@ export default function IncotermTimeline({ term, lang }) {
           <div className="text-xs font-semibold text-cargo mb-1">
             {lang === 'id' ? 'Seller menanggung' : 'Seller bears'}
           </div>
-          <div className="text-xs text-gray-600 leading-relaxed">
+          <div className="text-xs text-[#6e6e73] leading-relaxed">
             {t(term.costTransferPoint || term.costTransfer, lang)}
           </div>
         </div>
@@ -265,7 +265,7 @@ export default function IncotermTimeline({ term, lang }) {
           <div className="text-xs font-semibold text-primary mb-1">
             {lang === 'id' ? 'Buyer menanggung' : 'Buyer bears'}
           </div>
-          <div className="text-xs text-gray-600 leading-relaxed">
+          <div className="text-xs text-[#6e6e73] leading-relaxed">
             {t(term.riskTransferPoint || term.riskTransfer, lang)}
           </div>
         </div>

@@ -101,16 +101,16 @@ export default function ResponsibilityMap({ term, lang }) {
   const totalItems = pool.length + sellerCol.length + buyerCol.length
 
   return (
-    <div className="bg-white rounded-xl p-5 shadow-sm border space-y-4">
+    <div className="glass-card p-5 space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="font-semibold text-gray-900">{t(T.learn.map.title, lang)}</h3>
-          <p className="text-xs text-gray-500 mt-0.5">{t(T.learn.map.subtitle, lang)}</p>
+          <h3 className="font-display font-semibold text-[#1d1d1f]">{t(T.learn.map.title, lang)}</h3>
+          <p className="text-xs text-[#6e6e73] mt-0.5">{t(T.learn.map.subtitle, lang)}</p>
         </div>
         <button
           onClick={reset}
-          className="text-xs text-gray-400 hover:text-primary flex items-center gap-1"
+          className="text-xs text-[#8e8e93] hover:text-primary flex items-center gap-1"
         >
           <RotateCcw className="w-3 h-3" />
           {t(T.learn.map.resetBtn, lang)}
@@ -135,11 +135,11 @@ export default function ResponsibilityMap({ term, lang }) {
       {/* Pool */}
       {pool.length > 0 && (
         <div>
-          <p className="text-xs font-medium text-gray-500 mb-2">{t(T.learn.map.obligationsPool, lang)}</p>
+          <p className="text-xs font-medium text-[#6e6e73] mb-2">{t(T.learn.map.obligationsPool, lang)}</p>
           <div
             onDrop={e => handleDrop(e, 'pool')}
             onDragOver={handleDragOver}
-            className="min-h-12 flex flex-wrap gap-2 p-2 rounded-lg border-2 border-dashed border-gray-200 bg-gray-50"
+            className="min-h-12 flex flex-wrap gap-2 p-2 rounded-xl border-2 border-dashed border-[#00000014] bg-[rgba(245,245,247,0.6)]"
           >
             <AnimatePresence>
               {pool.map(item => (
@@ -151,7 +151,7 @@ export default function ResponsibilityMap({ term, lang }) {
                   exit={{ opacity: 0, scale: 0.8 }}
                   draggable
                   onDragStart={e => handleDragStart(e, item, 'pool')}
-                  className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-700 cursor-grab active:cursor-grabbing shadow-sm hover:border-primary hover:shadow-md transition-all"
+                  className="flex items-center gap-1.5 bg-[rgba(255,255,255,0.9)] border border-[#00000010] rounded-xl px-3 py-1.5 text-xs text-[#1d1d1f] cursor-grab active:cursor-grabbing shadow-sm hover:border-primary hover:shadow-md transition-all"
                 >
                   <GripVertical className="w-3 h-3 text-gray-300 shrink-0" />
                   <span className="max-w-xs">{t(item.text, lang)}</span>
@@ -169,7 +169,7 @@ export default function ResponsibilityMap({ term, lang }) {
             key={col}
             onDrop={e => handleDrop(e, col)}
             onDragOver={handleDragOver}
-            className={`min-h-32 rounded-lg border-2 border-dashed p-2 transition-colors ${
+            className={`min-h-32 rounded-xl border-2 border-dashed p-2 transition-colors ${
               col === 'S'
                 ? 'border-cargo/40 bg-cargo/5'
                 : 'border-primary/40 bg-primary/5'
@@ -189,7 +189,7 @@ export default function ResponsibilityMap({ term, lang }) {
                     exit={{ opacity: 0 }}
                     draggable={!checked}
                     onDragStart={e => handleDragStart(e, item, col)}
-                    className={`flex items-start gap-1.5 border rounded-lg px-2 py-1.5 text-xs cursor-grab active:cursor-grabbing transition-all ${itemColor(item, col)}`}
+                    className={`flex items-start gap-1.5 border rounded-xl px-2 py-1.5 text-xs cursor-grab active:cursor-grabbing transition-all ${itemColor(item, col)}`}
                   >
                     {checked ? (
                       item.correct === col
@@ -213,7 +213,7 @@ export default function ResponsibilityMap({ term, lang }) {
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
           onClick={checkAnswers}
-          className="w-full py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors"
+          className="w-full py-2 bg-primary text-white rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors"
         >
           {t(T.learn.map.checkBtn, lang)}
         </motion.button>

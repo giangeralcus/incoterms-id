@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Calculator, Info, Landmark, ChevronDown, ChevronUp, HelpCircle, Ship, BookOpen, ToggleLeft, ToggleRight } from 'lucide-react'
 import useLanguageStore from '../stores/languageStore'
 import { translations as T, t } from '../i18n/translations'
@@ -162,9 +162,9 @@ function Toggle({ enabled, onToggle, label }) {
       {enabled ? (
         <ToggleRight className="w-6 h-6 text-primary" />
       ) : (
-        <ToggleLeft className="w-6 h-6 text-gray-400" />
+        <ToggleLeft className="w-6 h-6 text-[#8e8e93]" />
       )}
-      <span className={enabled ? 'text-gray-900 font-medium' : 'text-gray-500'}>{label}</span>
+      <span className={enabled ? 'text-[#1d1d1f] font-medium' : 'text-[#6e6e73]'}>{label}</span>
     </button>
   )
 }
@@ -172,30 +172,34 @@ function Toggle({ enabled, onToggle, label }) {
 function CollapsibleSection({ title, icon: Icon, children, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen)
   return (
-    <div className="bg-white rounded-xl shadow-sm border">
+    <div className="glass-card overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between p-4 text-left"
+        className="w-full flex items-center justify-between p-4 text-left hover:bg-[rgba(0,0,0,0.02)] transition-colors"
       >
         <div className="flex items-center gap-2">
           {Icon && <Icon className="w-5 h-5 text-accent" />}
-          <h3 className="font-semibold text-gray-900">{title}</h3>
+          <h3 className="font-display font-semibold text-[#1d1d1f]">{title}</h3>
         </div>
         {open ? (
-          <ChevronUp className="w-4 h-4 text-gray-400" />
+          <ChevronUp className="w-4 h-4 text-[#8e8e93]" />
         ) : (
-          <ChevronDown className="w-4 h-4 text-gray-400" />
+          <ChevronDown className="w-4 h-4 text-[#8e8e93]" />
         )}
       </button>
-      {open && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          className="px-4 pb-4"
-        >
-          {children}
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="px-4 pb-4 overflow-hidden"
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
@@ -241,14 +245,14 @@ export default function CostSimulator() {
   const effectiveRate = cifIDR > 0 ? (totalTax / cifIDR * 100) : 0
 
   return (
-    <div className="space-y-6 py-4">
+    <div className="space-y-8 py-5 sm:py-7">
       <div className="flex items-end justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+          <h1 className="font-display text-3xl sm:text-4xl font-semibold text-[#1d1d1f] flex items-center gap-2">
             <Calculator className="w-6 h-6 text-accent" />
             {t(T.cost.title, lang)}
           </h1>
-          <p className="text-gray-500 text-sm mt-1">
+          <p className="text-[#6e6e73] text-[15px] mt-1">
             {t(T.cost.subtitle, lang)}
           </p>
         </div>
@@ -261,17 +265,17 @@ export default function CostSimulator() {
       </div>
 
       {/* Cost Inputs */}
-      <div className="bg-white rounded-xl p-5 shadow-sm border">
-        <h3 className="font-semibold text-gray-900 mb-3">{t(T.cost.costComponents, lang)}</h3>
+      <div className="glass-card p-5">
+        <h3 className="font-display font-semibold text-[#1d1d1f] mb-3">{t(T.cost.costComponents, lang)}</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {COST_COMPONENTS.map(comp => (
             <div key={comp.key}>
-              <label className="text-xs text-gray-500 block mb-1">{t(T.costLabels[comp.labelKey], lang)}</label>
+              <label className="text-xs text-[#6e6e73] block mb-1">{t(T.costLabels[comp.labelKey], lang)}</label>
               <input
                 type="number"
                 value={costs[comp.key]}
                 onChange={e => setCosts({ ...costs, [comp.key]: Number(e.target.value) })}
-                className="w-full border rounded-lg px-3 py-1.5 text-sm"
+                className="w-full apple-input"
               />
             </div>
           ))}
@@ -287,7 +291,7 @@ export default function CostSimulator() {
             className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-colors ${
               selectedTerms.includes(term)
                 ? 'bg-primary text-white'
-                : 'bg-gray-100 text-gray-400'
+                : 'bg-[rgba(245,245,247,0.6)] text-[#8e8e93] border border-[#00000010]'
             }`}
           >
             {term}
@@ -296,9 +300,10 @@ export default function CostSimulator() {
       </div>
 
       {/* Comparison Table */}
-      <div className="bg-white rounded-xl shadow-sm border overflow-x-auto">
+      <div className="glass-card overflow-hidden overflow-x-auto relative">
+        <div className="absolute inset-x-0 top-0 h-[2px] gradient-accent" />
         {/* Legend */}
-        <div className="flex gap-4 text-xs mb-2 px-3 pt-3">
+        <div className="flex gap-4 text-xs mb-2 px-3 pt-4">
           <span className="flex items-center gap-1">
             <span className="inline-block w-5 h-5 rounded text-center font-bold bg-cargo/10 text-cargo leading-5">S</span>
             {t(T.common.seller, lang)}
@@ -307,14 +312,14 @@ export default function CostSimulator() {
             <span className="inline-block w-5 h-5 rounded text-center font-bold bg-primary/10 text-primary leading-5">B</span>
             {t(T.common.buyer, lang)}
           </span>
-          <span className="flex items-center gap-1 text-gray-400">
+          <span className="flex items-center gap-1 text-[#8e8e93]">
             {t(T.cost.costsInUsd, lang)}
           </span>
         </div>
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b">
-              <th className="text-left p-3 text-gray-500 font-normal text-xs">{t(T.cost.costComponent, lang)}</th>
+              <th className="text-left p-3 text-[#6e6e73] font-medium text-xs">{t(T.cost.costComponent, lang)}</th>
               {selectedTerms.map(term => (
                 <th key={term} className="p-3 text-center font-mono font-bold text-primary text-xs">{term}</th>
               ))}
@@ -322,8 +327,8 @@ export default function CostSimulator() {
           </thead>
           <tbody>
             {COST_COMPONENTS.map(comp => (
-              <tr key={comp.key} className="border-b last:border-0">
-                <td className="p-3 text-gray-700 text-xs">{t(T.costLabels[comp.labelKey], lang)}</td>
+              <tr key={comp.key} className="border-b last:border-0 hover:bg-[rgba(0,0,0,0.02)] transition-colors">
+                <td className="p-3 text-[#1d1d1f] text-xs">{t(T.costLabels[comp.labelKey], lang)}</td>
                 {selectedTerms.map(term => {
                   const who = RESPONSIBILITY[term][comp.key]
                   return (
@@ -331,23 +336,23 @@ export default function CostSimulator() {
                       who === 'S' ? 'bg-cargo/5 text-cargo' : 'bg-primary/5 text-primary'
                     }`}>
                       <span className="font-bold">{who}</span>
-                      <span className="text-gray-400 ml-1">${costs[comp.key]}</span>
+                      <span className="text-[#8e8e93] ml-1">${costs[comp.key]}</span>
                     </td>
                   )
                 })}
               </tr>
             ))}
             {/* Totals */}
-            <tr className="border-t-2 bg-gray-50">
-              <td className="p-3 font-semibold text-gray-900 text-xs">{t(T.cost.sellerTotal, lang)}</td>
+            <tr className="border-t-2 bg-[#e9f3ff]/30">
+              <td className="p-3 font-semibold text-[#1d1d1f] text-xs">{t(T.cost.sellerTotal, lang)}</td>
               {selectedTerms.map(term => (
                 <td key={term} className="p-3 text-center font-bold text-cargo text-xs">
                   ${calcTotal(term, 'S').toLocaleString()}
                 </td>
               ))}
             </tr>
-            <tr className="bg-gray-50">
-              <td className="p-3 font-semibold text-gray-900 text-xs">{t(T.cost.buyerTotal, lang)}</td>
+            <tr className="bg-[#e9f3ff]/30">
+              <td className="p-3 font-semibold text-[#1d1d1f] text-xs">{t(T.cost.buyerTotal, lang)}</td>
               {selectedTerms.map(term => (
                 <td key={term} className="p-3 text-center font-bold text-primary text-xs">
                   ${calcTotal(term, 'B').toLocaleString()}
@@ -358,33 +363,21 @@ export default function CostSimulator() {
         </table>
       </div>
 
-      {/* Legend */}
-      <div className="flex items-center gap-4 text-xs text-gray-500">
-        <div className="flex items-center gap-1">
-          <span className="w-3 h-3 rounded bg-cargo/20 border border-cargo/30" />
-          {t(T.cost.sellerPays, lang)}
-        </div>
-        <div className="flex items-center gap-1">
-          <span className="w-3 h-3 rounded bg-primary/20 border border-primary/30" />
-          {t(T.cost.buyerPays, lang)}
-        </div>
-      </div>
-
-      <div className="bg-blue-50 rounded-xl p-4 border border-blue-200 flex items-start gap-2">
-        <Info className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />
-        <p className="text-xs text-blue-700">
+      <div className="bg-[#e9f3ff] rounded-2xl p-4 border border-[#b8dbff]/50 flex items-start gap-2">
+        <Info className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+        <p className="text-xs text-[#1d1d1f]">
           {t(T.cost.note, lang)}
         </p>
       </div>
 
       {/* Section A: Indonesian Import Tax Calculator */}
-      <div className="bg-white rounded-xl shadow-sm border">
-        <div className="p-5 border-b">
-          <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+      <div className="glass-card overflow-hidden">
+        <div className="p-5 border-b border-[#00000010]">
+          <h2 className="font-display text-lg font-semibold text-[#1d1d1f] flex items-center gap-2">
             <Landmark className="w-5 h-5 text-accent" />
             {t(T.cost.taxCalc, lang)}
           </h2>
-          <p className="text-gray-500 text-xs mt-1">
+          <p className="text-[#6e6e73] text-xs mt-1">
             {t(T.cost.taxNote, lang)}
           </p>
         </div>
@@ -393,39 +386,39 @@ export default function CostSimulator() {
           {/* Calculator Inputs */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-xs text-gray-500 block mb-1">{t(T.cost.cifValue, lang)} (USD)</label>
+              <label className="text-xs text-[#6e6e73] block mb-1">{t(T.cost.cifValue, lang)} (USD)</label>
               <input
                 type="number"
                 value={cifUSD}
                 onChange={e => setCifUSD(Number(e.target.value) || 0)}
-                className="w-full border rounded-lg px-3 py-2 text-sm"
+                className="w-full apple-input"
                 min="0"
               />
             </div>
             <div>
-              <label className="text-xs text-gray-500 block mb-1">{t(T.cost.exchangeRate, lang)}</label>
+              <label className="text-xs text-[#6e6e73] block mb-1">{t(T.cost.exchangeRate, lang)}</label>
               <input
                 type="number"
                 value={exchangeRate}
                 onChange={e => setExchangeRate(Number(e.target.value) || 0)}
-                className="w-full border rounded-lg px-3 py-2 text-sm"
+                className="w-full apple-input"
                 min="0"
               />
             </div>
             <div>
-              <label className="text-xs text-gray-500 block mb-1">
+              <label className="text-xs text-[#6e6e73] block mb-1">
                 {t(T.cost.dutyRate, lang)}
               </label>
               <input
                 type="number"
                 value={dutyRate}
                 onChange={e => setDutyRate(Number(e.target.value) || 0)}
-                className="w-full border rounded-lg px-3 py-2 text-sm"
+                className="w-full apple-input"
                 min="0"
                 max="150"
                 step="0.1"
               />
-              <p className="text-[10px] text-gray-400 mt-1">{t(T.cost.dutyRateNote, lang)}</p>
+              <p className="text-[10px] text-[#8e8e93] mt-1">{t(T.cost.dutyRateNote, lang)}</p>
             </div>
             <div className="space-y-3 pt-1">
               <Toggle
@@ -451,59 +444,60 @@ export default function CostSimulator() {
               animate={{ opacity: 1, height: 'auto' }}
               className="sm:w-1/2"
             >
-              <label className="text-xs text-gray-500 block mb-1">{t(T.cost.ppnbmRate, lang)}</label>
+              <label className="text-xs text-[#6e6e73] block mb-1">{t(T.cost.ppnbmRate, lang)}</label>
               <input
                 type="number"
                 value={ppnbmRate}
                 onChange={e => setPpnbmRate(Number(e.target.value) || 0)}
-                className="w-full border rounded-lg px-3 py-2 text-sm"
+                className="w-full apple-input"
                 min="0"
                 max="200"
                 step="1"
               />
-              <p className="text-[10px] text-gray-400 mt-1">{t(T.cost.ppnbmHint, lang)}</p>
+              <p className="text-[10px] text-[#8e8e93] mt-1">{t(T.cost.ppnbmHint, lang)}</p>
             </motion.div>
           )}
 
           {/* Calculation Results */}
-          <div className="bg-gray-50 rounded-lg p-4 font-mono text-sm space-y-1">
-            <div className="flex justify-between text-gray-700">
+          <div className="bg-[rgba(245,245,247,0.5)] rounded-2xl p-5 font-mono text-sm space-y-1">
+            <div className="font-display text-xs font-semibold text-[#8e8e93] uppercase tracking-wider mb-3">Calculation</div>
+            <div className="flex justify-between text-[#1d1d1f]">
               <span>{t(T.cost.cifIdr, lang)}</span>
               <span>{formatIDR(cifIDR)}</span>
             </div>
 
-            <div className="flex justify-between text-gray-700">
+            <div className="flex justify-between text-[#1d1d1f]">
               <span>+ {t(T.cost.beaMasuk, lang)} @ {dutyRate}%</span>
               <span>{formatIDR(beaMasuk)}</span>
             </div>
 
-            <div className="border-t border-dashed border-gray-300 my-1" />
+            <div className="border-t border-[#00000010] my-1" />
 
-            <div className="flex justify-between text-gray-900 font-semibold">
+            <div className="flex justify-between text-[#1d1d1f] font-semibold">
               <span>= {t(T.cost.ndpbm, lang)}</span>
               <span>{formatIDR(ndpbm)}</span>
             </div>
 
-            <div className="border-t border-dashed border-gray-300 my-1" />
+            <div className="border-t border-[#00000010] my-1" />
 
-            <div className="flex justify-between text-gray-700">
+            <div className="flex justify-between text-[#1d1d1f]">
               <span>+ {t(T.cost.pph22, lang)} @ {pph22Rate}%</span>
               <span>{formatIDR(pph22)}</span>
             </div>
 
-            <div className="flex justify-between text-gray-700">
+            <div className="flex justify-between text-[#1d1d1f]">
               <span>+ {t(T.cost.ppn, lang)} @ 12%</span>
               <span>{formatIDR(ppn)}</span>
             </div>
 
             {isLuxury && (
-              <div className="flex justify-between text-gray-700">
+              <div className="flex justify-between text-[#1d1d1f]">
                 <span>+ {t(T.cost.ppnbm, lang)} @ {ppnbmRate}%</span>
                 <span>{formatIDR(ppnbm)}</span>
               </div>
             )}
 
-            <div className="border-t-2 border-gray-400 my-2" />
+            <div className="border-t-2 border-[#00000010] my-2" />
 
             <div className="flex justify-between text-cargo font-bold">
               <span>{t(T.cost.totalTax, lang)}</span>
@@ -515,16 +509,16 @@ export default function CostSimulator() {
               <span>{formatIDR(totalLandedCost)}</span>
             </div>
 
-            <div className="flex justify-between text-gray-400 text-xs mt-1">
+            <div className="flex justify-between text-[#8e8e93] text-xs mt-1">
               <span>{t(T.cost.effectiveRate, lang)}</span>
               <span>{effectiveRate.toFixed(1)}%</span>
             </div>
           </div>
 
           {/* Calculator Notes */}
-          <div className="bg-amber-50 rounded-lg p-3 border border-amber-200 flex items-start gap-2">
+          <div className="bg-[#fff8e1] rounded-2xl p-4 border border-[#f0d28a]/50 flex items-start gap-2">
             <Info className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
-            <div className="text-xs text-amber-700 space-y-1">
+            <div className="text-xs text-[#7a4d00] space-y-1">
               <p>{t(T.cost.taxLinePph22, lang)}</p>
               <p>{t(T.cost.taxLinePpn, lang)}</p>
               <p>{t(T.cost.taxLineHs, lang)}</p>
@@ -539,23 +533,23 @@ export default function CostSimulator() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b">
-                <th className="text-left py-2 pr-4 text-gray-500 font-normal text-xs">{t(T.cost.chargeHeader, lang)}</th>
-                <th className="text-left py-2 text-gray-500 font-normal text-xs">{t(T.cost.rangeHeader, lang)}</th>
+                <th className="text-left py-2 pr-4 text-[#6e6e73] font-normal text-xs">{t(T.cost.chargeHeader, lang)}</th>
+                <th className="text-left py-2 text-[#6e6e73] font-normal text-xs">{t(T.cost.rangeHeader, lang)}</th>
               </tr>
             </thead>
             <tbody>
               {PORT_CHARGES.map((charge, i) => (
                 <tr key={i} className="border-b last:border-0">
-                  <td className="py-2 pr-4 text-xs font-medium text-gray-700">{charge.label}</td>
-                  <td className="py-2 text-xs text-gray-600 font-mono">{charge.value}</td>
+                  <td className="py-2 pr-4 text-xs font-medium text-[#1d1d1f]">{charge.label}</td>
+                  <td className="py-2 text-xs text-[#6e6e73] font-mono">{charge.value}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <div className="mt-3 bg-blue-50 rounded-lg p-3 flex items-start gap-2">
-          <Info className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />
-          <p className="text-xs text-blue-700">
+        <div className="mt-3 bg-[#e9f3ff] rounded-2xl p-3 border border-[#b8dbff]/50 flex items-start gap-2">
+          <Info className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+          <p className="text-xs text-[#1d1d1f]">
             {t(T.cost.portNote, lang)}
           </p>
         </div>
@@ -565,11 +559,11 @@ export default function CostSimulator() {
       <CollapsibleSection title={t(T.cost.glossary, lang)} icon={BookOpen} defaultOpen={false}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
           {ABBREVIATIONS.map((item, i) => (
-            <div key={i} className="flex items-baseline gap-2 py-1.5 border-b border-gray-100 last:border-0">
+            <div key={i} className="flex items-baseline gap-2 py-1.5 border-b border-[#00000008] last:border-0">
               <span className="font-mono font-bold text-primary text-xs w-14 shrink-0">{item.abbr}</span>
               <div className="text-xs">
-                <span className="text-gray-700">{item.full}</span>
-                <span className="text-gray-400 ml-1">({item.en})</span>
+                <span className="text-[#1d1d1f]">{item.full}</span>
+                <span className="text-[#8e8e93] ml-1">({item.en})</span>
               </div>
             </div>
           ))}
@@ -578,23 +572,23 @@ export default function CostSimulator() {
 
       {/* Section D: Customs Legal Basics */}
       <CollapsibleSection title={t(T.cost.legalBasics, lang)} icon={HelpCircle} defaultOpen={false}>
-        <p className="text-xs text-gray-600 mb-3">{t(T.cost.legalIntro, lang)}</p>
+        <p className="text-xs text-[#6e6e73] mb-3">{t(T.cost.legalIntro, lang)}</p>
 
         <div className="space-y-2">
           {LEGAL_BASICS.map((item, index) => (
-            <div key={`legal-basic-${index}`} className="rounded-lg border border-gray-100 bg-gray-50 p-3">
-              <h4 className="text-xs font-semibold text-gray-900">{t(item.title, lang)}</h4>
-              <p className="mt-1 text-xs text-gray-600">{t(item.detail, lang)}</p>
+            <div key={`legal-basic-${index}`} className="rounded-lg border border-[#00000008] bg-[rgba(245,245,247,0.5)] p-3">
+              <h4 className="text-xs font-semibold text-[#1d1d1f]">{t(item.title, lang)}</h4>
+              <p className="mt-1 text-xs text-[#6e6e73]">{t(item.detail, lang)}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs text-amber-700">
+        <div className="mt-3 rounded-2xl border border-[#f0d28a]/50 bg-[#fff8e1] p-3 text-xs text-[#7a4d00]">
           {t(T.cost.legalDisclaimer, lang)}
         </div>
 
         <div className="mt-3">
-          <h4 className="text-xs font-semibold text-gray-900 mb-2">{t(T.cost.legalSources, lang)}</h4>
+          <h4 className="text-xs font-semibold text-[#1d1d1f] mb-2">{t(T.cost.legalSources, lang)}</h4>
           <ul className="space-y-1">
             {LEGAL_REFERENCES.map((ref, index) => (
               <li key={`legal-ref-${index}`}>

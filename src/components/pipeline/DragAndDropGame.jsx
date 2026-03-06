@@ -168,7 +168,7 @@ function GameNode({
         {Icon && (
           <Icon
             className={`w-4 h-4 sm:w-4.5 sm:h-4.5 ${
-              submitted ? 'text-gray-500' : 'text-gray-600'
+              submitted ? 'text-[#6e6e73]' : 'text-gray-600'
             }`}
             strokeWidth={2}
           />
@@ -176,7 +176,7 @@ function GameNode({
       </motion.button>
 
       {/* Label */}
-      <span className="text-[9px] sm:text-[10px] leading-tight text-center text-gray-500 max-w-12 sm:max-w-14">
+      <span className="text-[9px] sm:text-[10px] leading-tight text-center text-[#6e6e73] max-w-12 sm:max-w-14">
         {t(stage.label, lang)}
       </span>
     </div>
@@ -264,12 +264,12 @@ function ResultFlash({ pointsEarned }) {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       className={`
-        flex items-center justify-center gap-2 py-2 px-4 rounded-xl
+        flex items-center justify-center gap-2 py-2 px-4 rounded-full
         bg-gradient-to-r ${color} to-transparent
       `}
     >
       {icon}
-      <span className="text-sm font-semibold text-gray-700">
+      <span className="text-sm font-semibold text-[#1d1d1f]">
         {label} +{pointsEarned} pts
       </span>
     </motion.div>
@@ -290,12 +290,12 @@ function RoundSummary({ roundLabel, roundScore, maxScore, onNext, isFinal }) {
       className="flex flex-col items-center gap-4 py-6"
     >
       <Trophy className="w-10 h-10 text-amber-500" />
-      <h3 className="text-lg font-bold text-gray-800">{roundLabel} Complete!</h3>
+      <h3 className="text-lg font-bold text-[#1d1d1f]">{roundLabel} Complete!</h3>
       <div className="text-center">
-        <p className="text-2xl font-bold text-indigo-600">
+        <p className="text-2xl font-bold text-primary">
           {roundScore}/{maxScore} pts
         </p>
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-[#6e6e73] mt-1">
           {pct >= 80
             ? 'Excellent!'
             : pct >= 50
@@ -306,7 +306,7 @@ function RoundSummary({ roundLabel, roundScore, maxScore, onNext, isFinal }) {
       <button
         type="button"
         onClick={onNext}
-        className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 active:scale-95 transition-all"
+        className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-full font-medium hover:bg-[#0062c7] active:scale-95 transition-all"
       >
         {isFinal ? (
           <>
@@ -348,12 +348,12 @@ function GameComplete({ totalScore, maxTotalScore, onPlayAgain }) {
       >
         <Trophy className="w-14 h-14 text-amber-500" />
       </motion.div>
-      <h2 className="text-xl font-bold text-gray-800">Game Complete!</h2>
+      <h2 className="text-xl font-bold text-[#1d1d1f]">Game Complete!</h2>
       <div className="text-center">
-        <p className="text-3xl font-extrabold text-indigo-600">
+        <p className="text-3xl font-extrabold text-primary">
           {totalScore}/{maxTotalScore}
         </p>
-        <p className="text-sm text-gray-500 mt-1">Total Points</p>
+        <p className="text-sm text-[#6e6e73] mt-1">Total Points</p>
       </div>
       <motion.div
         initial={{ scale: 0 }}
@@ -366,7 +366,7 @@ function GameComplete({ totalScore, maxTotalScore, onPlayAgain }) {
             : grade === 'A'
               ? 'bg-gradient-to-br from-emerald-400 to-green-500 text-white'
               : grade === 'B'
-                ? 'bg-gradient-to-br from-blue-400 to-indigo-500 text-white'
+                ? 'bg-gradient-to-br from-blue-400 to-primary text-white'
                 : grade === 'C'
                   ? 'bg-gradient-to-br from-orange-400 to-amber-500 text-white'
                   : 'bg-gradient-to-br from-gray-400 to-gray-500 text-white'
@@ -375,7 +375,7 @@ function GameComplete({ totalScore, maxTotalScore, onPlayAgain }) {
       >
         {grade}
       </motion.div>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-[#6e6e73]">
         {pct >= 90
           ? 'You truly understand Incoterms!'
           : pct >= 80
@@ -389,7 +389,7 @@ function GameComplete({ totalScore, maxTotalScore, onPlayAgain }) {
       <button
         type="button"
         onClick={onPlayAgain}
-        className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 active:scale-95 transition-all"
+        className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-full font-medium hover:bg-[#0062c7] active:scale-95 transition-all"
       >
         <RotateCcw className="w-4 h-4" /> Play Again
       </button>
@@ -531,7 +531,7 @@ export default function DragAndDropGame() {
 
   if (gameComplete) {
     return (
-      <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6">
+      <div className="glass-card p-4 sm:p-6">
         <GameComplete
           totalScore={totalGameScore}
           maxTotalScore={maxTotalScore}
@@ -543,7 +543,7 @@ export default function DragAndDropGame() {
 
   if (showRoundSummary) {
     return (
-      <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6">
+      <div className="glass-card p-4 sm:p-6">
         <RoundSummary
           roundLabel={t(round.label, lang)}
           roundScore={roundScore}
@@ -556,28 +556,28 @@ export default function DragAndDropGame() {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 space-y-4">
+    <div className="glass-card p-4 sm:p-6 space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-xs text-gray-400 font-medium">
+          <p className="text-xs text-[#8e8e93] font-medium">
             {t(round.label, lang)} &middot; {currentTermIndex + 1}/{round.terms.length}
           </p>
-          <h3 className="text-lg font-bold text-gray-800 mt-0.5">
+          <h3 className="text-lg font-bold text-[#1d1d1f] mt-0.5">
             Where does{' '}
-            <span className="text-indigo-600">{currentTerm}</span>{' '}
+            <span className="text-primary">{currentTerm}</span>{' '}
             transfer?
           </h3>
         </div>
         <div className="text-right">
-          <p className="text-xs text-gray-400">Score</p>
-          <p className="text-lg font-bold text-indigo-600">{totalGameScore}</p>
+          <p className="text-xs text-[#8e8e93]">Score</p>
+          <p className="text-lg font-bold text-primary">{totalGameScore}</p>
         </div>
       </div>
 
       {/* Instruction */}
       {!submitted && (
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-[#6e6e73]">
           Select a flag below, then tap the pipeline stage where it transfers.
         </p>
       )}
@@ -647,7 +647,7 @@ export default function DragAndDropGame() {
                 : {}
             }
             className={`
-              flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm
+              flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm
               border-2 transition-all
               ${
                 placingMode === 'risk'
@@ -672,7 +672,7 @@ export default function DragAndDropGame() {
                 : {}
             }
             className={`
-              flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm
+              flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm
               border-2 transition-all
               ${
                 placingMode === 'cost'
@@ -702,7 +702,7 @@ export default function DragAndDropGame() {
             <button
               type="button"
               onClick={handleCheck}
-              className="flex items-center gap-2 px-6 py-2.5 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 active:scale-95 transition-all"
+              className="flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-full font-medium hover:bg-[#0062c7] active:scale-95 transition-all"
             >
               <Check className="w-4 h-4" /> Check Answer
             </button>
@@ -720,11 +720,11 @@ export default function DragAndDropGame() {
             <ResultFlash pointsEarned={pointsEarned} />
 
             {/* Correct answer text */}
-            <div className="text-center text-xs text-gray-500 space-y-0.5">
+            <div className="text-center text-xs text-[#6e6e73] space-y-0.5">
               <p>
                 <Flag className="w-3 h-3 text-red-500 inline-block mr-0.5 -mt-0.5" />
                 Risk transfers at{' '}
-                <span className="font-semibold text-gray-700">
+                <span className="font-semibold text-[#1d1d1f]">
                   {t(PIPELINE_STAGES[pipeline.risk].label, lang)}
                 </span>
                 {riskPlacement === pipeline.risk ? (
@@ -736,7 +736,7 @@ export default function DragAndDropGame() {
               <p>
                 <Coins className="w-3 h-3 text-green-500 inline-block mr-0.5 -mt-0.5" />
                 Cost transfers at{' '}
-                <span className="font-semibold text-gray-700">
+                <span className="font-semibold text-[#1d1d1f]">
                   {t(PIPELINE_STAGES[pipeline.cost].label, lang)}
                 </span>
                 {costPlacement === pipeline.cost ? (
@@ -752,7 +752,7 @@ export default function DragAndDropGame() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 active:scale-95 transition-all"
+                className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-full font-medium hover:bg-[#0062c7] active:scale-95 transition-all"
               >
                 Next <ArrowRight className="w-4 h-4" />
               </button>
@@ -764,12 +764,12 @@ export default function DragAndDropGame() {
       {/* Round progress bar */}
       <div className="pt-1">
         <div className="flex items-center gap-2">
-          <span className="text-[10px] text-gray-400 whitespace-nowrap">
+          <span className="text-[10px] text-[#8e8e93] whitespace-nowrap">
             Round {currentRound + 1}/{PIPELINE_GAME_LEVELS.length}
           </span>
           <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-indigo-400 rounded-full"
+              className="h-full bg-primary/70 rounded-full"
               initial={false}
               animate={{
                 width: `${((currentRound * round.terms.length + currentTermIndex + (submitted ? 1 : 0)) / PIPELINE_GAME_LEVELS.reduce((s, l) => s + l.terms.length, 0)) * 100}%`,

@@ -18,13 +18,16 @@ export default function PipelinePage() {
   const { lang } = useLanguageStore()
 
   return (
-    <div className="space-y-6 py-4">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">{t({ id: 'Pipeline Supply Chain', en: 'Supply Chain Pipeline' }, lang)}</h1>
-        <p className="text-sm text-gray-500 mt-1">
+    <div className="space-y-9 py-5 sm:py-7">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <h1 className="font-display text-3xl sm:text-4xl font-semibold text-[#1d1d1f]">{t({ id: 'Pipeline Supply Chain', en: 'Supply Chain Pipeline' }, lang)}</h1>
+        <p className="text-[15px] text-[#6e6e73] mt-1">
           {t({ id: 'Lihat bagaimana tiap Incoterm membagi tanggung jawab antara penjual dan pembeli', en: 'See how each Incoterm splits responsibility between seller and buyer' }, lang)}
         </p>
-      </div>
+      </motion.div>
 
       {/* Tab switcher */}
       <div className="flex gap-2">
@@ -32,10 +35,10 @@ export default function PipelinePage() {
           <button
             key={id}
             onClick={() => setTab(id)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               tab === id
-                ? 'bg-ocean text-white'
-                : 'bg-white text-gray-500 border hover:bg-gray-50'
+                ? 'bg-[#e9f3ff] text-primary border border-primary/20'
+                : 'bg-white/60 text-[#6e6e73] border border-[#00000010] hover:bg-white/80'
             }`}
           >
             <Icon className="w-4 h-4" />
@@ -56,10 +59,10 @@ export default function PipelinePage() {
               <button
                 key={term.code}
                 onClick={() => setSelectedTerm(term.code)}
-                className={`px-3 py-1.5 rounded-lg text-sm font-mono font-bold transition-colors ${
+                className={`px-3 py-1.5 rounded-full text-sm font-mono font-bold transition-colors ${
                   selectedTerm === term.code
-                    ? 'bg-ocean text-white'
-                    : 'bg-white border text-gray-600 hover:bg-gray-50'
+                    ? 'bg-[#e9f3ff] text-primary border border-primary/20'
+                    : 'bg-white/60 border border-[#00000010] text-[#6e6e73] hover:bg-white/80'
                 }`}
               >
                 {term.code}
@@ -68,7 +71,7 @@ export default function PipelinePage() {
           </div>
 
           {/* Pipeline visualization */}
-          <div className="bg-white rounded-xl p-4 shadow-sm border">
+          <div className="glass-card p-5">
             <PipelineVisualization incoterm={selectedTerm} />
           </div>
         </motion.div>

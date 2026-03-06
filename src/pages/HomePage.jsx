@@ -60,7 +60,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-        className="relative overflow-hidden rounded-3xl border border-[#00000010] bg-[rgba(255,255,255,0.76)] backdrop-blur-2xl text-center px-5 sm:px-8 py-10 sm:py-12 shadow-[0_24px_54px_rgba(0,0,0,0.1)] space-y-5"
+        className="glass-card-hero relative overflow-hidden text-center px-5 sm:px-8 py-10 sm:py-12 space-y-5"
       >
         <div className="absolute -top-14 -right-14 w-48 h-48 rounded-full bg-[#5ac8fa]/25 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-16 -left-20 w-52 h-52 rounded-full bg-[#0071e3]/18 blur-3xl pointer-events-none" />
@@ -124,7 +124,7 @@ export default function HomePage() {
           transition={{ delay: 0.2 }}
           className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4"
         >
-          <div className="bg-[rgba(255,255,255,0.82)] rounded-2xl p-4 text-center border border-[#00000010] shadow-[0_10px_24px_rgba(0,0,0,0.08)]">
+          <div className="glass-card rounded-2xl p-4 text-center">
             <div className="flex items-center justify-center gap-1.5 mb-1">
               <LevelIcon className="w-5 h-5 text-primary" />
               <span className="text-xs font-medium text-[#8e8e93]">Lv.{level.level}</span>
@@ -134,15 +134,15 @@ export default function HomePage() {
               <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${progress}%` }} />
             </div>
           </div>
-          <div className="bg-[rgba(255,255,255,0.82)] rounded-2xl p-4 text-center border border-[#00000010] shadow-[0_10px_24px_rgba(0,0,0,0.08)]">
+          <div className="glass-card rounded-2xl p-4 text-center">
             <div className="font-display text-2xl font-bold text-primary">{score}</div>
             <div className="text-xs text-[#6e6e73]">{t(T.home.stats.points, lang)}</div>
           </div>
-          <div className="bg-[rgba(255,255,255,0.82)] rounded-2xl p-4 text-center border border-[#00000010] shadow-[0_10px_24px_rgba(0,0,0,0.08)]">
+          <div className="glass-card rounded-2xl p-4 text-center">
             <div className="font-display text-2xl font-bold text-[#0a84ff]">{accuracy}%</div>
             <div className="text-xs text-[#6e6e73]">{t(T.home.stats.accuracy, lang)}</div>
           </div>
-          <div className="bg-[rgba(255,255,255,0.82)] rounded-2xl p-4 text-center border border-[#00000010] shadow-[0_10px_24px_rgba(0,0,0,0.08)]">
+          <div className="glass-card rounded-2xl p-4 text-center">
             <div className="flex items-center justify-center gap-1 mb-0.5">
               <Award className="w-4 h-4 text-amber-500" />
             </div>
@@ -164,7 +164,7 @@ export default function HomePage() {
           >
             <Link
               to={feat.to}
-              className="group relative block overflow-hidden rounded-2xl border border-[#00000010] bg-[rgba(255,255,255,0.82)] p-5 shadow-[0_14px_34px_rgba(0,0,0,0.08)] transition-all hover:shadow-[0_22px_40px_rgba(0,0,0,0.12)]"
+              className="glass-card glass-card-hover group relative block overflow-hidden rounded-2xl p-5"
             >
               <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#5ac8fa] via-[#0071e3] to-[#5e5ce6]" />
               <div className={`w-11 h-11 rounded-xl ${feat.color} flex items-center justify-center mb-3 border border-[#00000010] shadow-sm`}>
@@ -178,7 +178,7 @@ export default function HomePage() {
       </div>
 
       {/* Incoterms Quick Reference */}
-      <div className="bg-[rgba(255,255,255,0.82)] rounded-2xl p-5 shadow-[0_16px_38px_rgba(0,0,0,0.1)] border border-[#00000010]">
+      <div className="glass-card rounded-2xl p-5">
         <h3 className="font-display font-semibold text-[#1d1d1f] mb-3">{t(T.home.quickRef, lang)}</h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           {INCOTERMS.map(term => (

@@ -24,21 +24,27 @@ function DifficultySelector({ onSelect, lang }) {
   ]
 
   return (
-    <div className="space-y-4 py-8">
-      <h2 className="text-xl font-bold text-gray-900 text-center">{t(T.scenario.chooseDifficulty, lang)}</h2>
+    <div className="space-y-6 py-8">
+      <h2 className="font-display text-2xl font-semibold text-[#1d1d1f] text-center">{t(T.scenario.chooseDifficulty, lang)}</h2>
       <div className="grid sm:grid-cols-2 gap-3 max-w-lg mx-auto">
-        {difficulties.map(d => (
-          <button
+        {difficulties.map((d, i) => (
+          <motion.div
             key={d.key}
-            onClick={() => onSelect(d.key)}
-            className="bg-white rounded-xl p-4 shadow-sm border hover:shadow-md transition-shadow text-left"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08 * i }}
           >
-            <div className="flex items-center gap-2 mb-1">
-              <div className={`w-3 h-3 rounded-full ${d.color}`} />
-              <span className="font-semibold text-gray-900">{d.label}</span>
-            </div>
-            <p className="text-xs text-gray-500">{d.desc}</p>
-          </button>
+            <button
+              onClick={() => onSelect(d.key)}
+              className="glass-card glass-card-hover p-4 text-left w-full"
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <div className={`w-3 h-3 rounded-full ${d.color}`} />
+                <span className="font-semibold text-[#1d1d1f]">{d.label}</span>
+              </div>
+              <p className="text-xs text-[#6e6e73]">{d.desc}</p>
+            </button>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -71,28 +77,28 @@ function ScenarioCard({ scenario, onAnswer, lang }) {
       className="space-y-4"
     >
       {/* Scenario Info */}
-      <div className="bg-white rounded-xl p-5 shadow-sm border">
+      <div className="glass-card p-5">
         <div className="flex items-center justify-between mb-3">
           <span className={`text-xs px-2 py-0.5 rounded-full ${
             scenario.difficulty === 'beginner' ? 'bg-green-100 text-green-700' :
             scenario.difficulty === 'intermediate' ? 'bg-amber-100 text-amber-700' :
             'bg-red-100 text-red-700'
           }`}>{t(T.scenario[scenario.difficulty], lang)}</span>
-          <span className="text-xs text-gray-400">{scenario.type === 'export' ? t(T.common.export, lang) : t(T.common.import, lang)}</span>
+          <span className="text-xs text-[#8e8e93]">{scenario.type === 'export' ? t(T.common.export, lang) : t(T.common.import, lang)}</span>
         </div>
 
-        <h2 className="text-lg font-bold text-gray-900 mb-2">{t(scenario.title, lang)}</h2>
+        <h2 className="font-display text-lg font-semibold text-[#1d1d1f] mb-2">{t(scenario.title, lang)}</h2>
 
         {/* Game scene illustration */}
         <SceneIllustration scenario={scenario} />
 
-        <p className="text-sm text-gray-600 leading-relaxed mt-3 mb-4">{t(scenario.description, lang)}</p>
+        <p className="text-sm text-[#6e6e73] leading-relaxed mt-3 mb-4">{t(scenario.description, lang)}</p>
 
         {/* Route Info */}
         <div className="flex items-center gap-2 text-sm bg-ocean/5 rounded-lg p-3">
           <MapPin className="w-4 h-4 text-ocean" />
           <span className="font-medium">{scenario.origin.port}</span>
-          <ArrowRight className="w-3 h-3 text-gray-400" />
+          <ArrowRight className="w-3 h-3 text-[#8e8e93]" />
           <span className="font-medium">{scenario.destination.port}</span>
           <span className="ml-auto">
             <Character
@@ -115,17 +121,17 @@ function ScenarioCard({ scenario, onAnswer, lang }) {
 
         {/* Cargo Details */}
         <div className="grid grid-cols-3 gap-2 mt-3 text-xs">
-          <div className="bg-gray-50 rounded p-2 text-center">
-            <Package className="w-3 h-3 mx-auto mb-1 text-gray-400" />
-            <div className="text-gray-600">{scenario.quantity}x {scenario.containerType}</div>
+          <div className="bg-[rgba(245,245,247,0.6)] rounded-xl p-2.5 text-center">
+            <Package className="w-3 h-3 mx-auto mb-1 text-[#8e8e93]" />
+            <div className="text-[#6e6e73]">{scenario.quantity}x {scenario.containerType}</div>
           </div>
-          <div className="bg-gray-50 rounded p-2 text-center">
-            <DollarSign className="w-3 h-3 mx-auto mb-1 text-gray-400" />
-            <div className="text-gray-600">${scenario.cargoValue.toLocaleString()}</div>
+          <div className="bg-[rgba(245,245,247,0.6)] rounded-xl p-2.5 text-center">
+            <DollarSign className="w-3 h-3 mx-auto mb-1 text-[#8e8e93]" />
+            <div className="text-[#6e6e73]">${scenario.cargoValue.toLocaleString()}</div>
           </div>
-          <div className="bg-gray-50 rounded p-2 text-center">
-            <Ship className="w-3 h-3 mx-auto mb-1 text-gray-400" />
-            <div className="text-gray-600">HS {scenario.hsCode}</div>
+          <div className="bg-[rgba(245,245,247,0.6)] rounded-xl p-2.5 text-center">
+            <Ship className="w-3 h-3 mx-auto mb-1 text-[#8e8e93]" />
+            <div className="text-[#6e6e73]">HS {scenario.hsCode}</div>
           </div>
         </div>
       </div>
@@ -140,7 +146,7 @@ function ScenarioCard({ scenario, onAnswer, lang }) {
           <div className="text-xs font-semibold text-amber-700 mb-2">{t(T.scenario.hint, lang)} ({hintIndex}/{scenario.hints.length})</div>
           <ul className="space-y-1">
             {scenario.hints.slice(0, hintIndex).map((hint, i) => (
-              <li key={i} className="text-sm text-gray-600 flex items-start gap-2">
+              <li key={i} className="text-sm text-[#6e6e73] flex items-start gap-2">
                 <HelpCircle className="w-3 h-3 mt-0.5 text-amber-500 shrink-0" />
                 {t(hint, lang)}
               </li>
@@ -151,16 +157,16 @@ function ScenarioCard({ scenario, onAnswer, lang }) {
 
       {/* Answer Grid */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-700 mb-2">{t(T.scenario.whichIncoterm, lang)}</h3>
+        <h3 className="text-sm font-semibold text-[#1d1d1f] mb-2">{t(T.scenario.whichIncoterm, lang)}</h3>
         <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
           {INCOTERMS.map(term => (
             <button
               key={term.code}
               onClick={() => setSelectedIncoterm(term.code)}
-              className={`p-2 rounded-lg border text-center transition-all ${
+              className={`p-2 rounded-xl border text-center transition-all ${
                 selectedIncoterm === term.code
                   ? 'border-primary bg-primary/10 ring-2 ring-primary/30'
-                  : 'border-gray-200 hover:border-gray-300 bg-white'
+                  : 'border-[#00000010] bg-[rgba(255,255,255,0.82)] hover:bg-white'
               }`}
             >
               <div className="text-lg">{term.emoji}</div>
@@ -175,14 +181,14 @@ function ScenarioCard({ scenario, onAnswer, lang }) {
         <button
           onClick={revealHint}
           disabled={hintIndex >= scenario.hints.length}
-          className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-40 transition-colors"
+          className="flex-1 py-2.5 rounded-full border border-[#00000014] text-sm text-[#6e6e73] hover:bg-[#f6f6f8] disabled:opacity-40 transition-colors"
         >
           {t(T.scenario.hint, lang)} ({hintIndex}/{scenario.hints.length})
         </button>
         <button
           onClick={handleAnswer}
           disabled={!selectedIncoterm}
-          className="flex-1 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 disabled:opacity-40 transition-colors"
+          className="flex-1 py-2.5 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 disabled:opacity-40 transition-colors"
         >
           {t(T.scenario.submitAnswer, lang)}
         </button>
@@ -198,7 +204,7 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext, lang }) {
       animate={{ opacity: 1, scale: 1 }}
       className="space-y-4"
     >
-      <div className={`rounded-xl p-6 border ${isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+      <div className={`rounded-xl p-6 border backdrop-blur-sm ${isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
         <div className="flex items-center gap-3 mb-3">
           {isCorrect ? (
             <CheckCircle2 className="w-8 h-8 text-green-600" />
@@ -217,7 +223,7 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext, lang }) {
             <h3 className={`font-bold text-lg ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
               {isCorrect ? t(T.scenario.correct, lang) : t(T.scenario.notQuite, lang)}
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-[#6e6e73]">
               {t(T.scenario.youSelected, lang)}: <span className="font-mono font-bold">{selectedAnswer}</span>
               {!isCorrect && <> | {t(T.scenario.bestAnswer, lang)}: <span className="font-mono font-bold text-green-700">{scenario.correctAnswer}</span></>}
             </p>
@@ -226,13 +232,13 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext, lang }) {
       </div>
 
       {/* Explanation */}
-      <div className="bg-white rounded-xl p-5 shadow-sm border">
-        <h4 className="font-semibold text-gray-900 mb-2">{t(T.scenario.explanation, lang)}</h4>
-        <p className="text-sm text-gray-600 leading-relaxed">{t(scenario.explanation, lang)}</p>
+      <div className="glass-card p-5">
+        <h4 className="font-display font-semibold text-[#1d1d1f] mb-2">{t(T.scenario.explanation, lang)}</h4>
+        <p className="text-sm text-[#6e6e73] leading-relaxed">{t(scenario.explanation, lang)}</p>
       </div>
 
       {/* Learning Points */}
-      <div className="bg-primary/5 rounded-xl p-5 border border-primary/20">
+      <div className="bg-primary/5 rounded-2xl p-5 border border-primary/20">
         <h4 className="font-semibold text-primary mb-2">{t(T.scenario.keyTakeaways, lang)}</h4>
         <ul className="space-y-2">
           {scenario.learningPoints.map((point, i) => (
@@ -246,7 +252,7 @@ function ResultCard({ scenario, selectedAnswer, isCorrect, onNext, lang }) {
 
       <button
         onClick={onNext}
-        className="w-full py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+        className="w-full py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
       >
         {t(T.scenario.nextScenario, lang)} <ArrowRight className="w-4 h-4" />
       </button>
@@ -289,12 +295,12 @@ export default function ScenarioPage() {
   }
 
   return (
-    <div className="py-4">
+    <div className="py-5 sm:py-7">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <button
           onClick={() => { setDifficulty(null); setCurrentScenario(null); setLastResult(null) }}
-          className="text-sm text-gray-500 hover:text-primary flex items-center gap-1"
+          className="text-sm text-[#6e6e73] hover:text-primary flex items-center gap-1"
         >
           <RotateCcw className="w-3 h-3" /> {t(T.scenario.changeDifficulty, lang)}
         </button>

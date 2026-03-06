@@ -35,7 +35,7 @@ export default function BadgeCard({ badge }) {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       className={`rounded-xl p-3 text-center ${
-        locked ? 'bg-gray-100 opacity-50' : TIER_BG[tier]
+        locked ? 'bg-[rgba(245,245,247,0.5)] opacity-60' : `glass-card ${TIER_BG[tier]}`
       } ${!locked ? `ring-2 ${TIER_RING[tier]}` : ''}`}
     >
       <div className="flex justify-center mb-2">
@@ -45,10 +45,10 @@ export default function BadgeCard({ badge }) {
           <Icon className="w-8 h-8" style={{ color: tier === 'gold' ? '#FFD700' : tier === 'silver' ? '#A0A0A0' : '#CD7F32' }} />
         )}
       </div>
-      <p className="text-xs font-semibold truncate">{t(name, lang)}</p>
-      {!locked && <p className="text-[10px] text-gray-500">{t(TIER_LABEL[tier], lang)}</p>}
-      <p className="text-[10px] text-gray-400 mt-1">{t(description, lang)}</p>
-      <div className="text-[10px] text-gray-400 mt-1">
+      <p className="font-display text-xs font-semibold truncate">{t(name, lang)}</p>
+      {!locked && <p className="text-[10px] text-[#6e6e73]">{t(TIER_LABEL[tier], lang)}</p>}
+      <p className="text-[10px] text-[#8e8e93] mt-1">{t(description, lang)}</p>
+      <div className="text-[10px] text-[#8e8e93] mt-1">
         {value} / {thresholds[tier || 'bronze']}
       </div>
     </motion.div>

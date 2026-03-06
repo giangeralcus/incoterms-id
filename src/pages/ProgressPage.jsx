@@ -36,10 +36,10 @@ export default function ProgressPage() {
   }
 
   return (
-    <div className="space-y-6 py-4">
+    <div className="space-y-9 py-5 sm:py-7">
       <div className="flex items-center justify-between">
         <div className="flex items-end gap-3">
-          <h1 className="text-2xl font-bold text-gray-900">{t(T.progress.title, lang)}</h1>
+          <h1 className="font-display text-2xl font-semibold text-[#1d1d1f]">{t(T.progress.title, lang)}</h1>
           <Character
             sprites={CHARACTERS[score > 0 ? 'eksportir' : 'trader']}
             paletteName={score > 0 ? 'eksportir' : 'trader'}
@@ -49,7 +49,7 @@ export default function ProgressPage() {
         </div>
         <button
           onClick={handleReset}
-          className="text-xs text-gray-400 hover:text-danger flex items-center gap-1"
+          className="text-xs text-[#8e8e93] hover:text-danger flex items-center gap-1"
         >
           <RotateCcw className="w-3 h-3" /> {t(T.common.reset, lang)}
         </button>
@@ -59,17 +59,17 @@ export default function ProgressPage() {
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-xl p-5 shadow-sm border flex items-center gap-4"
+        className="glass-card p-5 flex items-center gap-4"
       >
         <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
           <LevelIcon className="w-8 h-8 text-primary" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-gray-900">{t(level.title, lang)}</span>
-            <span className="text-sm text-gray-500">Level {level.level}</span>
+            <span className="font-display text-lg font-semibold text-[#1d1d1f]">{t(level.title, lang)}</span>
+            <span className="text-sm text-[#8e8e93]">Level {level.level}</span>
           </div>
-          <div className="mt-2 h-2 bg-gray-100 rounded-full overflow-hidden">
+          <div className="mt-2 h-1.5 bg-[#ececf1] rounded-full overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
@@ -77,7 +77,7 @@ export default function ProgressPage() {
               className="h-full rounded-full bg-primary"
             />
           </div>
-          <div className="text-xs text-gray-500 mt-1">
+          <div className="text-xs text-[#6e6e73] mt-1">
             {nextLevel
               ? `${score} / ${nextLevel.xpRequired} XP`
               : `${score} XP (MAX)`}
@@ -86,32 +86,32 @@ export default function ProgressPage() {
       </motion.div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-xl p-4 shadow-sm border text-center">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-4 text-center">
           <Trophy className="w-6 h-6 text-accent mx-auto mb-2" />
-          <div className="text-2xl font-bold text-gray-900">{score}</div>
-          <div className="text-xs text-gray-500">{t(T.progress.totalPoints, lang)}</div>
+          <div className="font-display text-2xl font-bold text-[#1d1d1f]">{score}</div>
+          <div className="text-xs text-[#6e6e73]">{t(T.progress.totalPoints, lang)}</div>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white rounded-xl p-4 shadow-sm border text-center">
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="glass-card p-4 text-center">
           <Target className="w-6 h-6 text-secondary mx-auto mb-2" />
-          <div className="text-2xl font-bold text-gray-900">{accuracy}%</div>
-          <div className="text-xs text-gray-500">{t(T.progress.accuracy, lang)}</div>
+          <div className="font-display text-2xl font-bold text-[#1d1d1f]">{accuracy}%</div>
+          <div className="text-xs text-[#6e6e73]">{t(T.progress.accuracy, lang)}</div>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="bg-white rounded-xl p-4 shadow-sm border text-center">
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="glass-card p-4 text-center">
           <Flame className="w-6 h-6 text-cargo mx-auto mb-2" />
-          <div className="text-2xl font-bold text-gray-900">{bestStreak}</div>
-          <div className="text-xs text-gray-500">{t(T.progress.bestStreak, lang)}</div>
+          <div className="font-display text-2xl font-bold text-[#1d1d1f]">{bestStreak}</div>
+          <div className="text-xs text-[#6e6e73]">{t(T.progress.bestStreak, lang)}</div>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="bg-white rounded-xl p-4 shadow-sm border text-center">
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="glass-card p-4 text-center">
           <CheckCircle2 className="w-6 h-6 text-primary mx-auto mb-2" />
-          <div className="text-2xl font-bold text-gray-900">{scenariosCompleted.length}/{SCENARIOS.length}</div>
-          <div className="text-xs text-gray-500">{t(T.progress.scenarios, lang)}</div>
+          <div className="font-display text-2xl font-bold text-[#1d1d1f]">{scenariosCompleted.length}/{SCENARIOS.length}</div>
+          <div className="text-xs text-[#6e6e73]">{t(T.progress.scenarios, lang)}</div>
         </motion.div>
       </div>
 
       {/* Incoterm Mastery */}
-      <div className="bg-white rounded-xl p-5 shadow-sm border">
-        <h3 className="font-semibold text-gray-900 mb-4">{t(T.progress.incotermMastery, lang)}</h3>
+      <div className="glass-card p-5">
+        <h3 className="font-display font-semibold text-[#1d1d1f] mb-4">{t(T.progress.incotermMastery, lang)}</h3>
         <div className="space-y-3">
           {INCOTERMS.map(term => {
             const mastery = incotermsMastered[term.code]
@@ -123,7 +123,7 @@ export default function ProgressPage() {
                 <span className="text-lg w-8">{term.emoji}</span>
                 <span className="font-mono font-bold text-sm w-10 text-primary">{term.code}</span>
                 <div className="flex-1">
-                  <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="h-1.5 bg-[#ececf1] rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${pct}%` }}
@@ -136,7 +136,7 @@ export default function ProgressPage() {
                     />
                   </div>
                 </div>
-                <span className="text-xs text-gray-500 w-16 text-right">
+                <span className="text-xs text-[#6e6e73] w-16 text-right">
                   {attempts > 0 ? `${pct}% (${attempts})` : t(T.progress.notTried, lang)}
                 </span>
               </div>
@@ -149,23 +149,23 @@ export default function ProgressPage() {
       <BadgeGrid badges={badges} />
 
       {/* Stats Breakdown */}
-      <div className="bg-white rounded-xl p-5 shadow-sm border">
-        <h3 className="font-semibold text-gray-900 mb-3">{t(T.progress.sessionStats, lang)}</h3>
+      <div className="glass-card p-5">
+        <h3 className="font-display font-semibold text-[#1d1d1f] mb-3">{t(T.progress.sessionStats, lang)}</h3>
         <div className="grid grid-cols-2 gap-3 text-sm">
           <div className="flex justify-between">
-            <span className="text-gray-500">{t(T.progress.correctAnswers, lang)}</span>
+            <span className="text-[#6e6e73]">{t(T.progress.correctAnswers, lang)}</span>
             <span className="font-medium text-secondary">{totalCorrect}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">{t(T.progress.wrongAnswers, lang)}</span>
+            <span className="text-[#6e6e73]">{t(T.progress.wrongAnswers, lang)}</span>
             <span className="font-medium text-danger">{totalAttempted - totalCorrect}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">{t(T.progress.totalAttempts, lang)}</span>
+            <span className="text-[#6e6e73]">{t(T.progress.totalAttempts, lang)}</span>
             <span className="font-medium">{totalAttempted}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">{t(T.progress.currentStreak, lang)}</span>
+            <span className="text-[#6e6e73]">{t(T.progress.currentStreak, lang)}</span>
             <span className="font-medium text-accent">{streak}</span>
           </div>
         </div>
